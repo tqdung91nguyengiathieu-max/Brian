@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brian Crypto Việt - Kênh thông tin crypto dễ hiểu nhất</title>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Swiper JS CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
+    
+    <!-- Link style.css -->
+    <link rel="stylesheet" href="style.css">
+    
+    <style>
+        /* Custom responsive overrides and additional UI enhancements */
+        body {
+            background-color: var(--h-color-bg);
+            color: var(--h-color-text-primary);
+        }
+        
+        /* Header CSS */
+        header {
+            background-color: rgba(11, 12, 16, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--h-color-border);
+            z-index: 1000;
+        }
+        .navbar-brand img {
+            height: 48px;
+        }
+        .nav-link {
+            color: var(--h-color-text-secondary) !important;
+            font-weight: 500;
+            padding: 10px 16px !important;
+            transition: var(--h-transition);
+        }
+        .nav-link:hover, .nav-link.active {
+            color: var(--h-color-yellow) !important;
+        }
+        
+        /* Marquee Coin CSS */
+        .marquee-container {
+            background-color: var(--h-color-bg-card);
+            border-top: 1px solid var(--h-color-border);
+            border-bottom: 1px solid var(--h-color-border);
+            padding: 12px 0;
+            overflow: hidden;
+            white-space: nowrap;
+            position: relative;
+        }
+        .marquee-inner {
+            display: inline-flex;
+            animation: marquee 30s linear infinite;
+            gap: 40px;
+        }
+        .marquee-inner:hover {
+            animation-play-state: paused;
+        }
+        .coin-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 500;
+            cursor: pointer;
+        }
+        .coin-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        .coin-change {
+            font-size: 14px;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        .coin-change.up {
+            color: var(--h-color-green);
+            background-color: var(--h-color-green-bg);
+        }
+        .coin-change.down {
+            color: var(--h-color-red);
+            background-color: var(--h-color-red-bg);
+        }
+        
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Hero / Welcome Section CSS */
+        .hero-section {
+            padding: 40px 0;
+        }
+        .swiper-container {
+            width: 100%;
+            height: 420px;
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+        }
+        .swiper-slide {
+            position: relative;
+            background-size: cover;
+            background-position: center;
+        }
+        .swiper-slide-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(11, 12, 16, 0.95) 0%, rgba(11, 12, 16, 0.4) 60%, rgba(11, 12, 16, 0) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+        }
+        .swiper-slide-tag {
+            background-color: var(--h-color-yellow);
+            color: #000;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            padding: 4px 10px;
+            border-radius: 4px;
+            align-self: flex-start;
+            margin-bottom: 12px;
+        }
+        .swiper-slide-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+        .swiper-slide-meta {
+            font-size: 14px;
+            color: var(--h-color-text-secondary);
+        }
+        
+        /* Right welcome listing */
+        .welcome-list-container {
+            background-color: var(--h-color-bg-card);
+            border: 1px solid var(--h-color-border);
+            border-radius: 12px;
+            padding: 24px;
+            height: 420px;
+            display: flex;
+            flex-direction: column;
+        }
+        .welcome-list-tabs {
+            display: flex;
+            border-bottom: 1px solid var(--h-color-border);
+            margin-bottom: 16px;
+            gap: 16px;
+        }
+        .welcome-tab {
+            color: var(--h-color-text-secondary);
+            font-weight: 600;
+            padding-bottom: 10px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            text-transform: uppercase;
+            font-size: 14px;
+        }
+        .welcome-tab.active {
+            color: var(--h-color-yellow);
+            border-bottom-color: var(--h-color-yellow);
+        }
+        .welcome-list-scroll {
+            overflow-y: auto;
+            flex-grow: 1;
+            padding-right: 4px;
+        }
+        .welcome-post-item {
+            display: flex;
+            gap: 12px;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: var(--h-transition);
+        }
+        .welcome-post-item:hover {
+            opacity: 0.8;
+        }
+        .welcome-post-img {
+            width: 100px;
+            height: 60px;
+            border-radius: 6px;
+            object-fit: cover;
+        }
+        .welcome-post-title {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        /* Video Playlist CSS */
+        .video-section {
+            background-color: rgba(20, 22, 29, 0.5);
+            padding: 60px 0;
+            border-top: 1px solid var(--h-color-border);
+            border-bottom: 1px solid var(--h-color-border);
+        }
+        .video-player-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--h-color-border);
+        }
+        .video-player-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .video-playlist-container {
+            background-color: var(--h-color-bg-card);
+            border: 1px solid var(--h-color-border);
+            border-radius: 12px;
+            padding: 24px;
+            height: 480px;
+            display: flex;
+            flex-direction: column;
+        }
+        .video-playlist-scroll {
+            overflow-y: auto;
+            flex-grow: 1;
+        }
+        .video-item {
+            display: flex;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 8px;
+            transition: var(--h-transition);
+        }
+        .video-item:hover, .video-item.active {
+            background-color: rgba(252, 185, 0, 0.08);
+            border: 1px solid rgba(252, 185, 0, 0.2);
+        }
+        .video-thumbnail {
+            width: 120px;
+            height: 68px;
+            border-radius: 6px;
+            object-fit: cover;
+        }
+        .video-title {
+            font-size: 13px;
+            font-weight: 500;
+            line-height: 1.4;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+        
+        /* Category Card Grid */
+        .category-header {
+            border-left: 4px solid var(--h-color-yellow);
+            padding-left: 12px;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="position-sticky top-0">
+        <nav class="navbar navbar-expand-lg navbar-dark container py-3">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+                <img src="assets/images/logo.png" alt="Brian Crypto Việt Logo" style="height: 45px; width: 45px; object-fit: contain;">
+                <span class="fw-bold fs-4" style="letter-spacing: 0.5px; font-family: 'Inter', sans-serif;">
+                    <span class="text-white">Brian</span> <span style="color: var(--h-color-yellow);">Crypto Việt</span>
+                </span>
+            </a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Pháp lý</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Người mới</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Chuyên sâu</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Góc nhìn</a></li>
+                </ul>
+                <div class="d-flex align-items-center gap-3">
+                    <button class="btn btn-link text-white p-0" style="text-decoration:none;">
+                        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Coin Marquee (Bảng chạy giá coin) -->
+    <div class="marquee-container">
+        <div class="marquee-inner" id="coin-marquee">
+            <!-- Loop 1 -->
+            <div class="coin-item">
+                <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png" class="coin-icon" alt="BTC">
+                <span class="text-white font-bold">BTC</span> <span class="text-muted">$67,250.50</span> <span class="coin-change up">+2.45%</span>
+            </div>
+            <div class="coin-item">
+                <img src="https://assets.coingecko.com/coins/images/279/large/ethereum.png" class="coin-icon" alt="ETH">
+                <span class="text-white font-bold">ETH</span> <span class="text-muted">$3,480.20</span> <span class="coin-change down">-1.15%</span>
+            </div>
+            <div class="coin-item">
+                <img src="https://assets.coingecko.com/coins/images/4128/large/solana.png" class="coin-icon" alt="SOL">
+                <span class="text-white font-bold">SOL</span> <span class="text-muted">$182.40</span> <span class="coin-change up">+5.82%</span>
+            </div>
+            <div class="coin-item">
+                <img src="https://assets.coingecko.com/coins/images/825/large/binance-coin-logo.png" class="coin-icon" alt="BNB">
+                <span class="text-white font-bold">BNB</span> <span class="text-muted">$585.90</span> <span class="coin-change up">+0.12%</span>
+            </div>
+            <!-- Loop 2 -->
+            <div class="coin-item">
+                <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png" class="coin-icon" alt="BTC">
+                <span class="text-white font-bold">BTC</span> <span class="text-muted">$67,250.50</span> <span class="coin-change up">+2.45%</span>
+            </div>
+            <div class="coin-item">
+                <img src="https://assets.coingecko.com/coins/images/279/large/ethereum.png" class="coin-icon" alt="ETH">
+                <span class="text-white font-bold">ETH</span> <span class="text-muted">$3,480.20</span> <span class="coin-change down">-1.15%</span>
+            </div>
+            <div class="coin-item">
+                <img src="https://assets.coingecko.com/coins/images/4128/large/solana.png" class="coin-icon" alt="SOL">
+                <span class="text-white font-bold">SOL</span> <span class="text-muted">$182.40</span> <span class="coin-change up">+5.82%</span>
+            </div>
+            <div class="coin-item">
+                <img src="https://assets.coingecko.com/coins/images/825/large/binance-coin-logo.png" class="coin-icon" alt="BNB">
+                <span class="text-white font-bold">BNB</span> <span class="text-muted">$585.90</span> <span class="coin-change up">+0.12%</span>
+            </div>
+            <!-- Loop 3 -->
+            <div class="coin-item">
+                <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png" class="coin-icon" alt="BTC">
+                <span class="text-white font-bold">BTC</span> <span class="text-muted">$67,250.50</span> <span class="coin-change up">+2.45%</span>
+            </div>
+            <div class="coin-item">
+                <img src="https://assets.coingecko.com/coins/images/279/large/ethereum.png" class="coin-icon" alt="ETH">
+                <span class="text-white font-bold">ETH</span> <span class="text-muted">$3,480.20</span> <span class="coin-change down">-1.15%</span>
+            </div>
+            <div class="coin-item">
+                <img src="https://assets.coingecko.com/coins/images/4128/large/solana.png" class="coin-icon" alt="SOL">
+                <span class="text-white font-bold">SOL</span> <span class="text-muted">$182.40</span> <span class="coin-change up">+5.82%</span>
+            </div>
+            <div class="coin-item">
+                <img src="https://assets.coingecko.com/coins/images/825/large/binance-coin-logo.png" class="coin-icon" alt="BNB">
+                <span class="text-white font-bold">BNB</span> <span class="text-muted">$585.90</span> <span class="coin-change up">+0.12%</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero / Welcome Section -->
+    <section class="hero-section container">
+        <div class="row g-4">
+            <!-- Left Slider -->
+            <div class="col-lg-8">
+                <div class="swiper swiper-container" id="welcome-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=1200&q=80');">
+                            <div class="swiper-slide-overlay">
+                                <span class="swiper-slide-tag">Pháp lý</span>
+                                <h2 class="swiper-slide-title">Hướng dẫn đóng thuế Crypto tại Việt Nam chi tiết nhất 2026</h2>
+                                <div class="swiper-slide-meta">30 Tháng 7, 2026 • 5 phút đọc</div>
+                            </div>
+                        </div>
+                        <div class="swiper-slide" style="background-image: url('https://images.unsplash.com/photo-1622790698141-94e30457ef12?auto=format&fit=crop&w=1200&q=80');">
+                            <div class="swiper-slide-overlay">
+                                <span class="swiper-slide-tag">Chuyên sâu</span>
+                                <h2 class="swiper-slide-title">Bitcoin Halving hoạt động thế nào và tác động dài hạn ra sao?</h2>
+                                <div class="swiper-slide-meta">28 Tháng 7, 2026 • 8 phút đọc</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pagination & Navigation -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <!-- Right Tabbed List -->
+            <div class="col-lg-4">
+                <div class="welcome-list-container">
+                    <div class="welcome-list-tabs">
+                        <div class="welcome-tab active" onclick="switchTab('new')">Mới nhất</div>
+                        <div class="welcome-tab" onclick="switchTab('hot')">Xem nhiều</div>
+                    </div>
+                    <div class="welcome-list-scroll" id="tabbed-post-list">
+                        <!-- Tab content loaded via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Three Categories Grid -->
+    <section class="container py-5">
+        <div class="row g-4">
+            <!-- Category 1 -->
+            <div class="col-md-4">
+                <h4 class="category-header">Kinh nghiệm Giao dịch</h4>
+                <div class="card-custom mb-3">
+                    <img src="https://images.unsplash.com/photo-1640340434855-6084b1f4901c?auto=format&fit=crop&w=500&q=80" class="w-100" style="height:180px; object-fit:cover;" alt="Post img">
+                    <div class="p-3">
+                        <h5 class="fs-6 fw-bold mb-2">5 nguyên tắc quản lý vốn xương máu khi trade Futures</h5>
+                        <p class="text-muted small mb-0">Học cách bảo vệ tài khoản của bạn trước những biến động cực lớn...</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center gap-2 border-top border-secondary py-2">
+                    <span class="text-warning fw-bold small">01</span>
+                    <a href="#" class="small fw-semibold text-white">Cách nhận diện sàn giao dịch Scam/Lừa đảo</a>
+                </div>
+                <div class="d-flex align-items-center gap-2 border-top border-secondary py-2">
+                    <span class="text-warning fw-bold small">02</span>
+                    <a href="#" class="small fw-semibold text-white">Top 3 ví lạnh an toàn nhất thời điểm hiện tại</a>
+                </div>
+            </div>
+            
+            <!-- Category 2 -->
+            <div class="col-md-4">
+                <h4 class="category-header">Phân tích Cơ bản</h4>
+                <div class="card-custom mb-3">
+                    <img src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=500&q=80" class="w-100" style="height:180px; object-fit:cover;" alt="Post img">
+                    <div class="p-3">
+                        <h5 class="fs-6 fw-bold mb-2">Đánh giá tiềm năng Layer 2: Arbitrum vs Optimism</h5>
+                        <p class="text-muted small mb-0">So sánh chi tiết về TVL, tốc độ xử lý và khả năng mở rộng của...</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center gap-2 border-top border-secondary py-2">
+                    <span class="text-warning fw-bold small">01</span>
+                    <a href="#" class="small fw-semibold text-white">Tokenomics là gì? 4 yếu tố cần soi kỹ khi mua token</a>
+                </div>
+                <div class="d-flex align-items-center gap-2 border-top border-secondary py-2">
+                    <span class="text-warning fw-bold small">02</span>
+                    <a href="#" class="small fw-semibold text-white">Cách đọc whitepaper một dự án Crypto trong 10 phút</a>
+                </div>
+            </div>
+
+            <!-- Category 3 -->
+            <div class="col-md-4">
+                <h4 class="category-header">Airdrop & Retroactive</h4>
+                <div class="card-custom mb-3">
+                    <img src="https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=500&q=80" class="w-100" style="height:180px; object-fit:cover;" alt="Post img">
+                    <div class="p-3">
+                        <h5 class="fs-6 fw-bold mb-2">Săn kèo Retroactive trên testnet mới của Scroll</h5>
+                        <p class="text-muted small mb-0">Hướng dẫn từng bước cày volume và tương tác hợp đồng thông minh...</p>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center gap-2 border-top border-secondary py-2">
+                    <span class="text-warning fw-bold small">01</span>
+                    <a href="#" class="small fw-semibold text-white">Cách chống Sybil hiệu quả khi cày nhiều ví airdrop</a>
+                </div>
+                <div class="d-flex align-items-center gap-2 border-top border-secondary py-2">
+                    <span class="text-warning fw-bold small">02</span>
+                    <a href="#" class="small fw-semibold text-white">Hướng dẫn Claim Airdrop dự án mới nhất</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Custom Video Playlist Section -->
+    <section class="video-section">
+        <div class="container">
+            <h3 class="category-header mb-4">Video Tiêu Điểm</h3>
+            <div class="row g-4">
+                <!-- Left Video Player -->
+                <div class="col-lg-8">
+                    <div class="video-player-wrapper">
+                        <iframe id="main-video-player" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <!-- Right Playlist Scroll -->
+                <div class="col-lg-4">
+                    <div class="video-playlist-container">
+                        <h5 class="fw-bold mb-3" style="color: var(--h-color-yellow);">Danh sách phát hot</h5>
+                        <div class="video-playlist-scroll" id="youtube-playlist">
+                            <!-- Playlist items -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-5" style="background-color:#07080a; border-top: 1px solid var(--h-color-border);">
+        <div class="container text-center text-md-start">
+            <div class="row g-4">
+                <div class="col-md-6">
+                    <h5 class="fw-bold text-warning mb-3">Brian Crypto Việt</h5>
+                    <p class="text-secondary small">Brian Crypto Việt là kênh thông tin crypto hàng đầu Việt Nam. Chúng tôi cung cấp những hướng dẫn chi tiết dễ hiểu, insights giúp cho hành trình đầu tư dễ dàng hơn.</p>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Liên kết nhanh</h6>
+                    <ul class="list-unstyled text-secondary small d-flex flex-column gap-2">
+                        <li><a href="#" class="hover-warning">Chính sách bảo mật</a></li>
+                        <li><a href="#" class="hover-warning">Điều khoản sử dụng</a></li>
+                        <li><a href="#" class="hover-warning">Liên hệ hợp tác</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="fw-bold text-white mb-3">Mạng xã hội</h6>
+                    <div class="d-flex gap-3 justify-content-center justify-content-md-start">
+                        <!-- Facebook, Twitter, Telegram icons -->
+                        <a href="#" class="text-secondary hover-warning">Facebook</a>
+                        <a href="#" class="text-secondary hover-warning">Telegram</a>
+                        <a href="#" class="text-secondary hover-warning">Youtube</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary opacity-25">
+            <div class="text-center text-secondary small">
+                © 2026 Brian Crypto Việt. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS & Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    
+    <script>
+        // Welcome Slider initialization
+        const swiper = new Swiper('#welcome-swiper', {
+            loop: true,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            }
+        });
+
+        // Tabbed Listing Posts
+        const newPosts = [
+            { title: "Cách tối ưu hóa phí gas Ethereum với các giải pháp Layer 2", date: "30 Tháng 7", img: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=120&q=80" },
+            { title: "Review chi tiết ví SafePal S1: Đáng tiền để bảo mật coin?", date: "29 Tháng 7", img: "https://images.unsplash.com/photo-1640340434855-6084b1f4901c?auto=format&fit=crop&w=120&q=80" },
+            { title: "Crypto đầu mùa bull-run: Cần phân bổ danh mục thế nào?", date: "27 Tháng 7", img: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=120&q=80" },
+            { title: "SEC chấp thuận thêm ETF Spot cho Altcoin lớn thứ 3?", date: "26 Tháng 7", img: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=120&q=80" }
+        ];
+
+        const hotPosts = [
+            { title: "Kế hoạch tích lũy Bitcoin trong 5 năm: Tỷ suất lợi nhuận kỳ vọng", date: "Xem nhiều", img: "https://images.unsplash.com/photo-1622790698141-94e30457ef12?auto=format&fit=crop&w=120&q=80" },
+            { title: "Coin rác và meme coin: Bẫy tài chính hay cơ hội x100?", date: "Xem nhiều", img: "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=120&q=80" }
+        ];
+
+        function switchTab(type) {
+            const tabs = document.querySelectorAll('.welcome-tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            event.target.classList.add('active');
+
+            const listContainer = document.getElementById('tabbed-post-list');
+            const posts = type === 'new' ? newPosts : hotPosts;
+            listContainer.innerHTML = posts.map(post => `
+                <div class="welcome-post-item">
+                    <img src="${post.img}" class="welcome-post-img" alt="post">
+                    <div>
+                        <a href="#" class="welcome-post-title text-white">${post.title}</a>
+                        <small class="text-secondary">${post.date}</small>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Initialize Tab
+        switchTab('new');
+
+        // Video Playlist Integration
+        const playlistData = [
+            { id: "dQw4w9WgXcQ", title: "Bài 1: Kiến thức Crypto nền tảng cho người mới bắt đầu", thumb: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=120&q=80" },
+            { id: "L_LUpnjgPso", title: "Bài 2: Hướng dẫn bảo mật ví nóng & ví lạnh an toàn 100%", thumb: "https://images.unsplash.com/photo-1640340434855-6084b1f4901c?auto=format&fit=crop&w=120&q=80" },
+            { id: "9sWn8w1qBsw", title: "Bài 3: Cách đọc biểu đồ kỹ thuật & Price Action đơn giản", thumb: "https://images.unsplash.com/photo-1622790698141-94e30457ef12?auto=format&fit=crop&w=120&q=80" }
+        ];
+
+        const playlistContainer = document.getElementById('youtube-playlist');
+        playlistContainer.innerHTML = playlistData.map((video, index) => `
+            <div class="video-item ${index === 0 ? 'active' : ''}" onclick="playVideo('${video.id}', this)">
+                <img src="${video.thumb}" class="video-thumbnail" alt="video thumb">
+                <div class="video-title text-white">${video.title}</div>
+            </div>
+        `).join('');
+
+        function playVideo(id, element) {
+            document.getElementById('main-video-player').src = `https://www.youtube.com/embed/${id}?autoplay=1`;
+            document.querySelectorAll('.video-item').forEach(item => item.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // Coin Marquee API Fetch with Local File Fallback (Bypass CORS)
+        async function fetchCoinPrices() {
+            const coinMeta = {
+                'BTCUSDT': { name: 'Bitcoin', symbol: 'BTC', icon: 'https://assets.coingecko.com/coins/images/1/large/bitcoin.png', price: 67250.50, change: 2.45 },
+                'ETHUSDT': { name: 'Ethereum', symbol: 'ETH', icon: 'https://assets.coingecko.com/coins/images/279/large/ethereum.png', price: 3480.20, change: -1.15 },
+                'SOLUSDT': { name: 'Solana', symbol: 'SOL', icon: 'https://assets.coingecko.com/coins/images/4128/large/solana.png', price: 182.40, change: 5.82 },
+                'BNBUSDT': { name: 'BNB', symbol: 'BNB', icon: 'https://assets.coingecko.com/coins/images/825/large/binance-coin-logo.png', price: 585.90, change: 0.12 },
+                'XRPUSDT': { name: 'Ripple', symbol: 'XRP', icon: 'https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white_-blue_200x200.png', price: 0.612, change: -2.34 },
+                'ADAUSDT': { name: 'Cardano', symbol: 'ADA', icon: 'https://assets.coingecko.com/coins/images/975/large/cardano.png', price: 0.385, change: 1.05 },
+                'DOGEUSDT': { name: 'Dogecoin', symbol: 'DOGE', icon: 'https://assets.coingecko.com/coins/images/325/large/dogecoin.png', price: 0.124, change: 12.45 }
+            };
+
+            function renderCoins(dataMap) {
+                let marqueeHTML = '';
+                const coinsList = Object.keys(dataMap).map(key => ({
+                    symbol: dataMap[key].symbol,
+                    icon: dataMap[key].icon,
+                    price: dataMap[key].price,
+                    change: dataMap[key].change
+                }));
+                // Duplicate three times to ensure it fills and scrolls correctly
+                const doubleCoins = [...coinsList, ...coinsList, ...coinsList];
+                
+                doubleCoins.forEach(coin => {
+                    const priceFormatted = coin.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+                    const isUp = coin.change >= 0;
+                    const changeText = `${isUp ? '+' : ''}${coin.change.toFixed(2)}%`;
+                    const changeClass = isUp ? 'up' : 'down';
+                    
+                    marqueeHTML += `
+                        <div class="coin-item">
+                            <img src="${coin.icon}" class="coin-icon" alt="${coin.symbol}">
+                            <span class="text-white font-bold">${coin.symbol}</span>
+                            <span class="text-muted">${priceFormatted}</span>
+                            <span class="coin-change ${changeClass}">${changeText}</span>
+                        </div>
+                    `;
+                });
+                document.getElementById('coin-marquee').innerHTML = marqueeHTML;
+            }
+
+            // If we are running locally (file://), browser blocks CORS. Use simulated data.
+            if (window.location.protocol === 'file:') {
+                // Add minor random fluctuation to make it look alive
+                for (const key in coinMeta) {
+                    const change = (Math.random() - 0.5) * 0.2; // -0.1% to +0.1%
+                    coinMeta[key].price += coinMeta[key].price * (change / 100);
+                    coinMeta[key].change += change;
+                }
+                renderCoins(coinMeta);
+                return;
+            }
+
+            try {
+                const response = await fetch('https://api.binance.com/api/v3/ticker/24hr?symbols=["BTCUSDT","ETHUSDT","SOLUSDT","BNBUSDT","XRPUSDT","ADAUSDT","DOGEUSDT"]');
+                const data = await response.json();
+                
+                data.forEach(item => {
+                    if (coinMeta[item.symbol]) {
+                        coinMeta[item.symbol].price = parseFloat(item.lastPrice);
+                        coinMeta[item.symbol].change = parseFloat(item.priceChangePercent);
+                    }
+                });
+                renderCoins(coinMeta);
+            } catch (error) {
+                console.warn("Failed to fetch live prices (CORS or Network issue). Falling back to mock data.", error);
+                renderCoins(coinMeta);
+            }
+        }
+
+        fetchCoinPrices();
+        setInterval(fetchCoinPrices, 5000); // Fast simulation update for local mode
+    </script>
+</body>
+</html>

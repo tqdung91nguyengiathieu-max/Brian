@@ -1,0 +1,113 @@
+/*
+Theme Name: Brian Crypto Việt
+Theme URI: https://5phutcrypto.io/
+Author: Antigravity AI
+Author URI: https://github.com/google-deepmind
+Description: A custom premium dark-themed WordPress theme cloning 100% of the UI/UX of 5phutcrypto.io under the name Brian Crypto Việt.
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: brian-crypto-viet
+*/
+
+/* Core Theme Design Tokens & Variables */
+:root {
+    --h-color-bg: #0b0c10;
+    --h-color-bg-card: #14161d;
+    --h-color-border: #1f232d;
+    --h-color-text-primary: #ffffff;
+    --h-color-text-secondary: #94a3b8;
+    
+    /* 5 Phút Crypto Brand Yellow */
+    --h-color-yellow: #fcb900;
+    --h-color-yellow-hover: #e0a500;
+    --h-color-yellow-light: rgba(252, 185, 0, 0.1);
+    
+    /* Status Colors */
+    --h-color-green: #22c55e;
+    --h-color-green-bg: rgba(34, 197, 94, 0.12);
+    --h-color-red: #ef4444;
+    --h-color-red-bg: rgba(239, 68, 68, 0.12);
+    
+    --h-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --h-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Global Reset & Base Styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--h-color-bg);
+    color: var(--h-color-text-primary);
+    font-family: var(--h-font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+    transition: var(--h-transition);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: var(--h-color-bg);
+}
+::-webkit-scrollbar-thumb {
+    background: #272b36;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #3f4556;
+}
+
+/* Shared Premium UI Components */
+.btn-yellow {
+    background-color: var(--h-color-yellow);
+    color: #000000;
+    font-weight: 600;
+    padding: 10px 24px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: var(--h-transition);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.btn-yellow:hover {
+    background-color: var(--h-color-yellow-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(252, 185, 0, 0.3);
+}
+
+.card-custom {
+    background-color: var(--h-color-bg-card);
+    border: 1px solid var(--h-color-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: var(--h-transition);
+}
+
+.card-custom:hover {
+    border-color: rgba(252, 185, 0, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
