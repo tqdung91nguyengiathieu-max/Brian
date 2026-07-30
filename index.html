@@ -441,11 +441,13 @@
                 image: "https://images.unsplash.com/photo-1640340434855-6084b1f4901c?auto=format&fit=crop&w=500&q=80",
                 excerpt: "Học cách quản lý rủi ro và bảo vệ tài khoản giao dịch đòn bẩy của bạn trước những cú quét râu giật giá cực mạnh."
             }
-        ];        // Load posts dynamically with secure fallbacks
+        ];
+        // Load posts dynamically with secure fallbacks (with cache buster)
         async function loadAllPosts() {
             if (GITHUB_REPO) {
                 try {
-                    const response = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/content/posts`);
+                    const cacheBuster = `?t=${new Date().getTime()}`;
+                    const response = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/content/posts${cacheBuster}`);
                     if (response.ok) {
                         const files = await response.json();
                         const fetchedPosts = [];
@@ -453,7 +455,7 @@
                         for (const file of files) {
                             if (file.name.endsWith('.json')) {
                                 try {
-                                    const fileRes = await fetch(file.download_url);
+                                    const fileRes = await fetch(`${file.download_url}${cacheBuster}`);
                                     if (fileRes.ok) {
                                         const postContent = await fileRes.json();
                                         if (postContent && typeof postContent === 'object') {
