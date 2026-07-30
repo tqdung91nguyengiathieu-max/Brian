@@ -1,7 +1,7 @@
 backend:
-  name: git-gateway
-  repo: tqdung91nguyengiathieu-max/Brian
-  branch: main
+  name: "git-gateway"
+  repo: "tqdung91nguyengiathieu-max/Brian"
+  branch: "main"
 
 media_folder: "assets/images/uploads"
 public_folder: "/assets/images/uploads"
@@ -14,9 +14,26 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     format: "json"
     fields:
-      - { label: "Tiêu đề", name: "title", widget: "string" }
-      - { label: "Ngày đăng", name: "date", widget: "datetime" }
-      - { label: "Chuyên mục", name: "category", widget: "select", options: ["Pháp lý", "Người mới", "Chuyên sâu", "Góc nhìn"] }
-      - { label: "Ảnh đại diện", name: "image", widget: "image" }
-      - { label: "Tóm tắt bài viết", name: "excerpt", widget: "text" }
-      - { label: "Nội dung bài viết", name: "body", widget: "markdown" }
+      - label: "Tiêu đề"
+        name: "title"
+        widget: "string"
+      - label: "Ngày đăng"
+        name: "date"
+        widget: "datetime"
+      - label: "Chuyên mục"
+        name: "category"
+        widget: "select"
+        options:
+          - "Pháp lý"
+          - "Người mới"
+          - "Chuyên sâu"
+          - "Góc nhìn"
+      - label: "Ảnh đại diện"
+        name: "image"
+        widget: "image"
+      - label: "Tóm tắt bài viết"
+        name: "excerpt"
+        widget: "text"
+      - label: "Nội dung bài viết"
+        name: "body"
+        widget: "markdown"
