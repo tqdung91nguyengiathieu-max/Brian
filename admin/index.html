@@ -10,5 +10,28 @@
 <body>
     <!-- Bootstraps Netlify CMS (Highly Stable v2.10.192 to prevent Markdown editor Range errors) -->
     <script src="https://cdn.jsdelivr.net/npm/netlify-cms@2.10.192/dist/netlify-cms.js"></script>
+    <script>
+      CMS.registerEditorComponent({
+        id: "font-size",
+        label: "Cỡ chữ tùy chỉnh",
+        fields: [
+          { name: "size", label: "Nhập cỡ chữ (ví dụ: 18px, 20px, 24px)", widget: "string", default: "20px" },
+          { name: "text", label: "Nội dung chữ", widget: "text" }
+        ],
+        pattern: /<span style="font-size:\s*(.*?);?">(.*?)<\/span>/,
+        fromBlock: function(match) {
+          return {
+            size: match[1],
+            text: match[2]
+          };
+        },
+        toBlock: function(obj) {
+          return `<span style="font-size: ${obj.size};">${obj.text}</span>`;
+        },
+        toPreview: function(obj) {
+          return `<span style="font-size: ${obj.size};">${obj.text}</span>`;
+        }
+      });
+    </script>
 </body>
 </html>
