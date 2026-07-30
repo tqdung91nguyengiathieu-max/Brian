@@ -37,3 +37,4 @@ collections:
       - label: "Nội dung bài viết"
         name: "body"
         widget: "markdown"
+        modes: ["raw"]
