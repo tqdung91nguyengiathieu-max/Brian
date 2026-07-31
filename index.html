@@ -653,13 +653,21 @@
             renderVideos();
         }
 
+        function getYouTubeId(urlOrId) {
+            if (!urlOrId) return '';
+            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            const match = urlOrId.match(regExp);
+            return (match && match[2].length === 11) ? match[2] : urlOrId.trim();
+        }
+
         function renderVideos() {
             const playlistContainer = document.getElementById('youtube-playlist');
             if (playlistContainer) {
                 playlistContainer.innerHTML = playlistData.map((video, index) => {
-                    const thumbUrl = `https://img.youtube.com/vi/${video.youtubeId}/mqdefault.jpg`;
+                    const cleanId = getYouTubeId(video.youtubeId);
+                    const thumbUrl = `https://img.youtube.com/vi/${cleanId}/mqdefault.jpg`;
                     return `
-                        <div class="video-item ${index === 0 ? 'active' : ''}" onclick="playVideo('${video.youtubeId}', this)">
+                        <div class="video-item ${index === 0 ? 'active' : ''}" onclick="playVideo('${cleanId}', this)">
                             <img src="${thumbUrl}" class="video-thumbnail" alt="video thumb">
                             <div class="video-title text-white">${video.title}</div>
                         </div>
@@ -669,7 +677,8 @@
             // Set the first video as default source for the player if element exists
             const player = document.getElementById('main-video-player');
             if (player && playlistData.length > 0) {
-                player.src = `https://www.youtube.com/embed/${playlistData[0].youtubeId}`;
+                const firstId = getYouTubeId(playlistData[0].youtubeId);
+                player.src = `https://www.youtube.com/embed/${firstId}`;
             }
         }
 
