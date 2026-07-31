@@ -132,3 +132,11 @@ img {
     margin-bottom: 24px;
 }
 
+/* Constrain Header width to match 5 Phút Crypto premium layout */
+header .container {
+    max-width: 1200px !important;
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin: 0 auto;
+}
+
