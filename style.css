@@ -12,22 +12,22 @@ Text Domain: brian-crypto-viet
 
 /* Core Theme Design Tokens & Variables */
 :root {
-    --h-color-bg: #0b0c10;
-    --h-color-bg-card: #14161d;
-    --h-color-border: #1f232d;
-    --h-color-text-primary: #ffffff;
-    --h-color-text-secondary: #94a3b8;
+    --h-color-bg: #ffffff;
+    --h-color-bg-card: #f8fafc;
+    --h-color-border: #e2e8f0;
+    --h-color-text-primary: #0f172a;
+    --h-color-text-secondary: #475569;
     
     /* 5 Phút Crypto Brand Yellow */
     --h-color-yellow: #fcb900;
     --h-color-yellow-hover: #e0a500;
-    --h-color-yellow-light: rgba(252, 185, 0, 0.1);
+    --h-color-yellow-light: rgba(252, 185, 0, 0.08);
     
     /* Status Colors */
-    --h-color-green: #22c55e;
-    --h-color-green-bg: rgba(34, 197, 94, 0.12);
-    --h-color-red: #ef4444;
-    --h-color-red-bg: rgba(239, 68, 68, 0.12);
+    --h-color-green: #16a34a;
+    --h-color-green-bg: rgba(22, 163, 74, 0.08);
+    --h-color-red: #dc2626;
+    --h-color-red-bg: rgba(220, 38, 38, 0.08);
     
     --h-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --h-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -69,11 +69,11 @@ img {
     background: var(--h-color-bg);
 }
 ::-webkit-scrollbar-thumb {
-    background: #272b36;
+    background: #cbd5e1;
     border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background: #3f4556;
+    background: #94a3b8;
 }
 
 /* Shared Premium UI Components */
@@ -95,7 +95,7 @@ img {
 .btn-yellow:hover {
     background-color: var(--h-color-yellow-hover);
     transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(252, 185, 0, 0.3);
+    box-shadow: 0 4px 15px rgba(252, 185, 0, 0.2);
 }
 
 .card-custom {
@@ -109,5 +109,5 @@ img {
 .card-custom:hover {
     border-color: rgba(252, 185, 0, 0.4);
     transform: translateY(-4px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
