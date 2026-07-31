@@ -421,6 +421,7 @@
         // Default mock articles that display instantly
         let postsData = [
             {
+                slug: "2026-07-30-huong-dan-thue-crypto",
                 title: "Hướng dẫn đóng thuế Crypto tại Việt Nam chi tiết nhất 2026",
                 date: "2026-07-30T12:00:00.000Z",
                 category: "Pháp lý",
@@ -428,6 +429,7 @@
                 excerpt: "Tìm hiểu chi tiết các quy định pháp luật hiện hành về thuế đối với tài sản mã hóa (Crypto) tại Việt Nam và hướng dẫn cách kê khai nộp thuế đúng luật."
             },
             {
+                slug: "2026-07-28-bitcoin-halving",
                 title: "Bitcoin Halving hoạt động thế nào và tác động dài hạn ra sao?",
                 date: "2026-07-28T09:00:00.000Z",
                 category: "Chuyên sâu",
@@ -435,6 +437,7 @@
                 excerpt: "Phân tích cơ chế hoạt động của Bitcoin Halving, lịch sử các đợt halving trước và tác động đối với chu kỳ giá của thị trường crypto."
             },
             {
+                slug: "2026-07-27-5-nguyen-tac-quan-ly-von",
                 title: "5 nguyên tắc quản lý vốn xương máu khi trade Futures",
                 date: "2026-07-27T15:00:00.000Z",
                 category: "Người mới",
@@ -459,6 +462,9 @@
                                     if (fileRes.ok) {
                                         const postContent = await fileRes.json();
                                         if (postContent && typeof postContent === 'object') {
+                                            // Assign slug from file name
+                                            const fileSlug = file.name.replace('.json', '');
+                                            postContent.slug = fileSlug;
                                             fetchedPosts.push(postContent);
                                         }
                                     }
@@ -495,7 +501,7 @@
                 const category = post.category || 'Crypto';
                 const dateStr = post.date ? new Date(post.date).toLocaleDateString('vi-VN') : 'Đang cập nhật';
                 return `
-                    <div class="swiper-slide" style="background-image: url('${image}');">
+                    <div class="swiper-slide" style="background-image: url('${image}'); cursor: pointer;" onclick="location.href='post.html?post=${post.slug}'">
                         <div class="swiper-slide-overlay">
                             <span class="swiper-slide-tag">${category}</span>
                             <h2 class="swiper-slide-title">${title}</h2>
@@ -537,14 +543,14 @@
                     let subsHTML = subPosts.map((sp, idx) => `
                         <div class="d-flex align-items-center gap-2 border-top border-secondary py-2">
                             <span class="text-warning fw-bold small">0${idx+1}</span>
-                            <a href="#" class="small fw-semibold text-white">${sp.title || 'Bài viết'}</a>
+                            <a href="post.html?post=${sp.slug}" class="small fw-semibold text-white">${sp.title || 'Bài viết'}</a>
                         </div>
                     `).join('');
 
                     gridHTML += `
                         <div class="col-md-4" id="${cat.toLowerCase().replace(' ', '-')}">
                             <h4 class="category-header">${cat}</h4>
-                            <div class="card-custom mb-3">
+                            <div class="card-custom mb-3" style="cursor: pointer;" onclick="location.href='post.html?post=${mainPost.slug}'">
                                 <img src="${mainPost.image || 'https://images.unsplash.com/photo-1640340434855-6084b1f4901c?auto=format&fit=crop&w=500&q=80'}" class="w-100" style="height:180px; object-fit:cover;" alt="Post img">
                                 <div class="p-3">
                                     <h5 class="fs-6 fw-bold mb-2">${mainPost.title || 'Không tiêu đề'}</h5>
@@ -568,10 +574,10 @@
                     const image = post.image || 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=120&q=80';
                     const dateStr = post.date ? new Date(post.date).toLocaleDateString('vi-VN') : 'Đang cập nhật';
                     return `
-                        <div class="welcome-post-item">
+                        <div class="welcome-post-item" style="cursor: pointer;" onclick="location.href='post.html?post=${post.slug}'">
                             <img src="${image}" class="welcome-post-img" alt="post">
                             <div>
-                                <a href="#" class="welcome-post-title text-white">${title}</a>
+                                <a href="post.html?post=${post.slug}" class="welcome-post-title text-white">${title}</a>
                                 <small class="text-secondary">${dateStr}</small>
                             </div>
                         </div>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đang tải bài viết... - Brian Crypto Việt</title>
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Marked JS (Markdown Parser) -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: var(--h-color-bg);
+            color: var(--h-color-text-primary);
+        }
+        .post-detail-container {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        .post-header {
+            margin-bottom: 30px;
+        }
+        .post-category {
+            display: inline-block;
+            background-color: var(--h-color-yellow);
+            color: #000;
+            font-size: 12px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 4px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+        }
+        .post-title {
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 1.3;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+        .post-meta {
+            font-size: 14px;
+            color: var(--h-color-text-secondary);
+        }
+        .post-cover-img {
+            width: 100%;
+            max-height: 450px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            border: 1px solid var(--h-color-border);
+        }
+        .post-content {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--h-color-text-secondary);
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            color: #fff;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        .post-content h2 { font-size: 24px; }
+        .post-content h3 { font-size: 20px; }
+        .post-content p {
+            margin-bottom: 20px;
+        }
+        .post-content img {
+            max-width: 100%;
+            border-radius: 8px;
+            margin: 20px 0;
+            border: 1px solid var(--h-color-border);
+        }
+        .post-content blockquote {
+            border-left: 4px solid var(--h-color-yellow);
+            padding-left: 20px;
+            margin: 20px 0;
+            font-style: italic;
+            color: #ccc;
+        }
+        .back-to-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--h-color-yellow);
+            text-decoration: none;
+            font-weight: 600;
+            margin-bottom: 30px;
+            transition: 0.2s;
+        }
+        .back-to-home:hover {
+            color: #fff;
+            transform: translateX(-4px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header class="position-sticky top-0">
+        <nav class="navbar navbar-expand-lg navbar-dark container py-3">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
+                <img src="assets/images/logo.png" alt="Brian Crypto Việt Logo" style="height: 45px; width: 45px; object-fit: contain;">
+                <span class="fw-bold fs-4 text-white">Brian <span style="color: var(--h-color-yellow);">Crypto Việt</span></span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav gap-3">
+                    <li class="nav-item"><a class="nav-link text-white" href="index.html">Trang chủ</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="index.html#phap-ly">Pháp lý</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="index.html#nguoi-moi">Người mới</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="index.html#chuyen-sau">Chuyên sâu</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="index.html#goc-nhin">Góc nhìn</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="container post-detail-container">
+        <a href="index.html" class="back-to-home">
+            ← Quay lại trang chủ
+        </a>
+
+        <article id="article-view">
+            <!-- Loading placeholder -->
+            <div class="text-center py-5">
+                <div class="spinner-border text-warning" role="status"></div>
+                <p class="mt-3 text-muted">Đang tải nội dung bài viết...</p>
+            </div>
+        </article>
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-top border-secondary py-5 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="d-flex align-items-center gap-2 mb-3">
+                        <img src="assets/images/logo.png" alt="Logo" style="height: 40px; width: 40px; object-fit: contain;">
+                        <span class="fw-bold fs-5 text-white">Brian <span style="color: var(--h-color-yellow);">Crypto Việt</span></span>
+                    </div>
+                    <p class="text-secondary small">Brian Crypto Việt là kênh thông tin crypto hàng đầu Việt Nam. Chúng tôi cung cấp những hướng dẫn chi tiết dễ hiểu, insights giúp cho hành trình đầu tư dễ dàng hơn.</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h6 class="text-white fw-bold mb-3">Liên kết nhanh</h6>
+                    <ul class="list-unstyled d-flex flex-column gap-2 small">
+                        <li><a href="index.html" class="text-secondary text-decoration-none">Chính sách bảo mật</a></li>
+                        <li><a href="index.html" class="text-secondary text-decoration-none">Điều khoản sử dụng</a></li>
+                        <li><a href="index.html" class="text-secondary text-decoration-none">Liên hệ hợp tác</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h6 class="text-white fw-bold mb-3">Mạng xã hội</h6>
+                    <div class="d-flex gap-3">
+                        <a href="index.html" class="text-secondary fs-5 text-decoration-none">Facebook</a>
+                        <a href="index.html" class="text-secondary fs-5 text-decoration-none">Telegram</a>
+                        <a href="index.html" class="text-secondary fs-5 text-decoration-none">Youtube</a>
+                    </div>
+                </div>
+            </div>
+            <hr class="my-4 border-secondary opacity-25">
+            <div class="text-center text-secondary small">
+                © 2026 Brian Crypto Việt. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // CONFIGURATION: Set your GitHub username and repository name here once connected
+        const GITHUB_REPO = 'tqdung91nguyengiathieu-max/Brian';
+
+        // Local mock data fallbacks (matches default mock articles)
+        const mockPosts = {
+            "2026-07-30-huong-dan-thue-crypto": {
+                title: "Hướng dẫn đóng thuế Crypto tại Việt Nam chi tiết nhất 2026",
+                date: "2026-07-30T12:00:00.000Z",
+                category: "Pháp lý",
+                image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=1200&q=80",
+                body: "### Quy định chung về thuế tài sản số\\nHiện tại Việt Nam chưa chính thức công nhận tiền mã hóa là tiền tệ hoặc phương tiện thanh toán. Tuy nhiên, các giao dịch phát sinh thu nhập lớn vẫn đang được đưa vào diện rà soát thuế thu nhập cá nhân.\\n\\n### Cách tính thuế tham khảo\\n1. Xác định doanh thu giao dịch.\\n2. Khấu trừ chi phí giá vốn mua vào.\\n3. Áp dụng mức thuế TNCN lũy tiến hoặc thuế suất khoán theo quy định giao dịch tài sản sản."
+            },
+            "2026-07-28-bitcoin-halving": {
+                title: "Bitcoin Halving hoạt động thế nào và tác động dài hạn ra sao?",
+                date: "2026-07-28T09:00:00.000Z",
+                category: "Chuyên sâu",
+                image: "https://images.unsplash.com/photo-1622790698141-94e30457ef12?auto=format&fit=crop&w=1200&q=80",
+                body: "### Cơ chế Halving\\nSau mỗi 210,000 khối (khoảng 4 năm), phần thưởng khối của thợ đào Bitcoin sẽ giảm đi một nửa. Điều này làm giảm nguồn cung Bitcoin mới ra thị trường, tạo ra tính khan hiếm lâu dài.\\n\\n### Lịch sử các chu kỳ\\n* Chu kỳ 1 (2012): Phần thưởng giảm từ 50 BTC xuống 25 BTC.\\n* Chu kỳ 2 (2016): Giảm xuống 12.5 BTC.\\n* Chu kỳ 3 (2020): Giảm xuống 6.25 BTC.\\n* Chu kỳ 4 (2024): Giảm xuống 3.125 BTC.\\n\\nHalving thường là động lực khởi đầu cho các chu kỳ tăng giá (Bull run) lịch sử của toàn bộ thị trường."
+            },
+            "2026-07-27-5-nguyen-tac-quan-ly-von": {
+                title: "5 nguyên tắc quản lý vốn xương máu khi trade Futures",
+                date: "2026-07-27T15:00:00.000Z",
+                category: "Người mới",
+                image: "https://images.unsplash.com/photo-1640340434855-6084b1f4901c?auto=format&fit=crop&w=500&q=80",
+                body: "### 1. Không bao giờ mạo hiểm quá 2% tài khoản cho mỗi lệnh\\nĐây là nguyên tắc sống còn giúp bạn không bị cháy sạch tài khoản sau chuỗi lệnh thua lỗ liên tiếp.\\n\\n### 2. Luôn cài đặt Stop Loss (Cắt lỗ)\\nGiao dịch đòn bẩy không có Stop Loss giống như lái xe tốc độ cao không phanh. Hãy cài đặt ngay khi vào lệnh.\\n\\n### 3. Tỷ lệ R:R (Risk/Reward) tối thiểu là 1:2\\nChỉ vào những lệnh mà mức lợi nhuận kỳ vọng lớn gấp đôi mức rủi ro chấp nhận mất."
+            }
+        };
+
+        // Extract parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const postSlug = urlParams.get('post');
+
+        async function loadPostDetail() {
+            if (!postSlug) {
+                document.getElementById('article-view').innerHTML = `
+                    <div class="alert alert-danger text-center">Không tìm thấy bài viết yêu cầu. <a href="index.html" class="alert-link">Quay lại trang chủ</a></div>
+                `;
+                return;
+            }
+
+            let post = null;
+
+            // 1. Fetch from GitHub API if on server
+            if (window.location.protocol !== 'file:' && GITHUB_REPO) {
+                try {
+                    const cacheBuster = `?t=${new Date().getTime()}`;
+                    const response = await fetch(`https://raw.githubusercontent.com/${GITHUB_REPO}/main/content/posts/${postSlug}.json${cacheBuster}`);
+                    if (response.ok) {
+                        post = await response.json();
+                    }
+                } catch (e) {
+                    console.warn("Lỗi tải bài viết từ GitHub, chuyển sang tìm cục bộ: ", e);
+                }
+            }
+
+            // 2. Fallback to mock data
+            if (!post && mockPosts[postSlug]) {
+                post = mockPosts[postSlug];
+            }
+
+            // 3. Render content
+            if (post) {
+                document.title = `${post.title} - Brian Crypto Việt`;
+                
+                const dateStr = post.date ? new Date(post.date).toLocaleDateString('vi-VN', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Đang cập nhật';
+                const bodyHTML = marked.parse(post.body || post.content || '');
+
+                document.getElementById('article-view').innerHTML = `
+                    <header class="post-header">
+                        <span class="post-category">${post.category || 'Crypto'}</span>
+                        <h1 class="post-title">${post.title}</h1>
+                        <div class="post-meta">
+                            <span>Đăng ngày: ${dateStr}</span>
+                        </div>
+                    </header>
+
+                    <img src="${post.image}" class="post-cover-img" alt="${post.title}">
+
+                    <div class="post-content">
+                        ${bodyHTML}
+                    </div>
+                `;
+            } else {
+                document.getElementById('article-view').innerHTML = `
+                    <div class="alert alert-danger text-center">Rất tiếc, bài viết này không tồn tại hoặc đã bị xóa. <a href="index.html" class="alert-link">Quay lại trang chủ</a></div>
+                `;
+            }
+        }
+
+        loadPostDetail();
+    </script>
+</body>
+</html>
