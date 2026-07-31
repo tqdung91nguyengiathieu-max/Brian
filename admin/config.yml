@@ -37,3 +37,17 @@ collections:
       - label: "Nội dung bài viết"
         name: "body"
         widget: "markdown"
+
+  - name: "videos"
+    label: "Danh sách phát Video"
+    folder: "content/videos"
+    create: true
+    slug: "video-{{slug}}"
+    format: "json"
+    fields:
+      - label: "Tiêu đề Video"
+        name: "title"
+        widget: "string"
+      - label: "Mã YouTube ID (ví dụ: dQw4w9WgXcQ)"
+        name: "youtubeId"
+        widget: "string"
