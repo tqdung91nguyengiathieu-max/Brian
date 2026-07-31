@@ -294,7 +294,16 @@
 
         // Extract parameters
         const urlParams = new URLSearchParams(window.location.search);
-        const postSlug = urlParams.get('post');
+        let postSlug = urlParams.get('post');
+
+        // Dynamic path fallback for SEO-friendly URLs (e.g. /posts/slug/ or /slug/)
+        if (!postSlug) {
+            const pathParts = window.location.pathname.split('/').filter(Boolean);
+            if (pathParts.length > 0) {
+                const lastPart = pathParts[pathParts.length - 1];
+                postSlug = lastPart.replace('.html', '');
+            }
+        }
 
         async function loadPostDetail() {
             if (!postSlug) {

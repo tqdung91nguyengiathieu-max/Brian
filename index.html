@@ -430,6 +430,14 @@
         // Example: const GITHUB_REPO = 'brian-crypto/brian-crypto-viet';
         const GITHUB_REPO = 'tqdung91nguyengiathieu-max/Brian'; 
 
+        // Helper to resolve clean SEO friendly post URLs on production and parameters locally
+        function getPostLink(slug) {
+            if (window.location.protocol === 'file:') {
+                return `post.html?post=${slug}`;
+            }
+            return `/posts/${slug}.html`;
+        }
+
         // Default mock articles that display instantly
         let postsData = [
             {
@@ -513,7 +521,7 @@
                 const category = post.category || 'Crypto';
                 const dateStr = post.date ? new Date(post.date).toLocaleDateString('vi-VN') : 'Đang cập nhật';
                 return `
-                    <div class="swiper-slide" style="background-image: url('${image}'); cursor: pointer;" onclick="location.href='post.html?post=${post.slug}'">
+                    <div class="swiper-slide" style="background-image: url('${image}'); cursor: pointer;" onclick="location.href=getPostLink('${post.slug}')">
                         <div class="swiper-slide-overlay">
                             <span class="swiper-slide-tag">${category}</span>
                             <h2 class="swiper-slide-title">${title}</h2>
@@ -555,14 +563,14 @@
                     let subsHTML = subPosts.map((sp, idx) => `
                         <div class="d-flex align-items-center gap-2 border-top border-secondary py-2">
                             <span class="text-warning fw-bold small">0${idx+1}</span>
-                            <a href="post.html?post=${sp.slug}" class="small fw-semibold text-white">${sp.title || 'Bài viết'}</a>
+                            <a href="${getPostLink(sp.slug)}" class="small fw-semibold text-white">${sp.title || 'Bài viết'}</a>
                         </div>
                     `).join('');
 
                     gridHTML += `
                         <div class="col-md-4" id="${cat.toLowerCase().replace(' ', '-')}">
                             <h4 class="category-header">${cat}</h4>
-                            <div class="card-custom mb-3" style="cursor: pointer;" onclick="location.href='post.html?post=${mainPost.slug}'">
+                            <div class="card-custom mb-3" style="cursor: pointer;" onclick="location.href=getPostLink('${mainPost.slug}')">
                                 <img src="${mainPost.image || 'https://images.unsplash.com/photo-1640340434855-6084b1f4901c?auto=format&fit=crop&w=500&q=80'}" class="w-100" style="height:180px; object-fit:cover;" alt="Post img">
                                 <div class="p-3">
                                     <h5 class="fs-6 fw-bold mb-2">${mainPost.title || 'Không tiêu đề'}</h5>
@@ -586,10 +594,10 @@
                     const image = post.image || 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=120&q=80';
                     const dateStr = post.date ? new Date(post.date).toLocaleDateString('vi-VN') : 'Đang cập nhật';
                     return `
-                        <div class="welcome-post-item" style="cursor: pointer;" onclick="location.href='post.html?post=${post.slug}'">
+                        <div class="welcome-post-item" style="cursor: pointer;" onclick="location.href=getPostLink('${post.slug}')">
                             <img src="${image}" class="welcome-post-img" alt="post">
                             <div>
-                                <a href="post.html?post=${post.slug}" class="welcome-post-title text-white">${title}</a>
+                                <a href="${getPostLink(post.slug)}" class="welcome-post-title text-white">${title}</a>
                                 <small class="text-secondary">${dateStr}</small>
                             </div>
                         </div>
