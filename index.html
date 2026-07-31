@@ -689,13 +689,14 @@
         // Coin Marquee API Fetch with Local File Fallback (Bypass CORS)
         async function fetchCoinPrices() {
             const coinMeta = {
-                'BTCUSDT': { name: 'Bitcoin', symbol: 'BTC', icon: 'https://assets.coingecko.com/coins/images/1/large/bitcoin.png', price: 67250.50, change: 2.45 },
-                'ETHUSDT': { name: 'Ethereum', symbol: 'ETH', icon: 'https://assets.coingecko.com/coins/images/279/large/ethereum.png', price: 3480.20, change: -1.15 },
-                'SOLUSDT': { name: 'Solana', symbol: 'SOL', icon: 'https://assets.coingecko.com/coins/images/4128/large/solana.png', price: 182.40, change: 5.82 },
-                'BNBUSDT': { name: 'BNB', symbol: 'BNB', icon: 'https://assets.coingecko.com/coins/images/825/large/binance-coin-logo.png', price: 585.90, change: 0.12 },
-                'XRPUSDT': { name: 'Ripple', symbol: 'XRP', icon: 'https://assets.coingecko.com/coins/images/44/large/xrp-symbol-white_-blue_200x200.png', price: 0.612, change: -2.34 },
-                'ADAUSDT': { name: 'Cardano', symbol: 'ADA', icon: 'https://assets.coingecko.com/coins/images/975/large/cardano.png', price: 0.385, change: 1.05 },
-                'DOGEUSDT': { name: 'Dogecoin', symbol: 'DOGE', icon: 'https://assets.coingecko.com/coins/images/325/large/dogecoin.png', price: 0.124, change: 12.45 }
+                'BTCUSDT': { name: 'Bitcoin', symbol: 'BTC', icon: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e37471162d73ae0a7d9036ab075a31/128/color/btc.png', price: 67250.50, change: 2.45 },
+                'ETHUSDT': { name: 'Ethereum', symbol: 'ETH', icon: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e37471162d73ae0a7d9036ab075a31/128/color/eth.png', price: 3480.20, change: -1.15 },
+                'SOLUSDT': { name: 'Solana', symbol: 'SOL', icon: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e37471162d73ae0a7d9036ab075a31/128/color/sol.png', price: 182.40, change: 5.82 },
+                'BNBUSDT': { name: 'BNB', symbol: 'BNB', icon: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e37471162d73ae0a7d9036ab075a31/128/color/bnb.png', price: 585.90, change: 0.12 },
+                'XRPUSDT': { name: 'Ripple', symbol: 'XRP', icon: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e37471162d73ae0a7d9036ab075a31/128/color/xrp.png', price: 0.612, change: -2.34 },
+                'ADAUSDT': { name: 'Cardano', symbol: 'ADA', icon: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e37471162d73ae0a7d9036ab075a31/128/color/ada.png', price: 0.385, change: 1.05 },
+                'DOGEUSDT': { name: 'Dogecoin', symbol: 'DOGE', icon: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e37471162d73ae0a7d9036ab075a31/128/color/doge.png', price: 0.124, change: 12.45 },
+                'WFI': { name: 'WiFi Map', symbol: 'WFI', icon: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e37471162d73ae0a7d9036ab075a31/128/color/wifi.png', price: 0.145, change: 3.82 }
             };
 
             function renderCoins(dataMap) {
@@ -726,11 +727,20 @@
                 document.getElementById('coin-marquee').innerHTML = marqueeHTML;
             }
 
+            // Simulate realtime price changes for custom token WFI
+            if (coinMeta['WFI']) {
+                const change = (Math.random() - 0.5) * 0.4;
+                coinMeta['WFI'].price += coinMeta['WFI'].price * (change / 100);
+                coinMeta['WFI'].change += change;
+            }
+
             if (window.location.protocol === 'file:') {
                 for (const key in coinMeta) {
-                    const change = (Math.random() - 0.5) * 0.2;
-                    coinMeta[key].price += coinMeta[key].price * (change / 100);
-                    coinMeta[key].change += change;
+                    if (key !== 'WFI') {
+                        const change = (Math.random() - 0.5) * 0.2;
+                        coinMeta[key].price += coinMeta[key].price * (change / 100);
+                        coinMeta[key].change += change;
+                    }
                 }
                 renderCoins(coinMeta);
                 return;
