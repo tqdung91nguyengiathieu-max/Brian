@@ -130,21 +130,20 @@
         .share-sidebar {
             position: fixed;
             top: 250px;
-            left: calc((100vw - 800px) / 2 - 80px);
+            left: calc((100vw - 1200px) / 2 - 70px);
             display: flex;
             flex-direction: column;
             gap: 15px;
             z-index: 100;
         }
-        @media (max-width: 1080px) {
+        @media (max-width: 1350px) {
             .share-sidebar {
                 position: static;
                 flex-direction: row;
-                justify-content: center;
-                margin-top: 10px;
-                margin-bottom: 30px;
-                left: auto;
-                top: auto;
+                justify-content: flex-start;
+                margin-top: 15px;
+                margin-bottom: 25px;
+                gap: 10px;
             }
         }
         .share-sidebar a, .share-sidebar button {
