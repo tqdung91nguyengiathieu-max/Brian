@@ -696,7 +696,7 @@
                 'XRPUSDT': { name: 'Ripple', symbol: 'XRP', icon: 'https://assets.coincap.io/assets/icons/xrp@2x.png', price: 0.612, change: -2.34 },
                 'ADAUSDT': { name: 'Cardano', symbol: 'ADA', icon: 'https://assets.coincap.io/assets/icons/ada@2x.png', price: 0.385, change: 1.05 },
                 'DOGEUSDT': { name: 'Dogecoin', symbol: 'DOGE', icon: 'https://assets.coincap.io/assets/icons/doge@2x.png', price: 0.124, change: 12.45 },
-                'WFI': { name: 'WiFi Map', symbol: 'WFI', icon: 'https://img.icons8.com/color/100/wifi.png', price: 0.145, change: 3.82 }
+                'WEFI': { name: 'WeFi', symbol: 'WeFI', icon: 'https://assets.coingecko.com/coins/images/32296/large/wefi.png', price: 0.145, change: 3.82 }
             };
 
             function renderCoins(dataMap) {
@@ -727,16 +727,16 @@
                 document.getElementById('coin-marquee').innerHTML = marqueeHTML;
             }
 
-            // Simulate realtime price changes for custom token WFI
-            if (coinMeta['WFI']) {
+            // Simulate realtime price changes for custom token WeFI
+            if (coinMeta['WEFI']) {
                 const change = (Math.random() - 0.5) * 0.4;
-                coinMeta['WFI'].price += coinMeta['WFI'].price * (change / 100);
-                coinMeta['WFI'].change += change;
+                coinMeta['WEFI'].price += coinMeta['WEFI'].price * (change / 100);
+                coinMeta['WEFI'].change += change;
             }
 
             if (window.location.protocol === 'file:') {
                 for (const key in coinMeta) {
-                    if (key !== 'WFI') {
+                    if (key !== 'WEFI') {
                         const change = (Math.random() - 0.5) * 0.2;
                         coinMeta[key].price += coinMeta[key].price * (change / 100);
                         coinMeta[key].change += change;
