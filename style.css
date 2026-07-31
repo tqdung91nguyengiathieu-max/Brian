@@ -111,3 +111,24 @@ img {
     transform: translateY(-4px);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
 }
+
+/* Post Content Styling (Links, Blockquotes, Image Captions) */
+.post-content a {
+    color: #2563eb; /* Royal Blue giống hình mẫu */
+    font-weight: 500;
+    text-decoration: underline;
+    transition: var(--h-transition);
+}
+.post-content a:hover {
+    color: #1d4ed8;
+}
+.post-content em {
+    display: block;
+    text-align: center;
+    font-style: italic;
+    color: #64748b;
+    font-size: 14px;
+    margin-top: 8px;
+    margin-bottom: 24px;
+}
+
