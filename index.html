@@ -695,15 +695,50 @@
             'XRP': { name: 'Ripple', symbol: 'XRP', icon: 'https://assets.coincap.io/assets/icons/xrp@2x.png', price: 0.612, change: -2.34 },
             'ADA': { name: 'Cardano', symbol: 'ADA', icon: 'https://assets.coincap.io/assets/icons/ada@2x.png', price: 0.385, change: 1.05 },
             'DOGE': { name: 'Dogecoin', symbol: 'DOGE', icon: 'https://assets.coincap.io/assets/icons/doge@2x.png', price: 0.124, change: 12.45 },
-            'WEFI': { name: 'WeFi', symbol: 'WeFI', icon: 'https://assets.coingecko.com/coins/images/32296/large/wefi.png', price: 0.145, change: 3.82 }
+            'WEFI': { name: 'WeFi', symbol: 'WeFI', icon: 'https://assets.coingecko.com/coins/images/32296/large/wefi.png', price: 2.10, change: 3.82 }
         };
 
-        function fetchCoinPrices() {
-            // Live market price simulator (CORS-free, 100% crash-proof, real-time)
-            for (const key in coinMeta) {
-                const change = (Math.random() - 0.5) * 0.15; // Realistic live market fluctuations
-                coinMeta[key].price += coinMeta[key].price * (change / 100);
-                coinMeta[key].change += change;
+        async function fetchCoinPrices() {
+            try {
+                // Fetch live prices from CoinCap (CORS-friendly, free, stable)
+                const response = await fetch('https://api.coincap.io/v2/assets?ids=bitcoin,ethereum,solana,binance-coin,ripple,cardano,dogecoin');
+                if (response.ok) {
+                    const resData = await response.json();
+                    const data = resData.data;
+                    
+                    const idMap = {
+                        'bitcoin': 'BTC',
+                        'ethereum': 'ETH',
+                        'solana': 'SOL',
+                        'binance-coin': 'BNB',
+                        'ripple': 'XRP',
+                        'cardano': 'ADA',
+                        'dogecoin': 'DOGE'
+                    };
+                    
+                    data.forEach(item => {
+                        const key = idMap[item.id];
+                        if (key && coinMeta[key]) {
+                            coinMeta[key].price = parseFloat(item.priceUsd);
+                            coinMeta[key].change = parseFloat(item.changePercent24Hr);
+                        }
+                    });
+                    
+                    // Simulate WeFI live price changes linked to BTC movements
+                    if (coinMeta['WEFI'] && coinMeta['BTC']) {
+                        const btcChange = coinMeta['BTC'].change;
+                        const randomFactor = (Math.random() - 0.5) * 0.15;
+                        coinMeta['WEFI'].change = btcChange + randomFactor;
+                        coinMeta['WEFI'].price += coinMeta['WEFI'].price * (randomFactor / 100);
+                    }
+                }
+            } catch (error) {
+                console.warn("CoinCap API failed or CORS error, simulating prices locally instead:", error);
+                for (const key in coinMeta) {
+                    const change = (Math.random() - 0.5) * 0.1;
+                    coinMeta[key].price += coinMeta[key].price * (change / 100);
+                    coinMeta[key].change += change;
+                }
             }
             renderCoins(coinMeta);
         }
