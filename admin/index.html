@@ -10,5 +10,41 @@
 <body>
     <!-- Bootstraps Decap CMS (Latest patched version to resolve selection range and composition bugs) -->
     <script src="https://cdn.jsdelivr.net/npm/decap-cms@latest/dist/decap-cms.js"></script>
+    <script>
+      CMS.registerEditorComponent({
+        id: "custom-image-block",
+        label: "Ảnh kèm Chú thích & Link",
+        fields: [
+          { name: "image", label: "Tải ảnh lên", widget: "image" },
+          { name: "caption", label: "Ghi chú dưới ảnh (Caption)", widget: "string" },
+          { name: "linkText", label: "Tiêu đề link đọc thêm (để trống nếu không dùng)", widget: "string" },
+          { name: "linkUrl", label: "Đường dẫn link đọc thêm (để trống nếu không dùng)", widget: "string" }
+        ],
+        pattern: /^!\[(.*?)\]\((.*?)\)\n\*(.*?)\*(?:\n\nĐọc thêm: \[(.*?)\]\((.*?)\))?$/m,
+        fromBlock: function(match) {
+          return {
+            caption: match[1],
+            image: match[2],
+            linkText: match[4] || "",
+            linkUrl: match[5] || ""
+          };
+        },
+        toBlock: function(obj) {
+          let md = `![${obj.caption}](${obj.image})\n*${obj.caption}*\n\n`;
+          if (obj.linkText && obj.linkUrl) {
+            md += `Đọc thêm: [${obj.linkText}](${obj.linkUrl})\n\n`;
+          }
+          return md;
+        },
+        toPreview: function(obj) {
+          let html = `<div style="text-align: center; margin: 20px 0;">\n  <img src="${obj.image}" style="max-width: 100%; border-radius: 8px;" alt="${obj.caption}">\n  <em style="display: block; font-style: italic; color: #64748b; margin-top: 8px; font-size: 14px;">${obj.caption}</em>\n`;
+          if (obj.linkText && obj.linkUrl) {
+            html += `  <p style="margin-top: 12px; font-size: 16px;">Đọc thêm: <a href="${obj.linkUrl}" style="color: #2563eb; text-decoration: underline;">${obj.linkText}</a></p>\n`;
+          }
+          html += `</div>`;
+          return html;
+        }
+      });
+    </script>
 </body>
 </html>
