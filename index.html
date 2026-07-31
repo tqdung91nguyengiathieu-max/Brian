@@ -689,14 +689,14 @@
         // Coin Marquee API Fetch with Local File Fallback (Bypass CORS)
         async function fetchCoinPrices() {
             const coinMeta = {
-                'BTCUSDT': { name: 'Bitcoin', symbol: 'BTC', icon: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e37471162d73ae0a7d9036ab075a31/128/color/btc.png', price: 67250.50, change: 2.45 },
-                'ETHUSDT': { name: 'Ethereum', symbol: 'ETH', icon: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e37471162d73ae0a7d9036ab075a31/128/color/eth.png', price: 3480.20, change: -1.15 },
-                'SOLUSDT': { name: 'Solana', symbol: 'SOL', icon: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e37471162d73ae0a7d9036ab075a31/128/color/sol.png', price: 182.40, change: 5.82 },
-                'BNBUSDT': { name: 'BNB', symbol: 'BNB', icon: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e37471162d73ae0a7d9036ab075a31/128/color/bnb.png', price: 585.90, change: 0.12 },
-                'XRPUSDT': { name: 'Ripple', symbol: 'XRP', icon: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e37471162d73ae0a7d9036ab075a31/128/color/xrp.png', price: 0.612, change: -2.34 },
-                'ADAUSDT': { name: 'Cardano', symbol: 'ADA', icon: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e37471162d73ae0a7d9036ab075a31/128/color/ada.png', price: 0.385, change: 1.05 },
-                'DOGEUSDT': { name: 'Dogecoin', symbol: 'DOGE', icon: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e37471162d73ae0a7d9036ab075a31/128/color/doge.png', price: 0.124, change: 12.45 },
-                'WFI': { name: 'WiFi Map', symbol: 'WFI', icon: 'https://cdn.jsdelivr.net/gh/atomiclabs/cryptocurrency-icons@1a63530be6e37471162d73ae0a7d9036ab075a31/128/color/wifi.png', price: 0.145, change: 3.82 }
+                'BTCUSDT': { name: 'Bitcoin', symbol: 'BTC', icon: 'https://assets.coincap.io/assets/icons/btc@2x.png', price: 67250.50, change: 2.45 },
+                'ETHUSDT': { name: 'Ethereum', symbol: 'ETH', icon: 'https://assets.coincap.io/assets/icons/eth@2x.png', price: 3480.20, change: -1.15 },
+                'SOLUSDT': { name: 'Solana', symbol: 'SOL', icon: 'https://assets.coincap.io/assets/icons/sol@2x.png', price: 182.40, change: 5.82 },
+                'BNBUSDT': { name: 'BNB', symbol: 'BNB', icon: 'https://assets.coincap.io/assets/icons/bnb@2x.png', price: 585.90, change: 0.12 },
+                'XRPUSDT': { name: 'Ripple', symbol: 'XRP', icon: 'https://assets.coincap.io/assets/icons/xrp@2x.png', price: 0.612, change: -2.34 },
+                'ADAUSDT': { name: 'Cardano', symbol: 'ADA', icon: 'https://assets.coincap.io/assets/icons/ada@2x.png', price: 0.385, change: 1.05 },
+                'DOGEUSDT': { name: 'Dogecoin', symbol: 'DOGE', icon: 'https://assets.coincap.io/assets/icons/doge@2x.png', price: 0.124, change: 12.45 },
+                'WFI': { name: 'WiFi Map', symbol: 'WFI', icon: 'https://assets.coincap.io/assets/icons/wifi@2x.png', price: 0.145, change: 3.82 }
             };
 
             function renderCoins(dataMap) {
