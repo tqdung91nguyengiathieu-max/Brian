@@ -337,11 +337,97 @@
                 `;
                 // Set up share link URLs
                 setupShareLinks();
+                // Generate Table of Contents dynamically
+                generateTableOfContents();
             } else {
                 document.getElementById('article-view').innerHTML = `
                     <div class="alert alert-danger text-center">Rất tiếc, bài viết này không tồn tại hoặc đã bị xóa. <a href="index.html" class="alert-link">Quay lại trang chủ</a></div>
                 `;
             }
+        }
+
+        function generateTableOfContents() {
+            const contentEl = document.querySelector('.post-content');
+            if (!contentEl) return;
+            
+            // Find all H2 and H3 elements inside the post content
+            const headings = contentEl.querySelectorAll('h2, h3');
+            if (headings.length === 0) return;
+            
+            const tocContainer = document.createElement('div');
+            tocContainer.className = 'toc-box mb-4 p-3';
+            
+            let tocHTML = `
+                <div class="toc-header mb-2">
+                    <span class="fw-bold fs-5 text-dark">📋 Mục lục</span>
+                </div>
+                <ul class="toc-list list-unstyled mb-0">
+            `;
+            
+            headings.forEach((heading, idx) => {
+                const headingId = `heading-${idx}`;
+                heading.id = headingId;
+                
+                const levelClass = heading.tagName === 'H3' ? 'ps-3 small text-secondary' : 'fw-semibold text-dark';
+                const prefix = heading.tagName === 'H2' ? `${idx + 1}. ` : '';
+                
+                tocHTML += `
+                    <li class="toc-item py-1">
+                        <a href="#${headingId}" class="toc-link ${levelClass} text-decoration-none" onclick="scrollToHeading(event, '${headingId}')">
+                            ${prefix}${heading.textContent}
+                        </a>
+                    </li>
+                `;
+            });
+            
+            tocHTML += '</ul>';
+            tocContainer.innerHTML = tocHTML;
+            
+            // Insert TOC at the very beginning of the article content
+            contentEl.insertBefore(tocContainer, contentEl.firstChild);
+            
+            // Setup scrollspy
+            setupTOCScrollspy(headings);
+        }
+
+        function scrollToHeading(event, id) {
+            event.preventDefault();
+            const element = document.getElementById(id);
+            if (element) {
+                const headerOffset = 90; // offset for sticky navigation header
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: "smooth"
+                });
+                
+                // Update URL hash
+                history.pushState(null, null, `#${id}`);
+            }
+        }
+
+        function setupTOCScrollspy(headings) {
+            const tocLinks = document.querySelectorAll('.toc-link');
+            
+            window.addEventListener('scroll', () => {
+                let currentId = '';
+                const scrollPosition = window.scrollY + 100; // offset
+                
+                headings.forEach(heading => {
+                    if (scrollPosition >= heading.offsetTop) {
+                        currentId = heading.id;
+                    }
+                });
+                
+                tocLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${currentId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
         }
 
         function setupShareLinks() {

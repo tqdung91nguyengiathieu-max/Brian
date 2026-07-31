@@ -140,3 +140,23 @@ header .container {
     margin: 0 auto;
 }
 
+/* Table of Contents (Mục lục) Premium Styling */
+.toc-box {
+    background-color: var(--h-color-bg-card);
+    border: 1px solid var(--h-color-border);
+    border-radius: 12px;
+    max-width: 500px;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.02);
+}
+.toc-link {
+    color: var(--h-color-text-primary);
+    transition: var(--h-transition);
+    font-size: 15px;
+    display: inline-block;
+}
+.toc-link:hover, .toc-link.active {
+    color: var(--h-color-yellow) !important;
+    transform: translateX(4px);
+}
+
