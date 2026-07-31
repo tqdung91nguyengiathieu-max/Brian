@@ -17,9 +17,19 @@
             color: var(--h-color-text-primary);
         }
         .post-detail-container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
+        }
+        .toc-sticky-container {
+            position: sticky;
+            top: 110px;
+        }
+        @media (max-width: 991px) {
+            .toc-sticky-container {
+                position: static;
+                margin-bottom: 30px;
+            }
         }
         .post-header {
             margin-bottom: 30px;
@@ -323,16 +333,28 @@
                 const bodyHTML = marked.parse(post.body || post.content || '');
 
                 document.getElementById('article-view').innerHTML = `
-                    <header class="post-header">
-                        <span class="post-category">${post.category || 'Crypto'}</span>
-                        <h1 class="post-title">${post.title}</h1>
-                        <div class="post-meta">
-                            <span>Đăng ngày: ${dateStr}</span>
-                        </div>
-                    </header>
+                    <div class="row">
+                        <!-- Left column: Article Content -->
+                        <div class="col-lg-8">
+                            <header class="post-header">
+                                <span class="post-category">${post.category || 'Crypto'}</span>
+                                <h1 class="post-title">${post.title}</h1>
+                                <div class="post-meta">
+                                    <span>Đăng ngày: ${dateStr}</span>
+                                </div>
+                            </header>
 
-                    <div class="post-content">
-                        ${bodyHTML}
+                            <div class="post-content">
+                                ${bodyHTML}
+                            </div>
+                        </div>
+                        
+                        <!-- Right column: Table of Contents (Sticky on desktop) -->
+                        <div class="col-lg-4 d-none d-lg-block">
+                            <div class="toc-sticky-container" id="toc-container-sidebar">
+                                <!-- Dynamic TOC goes here -->
+                            </div>
+                        </div>
                     </div>
                 `;
                 // Set up share link URLs
@@ -354,8 +376,11 @@
             const headings = contentEl.querySelectorAll('h2, h3');
             if (headings.length === 0) return;
             
+            const sidebarContainer = document.getElementById('toc-container-sidebar');
+            if (!sidebarContainer) return;
+            
             const tocContainer = document.createElement('div');
-            tocContainer.className = 'toc-box mb-4 p-3';
+            tocContainer.className = 'toc-box p-3 w-100';
             
             let tocHTML = `
                 <div class="toc-header mb-2">
@@ -383,8 +408,8 @@
             tocHTML += '</ul>';
             tocContainer.innerHTML = tocHTML;
             
-            // Insert TOC at the very beginning of the article content
-            contentEl.insertBefore(tocContainer, contentEl.firstChild);
+            // Append TOC to the sticky sidebar container
+            sidebarContainer.appendChild(tocContainer);
             
             // Setup scrollspy
             setupTOCScrollspy(headings);
