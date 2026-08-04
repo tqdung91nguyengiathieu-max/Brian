@@ -4,9 +4,19 @@ const path = require('path');
 // Ensure dist directory exists and is clean
 const distPath = path.join(__dirname, 'dist');
 if (fs.existsSync(distPath)) {
-    fs.rmSync(distPath, { recursive: true, force: true });
+    try {
+        fs.rmSync(distPath, { recursive: true, force: true });
+    } catch (e) {
+        try {
+            fs.rmdirSync(distPath, { recursive: true });
+        } catch (err) {
+            console.warn("Clean dist failed, proceeding anyway:", err);
+        }
+    }
 }
-fs.mkdirSync(distPath);
+if (!fs.existsSync(distPath)) {
+    fs.mkdirSync(distPath);
+}
 
 // Helper to copy directory recursively
 function copyDir(src, dest) {
