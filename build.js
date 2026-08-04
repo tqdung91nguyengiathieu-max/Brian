@@ -69,6 +69,12 @@ if (fs.existsSync(postsDir)) {
             // Replace <title> tag with the full SEO metadata block
             let compiledHtml = postTemplate.replace(/<title>.*?<\/title>/i, seoMeta);
             
+            // Adjust relative links & assets for the subfolder (/posts/)
+            compiledHtml = compiledHtml
+                .replace(/href="style\.css"/g, 'href="../style.css"')
+                .replace(/href="index\.html"/g, 'href="../index.html"')
+                .replace(/src="assets\/images\/logo\.png"/g, 'src="../assets/images/logo.png"');
+            
             // Write compiled HTML to dist/posts/[slug].html
             fs.writeFileSync(path.join(distPostsPath, `${slug}.html`), compiledHtml, 'utf8');
             console.log(`Generated pre-rendered HTML for post: ${slug}`);
