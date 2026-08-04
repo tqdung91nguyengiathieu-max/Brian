@@ -6,11 +6,6 @@
     <title>Trang quản trị - Brian Crypto Việt</title>
     <!-- Netlify Identity Widget -->
     <script>
-      // Redirect from old Netlify admin domain to new Vercel admin domain to prevent confusion
-      if (window.location.hostname === 'briancryptoviet.netlify.app') {
-          window.location.replace('https://briancryptoviet.vercel.app/admin/');
-      }
-
       // Force Decap CMS and Netlify Identity to point to the Netlify domain when hosted on Vercel
       if (window.location.hostname !== 'briancryptoviet.netlify.app') {
           window.localStorage.setItem('netlifySiteURL', 'https://briancryptoviet.netlify.app');
