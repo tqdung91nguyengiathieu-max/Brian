@@ -11,11 +11,14 @@ collections:
     label: "Bài viết"
     folder: "content/posts"
     create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    slug: "{{year}}-{{month}}-{{day}}-{{fields.url_slug}}"
     format: "json"
     fields:
-      - label: "Tiêu đề"
+      - label: "Tiêu đề (Hiển thị chính thức)"
         name: "title"
+        widget: "string"
+      - label: "Đường dẫn rút gọn (Viết liền không dấu, ví dụ: luu-tru-crypto)"
+        name: "url_slug"
         widget: "string"
       - label: "Ngày đăng"
         name: "date"
