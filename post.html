@@ -305,6 +305,26 @@
             }
         }
 
+        // Clean up Facebook tracking parameters (fbclid) to make the URL short and clean in the browser address bar
+        if (window.history.replaceState) {
+            const cleanUrl = new URL(window.location.href);
+            if (cleanUrl.searchParams.has('fbclid')) {
+                cleanUrl.searchParams.delete('fbclid');
+                cleanUrl.searchParams.delete('utm_source');
+                cleanUrl.searchParams.delete('utm_medium');
+                cleanUrl.searchParams.delete('utm_campaign');
+                
+                let newPath = cleanUrl.pathname;
+                const postVal = cleanUrl.searchParams.get('post');
+                if (postVal) {
+                    newPath += `?post=${postVal}`;
+                } else if (cleanUrl.searchParams.toString()) {
+                    newPath += `?${cleanUrl.searchParams.toString()}`;
+                }
+                window.history.replaceState(null, '', newPath);
+            }
+        }
+
         async function loadPostDetail() {
             if (!postSlug) {
                 document.getElementById('article-view').innerHTML = `
