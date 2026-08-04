@@ -6,6 +6,14 @@
     <title>Trang quản trị - Brian Crypto Việt</title>
     <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+    <script>
+      // Initialize Netlify Identity widget with Netlify domain API before Decap CMS loads
+      if (window.netlifyIdentity) {
+        netlifyIdentity.init({
+          APIUrl: 'https://briancryptoviet.netlify.app/.netlify/identity'
+        });
+      }
+    </script>
 </head>
 <body>
     <!-- Bootstraps Decap CMS (Latest patched version to resolve selection range and composition bugs) -->
@@ -45,14 +53,6 @@
           return html;
         }
       });
-    </script>
-    <script>
-      // Force Netlify Identity widget to connect to Netlify's backend API from external domains (Vercel)
-      if (window.netlifyIdentity) {
-        netlifyIdentity.init({
-          APIUrl: 'https://briancryptoviet.netlify.app/.netlify/identity'
-        });
-      }
     </script>
 </body>
 </html>
