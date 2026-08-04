@@ -5,6 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trang quản trị - Brian Crypto Việt</title>
     <!-- Netlify Identity Widget -->
+    <script>
+      // Force Netlify Identity to connect to the Netlify domain when hosted on Vercel or running locally
+      if (window.location.hostname !== 'briancryptoviet.netlify.app') {
+          window.localStorage.setItem('netlifySiteURL', 'https://briancryptoviet.netlify.app');
+      }
+    </script>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
 <body>
