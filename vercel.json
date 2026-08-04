@@ -1,4 +1,10 @@
 {
   "buildCommand": "node build.js",
-  "outputDirectory": "dist"
+  "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/.netlify/:path*",
+      "destination": "https://briancryptoviet.netlify.app/.netlify/:path*"
+    }
+  ]
 }
