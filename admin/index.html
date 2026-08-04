@@ -4,22 +4,6 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Trang quản trị - Brian Crypto Việt</title>
-    <!-- Netlify Identity Widget -->
-    <script>
-      // Force Decap CMS and Netlify Identity to point to the Netlify domain when hosted on Vercel
-      if (window.location.hostname !== 'briancryptoviet.netlify.app') {
-          window.localStorage.setItem('netlifySiteURL', 'https://briancryptoviet.netlify.app');
-      }
-    </script>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <script>
-      // Initialize Netlify Identity widget with explicit Netlify API URL
-      if (window.netlifyIdentity) {
-        netlifyIdentity.init({
-          APIUrl: 'https://briancryptoviet.netlify.app/.netlify/identity'
-        });
-      }
-    </script>
 </head>
 <body>
     <!-- Bootstraps Decap CMS (Latest patched version to resolve selection range and composition bugs) -->

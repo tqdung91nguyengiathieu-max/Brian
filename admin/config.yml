@@ -1,8 +1,9 @@
 backend:
-  name: "git-gateway"
+  name: "github"
   repo: "tqdung91nguyengiathieu-max/Brian"
   branch: "main"
-  site_domain: "briancryptoviet.netlify.app"
+  base_url: "https://briancryptoviet.vercel.app"
+  auth_endpoint: "api/auth"
 
 media_folder: "assets/images/uploads"
 public_folder: "/assets/images/uploads"
