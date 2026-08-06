@@ -44,7 +44,30 @@
           html += `</div>`;
           return html;
         }
-      });
+    </script>
+    <script>
+      // Prevent Slate.js / Decap CMS editor crash when pasting formatted text using Ctrl+V
+      document.addEventListener('paste', function(e) {
+        const activeEl = document.activeElement;
+        if (activeEl && (activeEl.hasAttribute('contenteditable') || activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA')) {
+          const clipboardData = e.clipboardData || window.clipboardData;
+          if (clipboardData && clipboardData.types.includes('text/html')) {
+            const text = clipboardData.getData('text/plain');
+            if (text) {
+              e.preventDefault();
+              if (document.queryCommandSupported('insertText')) {
+                document.execCommand('insertText', false, text);
+              } else {
+                const selection = window.getSelection();
+                if (selection.rangeCount) {
+                  selection.deleteFromDocument();
+                  selection.getRangeAt(0).insertNode(document.createTextNode(text));
+                }
+              }
+            }
+          }
+        }
+      }, true); // Intercept in capturing phase before Slate.js gets it
     </script>
 </body>
 </html>
