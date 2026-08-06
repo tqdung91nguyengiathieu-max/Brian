@@ -378,7 +378,7 @@
                         // and current paragraph does not start with a markdown structural block (heading, quote, list, code block)
                         const lastChar = prev.slice(-1);
                         const sentenceEndings = ['.', '!', '?', ':', '-', '#', '>', ']', ')', '"', "'", '”', '’'];
-                        const isPrevSentenceUnfinished = prev && !sentenceEndings.includes(lastChar) && !prev.endsWith('**') && !prev.endsWith('*');
+                        const isPrevSentenceUnfinished = prev && !sentenceEndings.includes(lastChar);
                         
                         const isNextLineNotStructure = nextTrim && 
                             !nextTrim.startsWith('#') && 
