@@ -357,8 +357,16 @@
             if (post) {
                 document.title = `${post.title} - Brian Crypto Việt`;
                 
-                const dateStr = post.date ? new Date(post.date).toLocaleDateString('vi-VN', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Đang cập nhật';
-                const bodyHTML = marked.parse(post.body || post.content || '');
+                let bodyText = post.body || post.content || '';
+                
+                // Auto-heal line breaks and split sentences caused by copy-pasting from formatted websites
+                bodyText = bodyText
+                    // 1. Join split lines in list items (indented lines not starting with list markers like *, -, or numbers)
+                    .replace(/\n\n[ \t]+(?!(?:[\*\-+]|\d+\.)(?:[ \t]|$))/g, ' ')
+                    // 2. Join lines starting with lowercase letters in normal paragraphs
+                    .replace(/\n\n([a-zđăâêôơư])/g, ' $1');
+
+                const bodyHTML = marked.parse(bodyText);
 
                 document.getElementById('article-view').innerHTML = `
                     <div class="row">
