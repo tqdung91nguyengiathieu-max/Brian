@@ -46,47 +46,17 @@
         }
     </script>
     <script>
-      // Prevent Slate.js / Decap CMS editor crash by forcing raw HTML pastes to paste as plain text natively
-      let isInterceptingPaste = false;
-      document.addEventListener('paste', function(e) {
-        // Prevent infinite loop from dispatching the new event
-        if (isInterceptingPaste) return;
-        
-        const activeEl = document.activeElement;
-        // Intercept only inside contenteditable editor area
-        if (activeEl && activeEl.hasAttribute('contenteditable')) {
-          const clipboardData = e.clipboardData || window.clipboardData;
-          // If the paste contains rich HTML format (which triggers the crash)
-          if (clipboardData && clipboardData.types.includes('text/html')) {
-            const text = clipboardData.getData('text/plain');
-            if (text) {
-              e.preventDefault();
-              
-              // Create a clean DataTransfer containing ONLY the plain text
-              try {
-                const dataTransfer = new DataTransfer();
-                dataTransfer.setData('text/plain', text);
-                
-                // Dispatch a new paste event with the plain text data transfer
-                isInterceptingPaste = true;
-                const newEvent = new ClipboardEvent('paste', {
-                  clipboardData: dataTransfer,
-                  bubbles: true,
-                  cancelable: true
-                });
-                activeEl.dispatchEvent(newEvent);
-                isInterceptingPaste = false;
-              } catch (err) {
-                console.error("Failed to dispatch clean paste event:", err);
-                // Fallback to inserting text if DataTransfer is not supported
-                if (document.queryCommandSupported('insertText')) {
-                  document.execCommand('insertText', false, text);
-                }
-              }
-            }
+      // Force native plain-text fallback on contenteditable editors to prevent Slate.js HTML deserializer crashes
+      (function() {
+        const originalGetData = DataTransfer.prototype.getData;
+        DataTransfer.prototype.getData = function(type) {
+          // If the editor asks for HTML, we return empty string to force it to use its native stable plain text parser
+          if (type === 'text/html' && document.activeElement && document.activeElement.hasAttribute('contenteditable')) {
+            return '';
           }
-        }
-      }, true); // Intercept in capturing phase before Slate.js gets it
+          return originalGetData.call(this, type);
+        };
+      })();
     </script>
 </body>
 </html>
