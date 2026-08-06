@@ -49,19 +49,42 @@
       // Prevent Slate.js / Decap CMS editor crash when pasting formatted text using Ctrl+V
       document.addEventListener('paste', function(e) {
         const activeEl = document.activeElement;
-        if (activeEl && (activeEl.hasAttribute('contenteditable') || activeEl.tagName === 'INPUT' || activeEl.tagName === 'TEXTAREA')) {
+        // Intercept only inside contenteditable editor area (ignore normal inputs/textareas)
+        if (activeEl && activeEl.hasAttribute('contenteditable')) {
           const clipboardData = e.clipboardData || window.clipboardData;
           if (clipboardData && clipboardData.types.includes('text/html')) {
             const text = clipboardData.getData('text/plain');
             if (text) {
               e.preventDefault();
-              if (document.queryCommandSupported('insertText')) {
-                document.execCommand('insertText', false, text);
+              
+              // Convert newlines in plain text to clean HTML paragraphs so the editor splits them natively without crashing
+              const html = text
+                .split(/\r?\n/)
+                .map(line => {
+                  const safeLine = line
+                    .replace(/&/g, '&amp;')
+                    .replace(/</g, '&lt;')
+                    .replace(/>/g, '&gt;');
+                  return `<p>${safeLine || '<br>'}</p>`;
+                })
+                .join('');
+                
+              if (document.queryCommandSupported('insertHTML')) {
+                document.execCommand('insertHTML', false, html);
               } else {
+                // Fallback
                 const selection = window.getSelection();
                 if (selection.rangeCount) {
                   selection.deleteFromDocument();
-                  selection.getRangeAt(0).insertNode(document.createTextNode(text));
+                  const range = selection.getRangeAt(0);
+                  const tempDiv = document.createElement('div');
+                  tempDiv.innerHTML = html;
+                  const frag = document.createDocumentFragment();
+                  let node;
+                  while ((node = tempDiv.firstChild)) {
+                    frag.appendChild(node);
+                  }
+                  range.insertNode(frag);
                 }
               }
             }
