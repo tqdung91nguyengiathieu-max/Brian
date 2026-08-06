@@ -358,6 +358,8 @@
             if (post) {
                 document.title = `${post.title} - Brian Crypto Việt`;
                 
+                const dateStr = post.date ? new Date(post.date).toLocaleDateString('vi-VN', { year: 'numeric', month: 'long', day: 'numeric' }) : 'Đang cập nhật';
+                
                 let bodyText = post.body || post.content || '';
                 
                 // Normalize all non-breaking spaces (often copied from web pages) to standard spaces first
