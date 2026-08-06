@@ -333,7 +333,8 @@
                 return;
             }
 
-            let post = null;
+            try {
+                let post = null;
 
             // 1. Fetch from GitHub API if on server
             if (window.location.protocol !== 'file:' && GITHUB_REPO) {
@@ -426,9 +427,25 @@
                 setupShareLinks();
                 // Generate Table of Contents dynamically
                 generateTableOfContents();
-            } else {
+                } else {
+                    document.getElementById('article-view').innerHTML = `
+                        <div class="alert alert-danger text-center">Rất tiếc, bài viết này không tồn tại hoặc đã bị xóa. <a href="index.html" class="alert-link">Quay lại trang chủ</a></div>
+                    `;
+                }
+            } catch (err) {
+                console.error("Error loading post:", err);
                 document.getElementById('article-view').innerHTML = `
-                    <div class="alert alert-danger text-center">Rất tiếc, bài viết này không tồn tại hoặc đã bị xóa. <a href="index.html" class="alert-link">Quay lại trang chủ</a></div>
+                    <div class="alert alert-danger p-4">
+                        <h4 class="alert-heading fw-bold">⚠️ Lỗi tải trang bài viết</h4>
+                        <p class="mb-2">Hệ thống gặp lỗi khi dựng nội dung:</p>
+                        <p class="fw-bold text-dark">${err.message}</p>
+                        <hr>
+                        <p class="small text-muted mb-0">Chi tiết lỗi kỹ thuật:</p>
+                        <pre class="bg-light p-3 border rounded text-start mt-2" style="font-size: 13px; max-height: 250px; overflow-y: auto;">${err.stack}</pre>
+                        <div class="mt-3">
+                            <a href="../index.html" class="btn btn-warning btn-sm">Quay lại trang chủ</a>
+                        </div>
+                    </div>
                 `;
             }
         }
