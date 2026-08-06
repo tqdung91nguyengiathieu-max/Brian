@@ -362,12 +362,28 @@
                 // Normalize all non-breaking spaces (often copied from web pages) to standard spaces first
                 bodyText = bodyText.replace(/\u00a0/g, ' ');
                 
-                // Auto-heal line breaks and split sentences caused by copy-pasting from formatted websites
-                bodyText = bodyText
-                    // 1. Join split lines in list items (indented lines not starting with list markers like *, -, or numbers)
-                    .replace(/\n\n[ \t]+(?!(?:[\*\-+]|\d+\.)(?:[ \t]|$))/g, ' ')
-                    // 2. Join lines starting with lowercase letters or punctuation in normal paragraphs
-                    .replace(/\n\n([a-zđăâêôơư\(])/g, ' $1');
+                // Advanced sentence healing to automatically merge split lines and copy-paste breakages
+                const paragraphs = bodyText.split(/\n\n+/);
+                const healedParagraphs = [];
+                for (let i = 0; i < paragraphs.length; i++) {
+                    const current = paragraphs[i];
+                    if (healedParagraphs.length > 0) {
+                        const prev = healedParagraphs[healedParagraphs.length - 1].trim();
+                        const nextTrim = current.trim();
+                        
+                        // Check if previous paragraph ends without sentence-ending punctuation
+                        // and current paragraph does not start with a markdown structural block (heading, quote, list, code block)
+                        const isPrevSentenceUnfinished = prev && !/[.!?:\-\#\>\]\)]\s*$/.test(prev);
+                        const isNextLineNotStructure = nextTrim && !/^(?:[#>]|[\-*+](?:\s|$)+|\d+\.(?:\s|$)+|\`)/.test(nextTrim);
+                        
+                        if (isPrevSentenceUnfinished && isNextLineNotStructure) {
+                            healedParagraphs[healedParagraphs.length - 1] += ' ' + nextTrim;
+                            continue;
+                        }
+                    }
+                    healedParagraphs.push(current);
+                }
+                bodyText = healedParagraphs.join('\n\n');
 
                 const bodyHTML = marked.parse(bodyText);
 
