@@ -336,16 +336,16 @@
             try {
                 let post = null;
 
-            // 1. Fetch from GitHub API if on server
-            if (window.location.protocol !== 'file:' && GITHUB_REPO) {
+            // 1. Fetch from local JSON file deployed on Vercel
+            if (window.location.protocol !== 'file:') {
                 try {
                     const cacheBuster = `?t=${new Date().getTime()}`;
-                    const response = await fetch(`https://raw.githubusercontent.com/${GITHUB_REPO}/main/content/posts/${postSlug}.json${cacheBuster}`);
+                    const response = await fetch(`../content/posts/${postSlug}.json${cacheBuster}`);
                     if (response.ok) {
                         post = await response.json();
                     }
                 } catch (e) {
-                    console.warn("Lỗi tải bài viết từ GitHub, chuyển sang tìm cục bộ: ", e);
+                    console.warn("Lỗi tải bài viết từ máy chủ, chuyển sang tìm cục bộ: ", e);
                 }
             }
 
