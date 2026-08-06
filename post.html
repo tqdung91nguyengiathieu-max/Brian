@@ -359,12 +359,15 @@
                 
                 let bodyText = post.body || post.content || '';
                 
+                // Normalize all non-breaking spaces (often copied from web pages) to standard spaces first
+                bodyText = bodyText.replace(/\u00a0/g, ' ');
+                
                 // Auto-heal line breaks and split sentences caused by copy-pasting from formatted websites
                 bodyText = bodyText
                     // 1. Join split lines in list items (indented lines not starting with list markers like *, -, or numbers)
                     .replace(/\n\n[ \t]+(?!(?:[\*\-+]|\d+\.)(?:[ \t]|$))/g, ' ')
-                    // 2. Join lines starting with lowercase letters in normal paragraphs
-                    .replace(/\n\n([a-zđăâêôơư])/g, ' $1');
+                    // 2. Join lines starting with lowercase letters or punctuation in normal paragraphs
+                    .replace(/\n\n([a-zđăâêôơư\(])/g, ' $1');
 
                 const bodyHTML = marked.parse(bodyText);
 
