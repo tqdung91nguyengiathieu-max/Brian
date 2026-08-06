@@ -373,8 +373,18 @@
                         
                         // Check if previous paragraph ends without sentence-ending punctuation
                         // and current paragraph does not start with a markdown structural block (heading, quote, list, code block)
-                        const isPrevSentenceUnfinished = prev && !/[.!?:\-\#\>\]\)]\s*$/.test(prev);
-                        const isNextLineNotStructure = nextTrim && !/^(?:[#>]|[\-*+](?:\s|$)+|\d+\.(?:\s|$)+|\`)/.test(nextTrim);
+                        const lastChar = prev.slice(-1);
+                        const sentenceEndings = ['.', '!', '?', ':', '-', '#', '>', ']', ')', '"', "'", '”', '’'];
+                        const isPrevSentenceUnfinished = prev && !sentenceEndings.includes(lastChar) && !prev.endsWith('**') && !prev.endsWith('*');
+                        
+                        const isNextLineNotStructure = nextTrim && 
+                            !nextTrim.startsWith('#') && 
+                            !nextTrim.startsWith('>') && 
+                            !nextTrim.startsWith('`') && 
+                            !nextTrim.startsWith('* ') && 
+                            !nextTrim.startsWith('- ') && 
+                            !nextTrim.startsWith('+ ') && 
+                            !/^\d+\.\s/.test(nextTrim);
                         
                         if (isPrevSentenceUnfinished && isNextLineNotStructure) {
                             healedParagraphs[healedParagraphs.length - 1] += ' ' + nextTrim;
