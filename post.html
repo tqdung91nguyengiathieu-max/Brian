@@ -374,11 +374,13 @@
                         const prev = healedParagraphs[healedParagraphs.length - 1].trim();
                         const nextTrim = current.trim();
                         
-                        // Check if previous paragraph ends without sentence-ending punctuation
-                        // and current paragraph does not start with a markdown structural block (heading, quote, list, code block)
-                        const lastChar = prev.slice(-1);
+                        // Check if previous paragraph ends without sentence-ending punctuation (ignoring markdown format characters like *)
+                        // and ensure we NEVER merge a heading block (starting with #)
+                        const cleanPrev = prev.replace(/[*_~\s]+$/, '');
+                        const lastChar = cleanPrev.slice(-1);
                         const sentenceEndings = ['.', '!', '?', ':', '-', '#', '>', ']', ')', '"', "'", '”', '’'];
-                        const isPrevSentenceUnfinished = prev && !sentenceEndings.includes(lastChar);
+                        const isPrevHeading = prev.startsWith('#');
+                        const isPrevSentenceUnfinished = prev && !isPrevHeading && !sentenceEndings.includes(lastChar);
                         
                         const isNextLineNotStructure = nextTrim && 
                             !nextTrim.startsWith('#') && 
