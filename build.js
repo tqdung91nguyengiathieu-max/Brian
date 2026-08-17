@@ -92,6 +92,28 @@ if (fs.existsSync(postsDir)) {
     }
 }
 
+// Process all videos and consolidate them into a single JSON file
+const videosDir = path.join(__dirname, 'content', 'videos');
+const videoList = [];
+if (fs.existsSync(videosDir)) {
+    const files = fs.readdirSync(videosDir);
+    for (const file of files) {
+        if (file.endsWith('.json')) {
+            try {
+                const videoData = JSON.parse(fs.readFileSync(path.join(videosDir, file), 'utf8'));
+                if (videoData && videoData.youtubeId) {
+                    videoList.push(videoData);
+                }
+            } catch (e) {
+                console.warn("Failed to parse video:", file, e);
+            }
+        }
+    }
+}
+fs.mkdirSync(path.join(distPath, 'content'), { recursive: true });
+fs.writeFileSync(path.join(distPath, 'content', 'videos.json'), JSON.stringify(videoList), 'utf8');
+console.log("Consolidated videos list generated successfully.");
+
 // Copy original post.html to dist/post.html for local fallback compatibility
 fs.copyFileSync(path.join(__dirname, 'post.html'), path.join(distPath, 'post.html'));
 

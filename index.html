@@ -373,7 +373,7 @@
                 <!-- Left Video Player -->
                 <div class="col-lg-8">
                     <div class="video-player-wrapper">
-                        <iframe id="main-video-player" src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe id="main-video-player" src="https://www.youtube.com/embed/2LYNDduF8Ko" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     </div>
                 </div>
                 <!-- Right Playlist Scroll -->
@@ -621,42 +621,23 @@
 
         // Video Playlist Integration (Dynamic from GitHub / Fallback local)
         let playlistData = [
-            { youtubeId: "dQw4w9WgXcQ", title: "Bài 1: Kiến thức Crypto nền tảng cho người mới bắt đầu" },
-            { youtubeId: "L_LUpnjgPso", title: "Bài 2: Hướng dẫn bảo mật ví nóng & ví lạnh an toàn 100%" },
-            { youtubeId: "9sWn8w1qBsw", title: "Bài 3: Cách đọc biểu đồ kỹ thuật & Price Action đơn giản" }
+            { youtubeId: "2LYNDduF8Ko", title: "P2P USDT: Làm thế nào để không bị khóa tài khoản?" },
+            { youtubeId: "9X3l4EcSwNc", title: "Để Crypto Ở Đâu An Toàn? Cơn Ác Mộng Hack Ví Metamask & Sập Sàn Tập Trung" },
+            { youtubeId: "OLGOzdNUjYw", title: "Xu Hướng Crypto 3-5 Năm Tới: Cuộc Cách Mạng Thanh Toán Bằng Stablecoin Của Các Ông Lớn" }
         ];
 
         async function loadVideos() {
-            if (GITHUB_REPO) {
-                try {
-                    const cacheBuster = `?t=${new Date().getTime()}`;
-                    const response = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/content/videos${cacheBuster}`);
-                    if (response.ok) {
-                        const files = await response.json();
-                        const fetchedVideos = [];
-                        
-                        for (const file of files) {
-                            if (file.name.endsWith('.json')) {
-                                try {
-                                    const fileRes = await fetch(`${file.download_url}${cacheBuster}`);
-                                    if (fileRes.ok) {
-                                        const videoContent = await fileRes.json();
-                                        if (videoContent && videoContent.youtubeId) {
-                                            fetchedVideos.push(videoContent);
-                                        }
-                                    }
-                                } catch (innerError) {
-                                    console.warn("Lỗi tải chi tiết video: ", file.name, innerError);
-                                }
-                            }
-                        }
-                        if (fetchedVideos.length > 0) {
-                            playlistData = fetchedVideos;
-                        }
+            try {
+                const cacheBuster = `?t=${new Date().getTime()}`;
+                const response = await fetch(`content/videos.json${cacheBuster}`);
+                if (response.ok) {
+                    const fetchedVideos = await response.json();
+                    if (fetchedVideos && fetchedVideos.length > 0) {
+                        playlistData = fetchedVideos;
                     }
-                } catch (e) {
-                    console.warn("Lỗi fetch GitHub API cho videos, dùng dữ liệu local: ", e);
                 }
+            } catch (e) {
+                console.warn("Lỗi tải danh sách video từ máy chủ, dùng dữ liệu mặc định: ", e);
             }
             renderVideos();
         }
