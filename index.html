@@ -3,435 +3,97 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brian Crypto Việt - Kênh thông tin crypto dễ hiểu nhất</title>
-    <!-- Google Fonts Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Bootstrap 5 CSS -->
+    <title>Brian Forex Academy - Nền Tảng Đào Tạo Forex Thực Chiến</title>
+    <!-- Google Fonts Inter & Bootstrap 5 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Swiper JS CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <!-- Netlify Identity Widget -->
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    
-    <style>
-        body {
-            background-color: var(--h-color-bg);
-            color: var(--h-color-text-primary);
-        }
-        header {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--h-color-border);
-            z-index: 1000;
-        }
-        .navbar-brand img {
-            height: 48px;
-        }
-        .navbar-brand span {
-            color: #0f172a !important;
-        }
-        .nav-link {
-            color: var(--h-color-text-primary) !important;
-            font-weight: 500;
-            padding: 10px 16px !important;
-            transition: var(--h-transition);
-        }
-        .nav-link:hover, .nav-link.active {
-            color: var(--h-color-yellow) !important;
-        }
-        .marquee-container {
-            background-color: var(--h-color-bg-card);
-            border-top: 1px solid var(--h-color-border);
-            border-bottom: 1px solid var(--h-color-border);
-            padding: 12px 0;
-            overflow: hidden;
-            white-space: nowrap;
-            position: relative;
-        }
-        .marquee-inner {
-            display: inline-flex;
-            animation: marquee 30s linear infinite;
-            gap: 40px;
-        }
-        .marquee-inner:hover {
-            animation-play-state: paused;
-        }
-        .coin-item {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-weight: 500;
-            cursor: pointer;
-        }
-        .coin-icon {
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-        }
-        .coin-change {
-            font-size: 14px;
-            padding: 2px 8px;
-            border-radius: 20px;
-            font-weight: 600;
-        }
-        .coin-change.up {
-            color: var(--h-color-green);
-            background-color: var(--h-color-green-bg);
-        }
-        .coin-change.down {
-            color: var(--h-color-red);
-            background-color: var(--h-color-red-bg);
-        }
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-33.33%); }
-        }
-        .hero-section {
-            padding: 40px 0;
-        }
-        .swiper-container {
-            width: 100%;
-            height: 420px;
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-        }
-        .swiper-slide {
-            position: relative;
-            background-size: cover;
-            background-position: center;
-        }
-        .swiper-slide-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(0deg, rgba(15, 23, 42, 0.95) 0%, rgba(15, 23, 42, 0.4) 60%, rgba(15, 23, 42, 0) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 30px;
-            color: #ffffff;
-        }
-        .swiper-slide-tag {
-            background-color: var(--h-color-yellow);
-            color: #000;
-            font-weight: 700;
-            font-size: 12px;
-            text-transform: uppercase;
-            padding: 4px 10px;
-            border-radius: 4px;
-            align-self: flex-start;
-            margin-bottom: 12px;
-        }
-        .swiper-slide-title {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 8px;
-            line-height: 1.4;
-        }
-        .swiper-slide-meta {
-            font-size: 14px;
-            color: var(--h-color-text-secondary);
-        }
-        .welcome-list-container {
-            background-color: var(--h-color-bg-card);
-            border: 1px solid var(--h-color-border);
-            border-radius: 12px;
-            padding: 24px;
-            height: 420px;
-            display: flex;
-            flex-direction: column;
-        }
-        .welcome-list-tabs {
-            display: flex;
-            border-bottom: 1px solid var(--h-color-border);
-            margin-bottom: 16px;
-            gap: 16px;
-        }
-        .welcome-tab {
-            color: var(--h-color-text-secondary);
-            font-weight: 600;
-            padding-bottom: 10px;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            text-transform: uppercase;
-            font-size: 14px;
-        }
-        .welcome-tab.active {
-            color: var(--h-color-yellow);
-            border-bottom-color: var(--h-color-yellow);
-        }
-        .welcome-list-scroll {
-            overflow-y: auto;
-            flex-grow: 1;
-            padding-right: 4px;
-        }
-        .welcome-post-item {
-            display: flex;
-            gap: 12px;
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-            transition: var(--h-transition);
-        }
-        .welcome-post-item:hover {
-            opacity: 0.8;
-        }
-        .welcome-post-img {
-            width: 100px;
-            height: 60px;
-            border-radius: 6px;
-            object-fit: cover;
-        }
-        .welcome-post-title {
-            font-size: 14px;
-            font-weight: 600;
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            color: var(--h-color-text-primary) !important;
-        }
-        .video-section {
-            background-color: #f1f5f9;
-            color: #000000;
-            padding: 60px 0;
-            border-top: 1px solid var(--h-color-border);
-            border-bottom: 1px solid var(--h-color-border);
-        }
-        .video-section .text-white {
-            color: #000000 !important;
-        }
-        .video-player-wrapper {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            border-radius: 12px;
-            overflow: hidden;
-            border: 1px solid var(--h-color-border);
-        }
-        .video-player-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-        }
-        .video-playlist-container {
-            background-color: var(--h-color-bg-card);
-            border: 1px solid var(--h-color-border);
-            border-radius: 12px;
-            padding: 24px;
-            height: 480px;
-            display: flex;
-            flex-direction: column;
-        }
-        .video-playlist-scroll {
-            overflow-y: auto;
-            flex-grow: 1;
-        }
-        .video-item {
-            display: flex;
-            gap: 12px;
-            padding: 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-bottom: 8px;
-            transition: var(--h-transition);
-            background-color: #ffffff;
-            border: 1px solid var(--h-color-border);
-            color: #0f172a !important;
-        }
-        .video-item:hover, .video-item.active {
-            background-color: var(--h-color-yellow-light);
-            border-color: var(--h-color-yellow);
-        }
-        .video-thumbnail {
-            width: 120px;
-            height: 68px;
-            border-radius: 6px;
-            object-fit: cover;
-        }
-        .video-title {
-            font-size: 13px;
-            font-weight: 500;
-            line-height: 1.4;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-        .category-header {
-            border-left: 4px solid var(--h-color-yellow);
-            padding-left: 12px;
-            margin-bottom: 24px;
-            font-weight: 700;
-        }
-    </style>
 </head>
-<body>
+<body class="lms-body">
 
-    <!-- Header Navigation -->
-    <header class="position-sticky top-0">
-        <nav class="navbar navbar-expand-lg navbar-dark container py-3">
-            <a class="navbar-brand d-flex align-items-center gap-2" href="index.html">
-                <img src="assets/images/logo.png" alt="Brian Crypto Việt Logo" style="height: 45px; width: 45px; object-fit: contain;">
-                <span class="fw-bold fs-4" style="letter-spacing: 0.5px; font-family: 'Inter', sans-serif;">
-                    <span class="text-white">Brian</span> <span style="color: var(--h-color-yellow);">Crypto Việt</span>
-                </span>
-            </a>
-            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link active" href="index.html">Trang chủ</a></li>
-                    <li class="nav-item"><a class="nav-link fw-bold text-warning" href="course.html?course=forex-trader">Khóa Trader FX</a></li>
-                    <li class="nav-item"><a class="nav-link fw-bold text-warning" href="course.html?course=forex-ib">Khóa IB Forex</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#phap-ly">Pháp lý</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#chuyen-sau">Chuyên sâu</a></li>
-                </ul>
-                <div class="d-flex align-items-center gap-3">
-                    <a href="learn.html?course=forex-trader" class="btn btn-warning btn-sm px-3 fw-bold"><i class="fa-solid fa-graduation-cap me-1"></i> Vào Lớp Học</a>
-                    <a href="/admin/" class="btn btn-outline-warning btn-sm px-3">Quản trị</a>
+    <!-- Top Navigation Header -->
+    <header class="py-3 px-4 sticky-top" style="background: rgba(17, 24, 39, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid #1f2937; z-index: 1000;">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none">
+                <div class="rounded-circle bg-warning text-dark d-flex align-items-center justify-content-center fw-extrabold" style="width:42px; height:42px; font-size:18px;">FX</div>
+                <div>
+                    <span class="fs-5 fw-bold text-white d-block lh-1">Brian Forex Academy</span>
+                    <span class="text-secondary small" style="font-size:11px;">Hệ Thống Đào Tạo Thực Chiến</span>
                 </div>
+            </a>
+            
+            <nav class="d-none d-md-flex align-items-center gap-4">
+                <a href="index.html" class="text-warning fw-bold text-decoration-none small">Trang Chủ</a>
+                <a href="course.html?course=forex-trader" class="text-white hover-warning text-decoration-none small fw-semibold">Khóa Trader FX</a>
+                <a href="course.html?course=forex-ib" class="text-white hover-warning text-decoration-none small fw-semibold">Khóa IB Forex</a>
+                <a href="#featured-videos" class="text-white hover-warning text-decoration-none small fw-semibold">Video Tiêu Điểm</a>
+            </nav>
+
+            <div class="d-flex align-items-center gap-3">
+                <a href="learn.html?course=forex-trader" class="btn-gold btn-sm px-3">
+                    <i class="fa-solid fa-graduation-cap me-1"></i> Vào Lớp Học
+                </a>
+                <a href="/admin/" class="btn btn-outline-secondary btn-sm px-3 text-white border-secondary">Quản trị</a>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <!-- Coin Marquee (Bảng chạy giá coin) -->
-    <div class="marquee-container">
-        <div class="marquee-inner" id="coin-marquee">
-            <!-- Loop 1 -->
-            <div class="coin-item">
-                <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png" class="coin-icon" alt="BTC">
-                <span class="text-white font-bold">BTC</span> <span class="text-muted">$67,250.50</span> <span class="coin-change up">+2.45%</span>
-            </div>
-            <div class="coin-item">
-                <img src="https://assets.coingecko.com/coins/images/279/large/ethereum.png" class="coin-icon" alt="ETH">
-                <span class="text-white font-bold">ETH</span> <span class="text-muted">$3,480.20</span> <span class="coin-change down">-1.15%</span>
-            </div>
-            <div class="coin-item">
-                <img src="https://assets.coingecko.com/coins/images/4128/large/solana.png" class="coin-icon" alt="SOL">
-                <span class="text-white font-bold">SOL</span> <span class="text-muted">$182.40</span> <span class="coin-change up">+5.82%</span>
-            </div>
-            <!-- Loop 2 -->
-            <div class="coin-item">
-                <img src="https://assets.coingecko.com/coins/images/1/large/bitcoin.png" class="coin-icon" alt="BTC">
-                <span class="text-white font-bold">BTC</span> <span class="text-muted">$67,250.50</span> <span class="coin-change up">+2.45%</span>
-            </div>
-            <div class="coin-item">
-                <img src="https://assets.coingecko.com/coins/images/279/large/ethereum.png" class="coin-icon" alt="ETH">
-                <span class="text-white font-bold">ETH</span> <span class="text-muted">$3,480.20</span> <span class="coin-change down">-1.15%</span>
-            </div>
-            <div class="coin-item">
-                <img src="https://assets.coingecko.com/coins/images/4128/large/solana.png" class="coin-icon" alt="SOL">
-                <span class="text-white font-bold">SOL</span> <span class="text-muted">$182.40</span> <span class="coin-change up">+5.82%</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Hero / Welcome Section -->
-    <section class="hero-section container">
-        <div class="row g-4">
-            <!-- Left Slider -->
-            <div class="col-lg-8">
-                <div class="swiper swiper-container" id="welcome-swiper">
-                    <div class="swiper-wrapper" id="slider-wrapper">
-                        <!-- Loaded dynamically -->
+    <!-- Hero Section: Main Academy Banner -->
+    <section class="py-5 text-center text-md-start" style="background: radial-gradient(circle at 50% 20%, rgba(245, 158, 11, 0.12) 0%, rgba(11, 15, 25, 0) 70%), linear-gradient(180deg, #111827 0%, #0b0f19 100%); border-bottom: 1px solid #1e293b;">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7">
+                    <div class="d-inline-flex align-items-center gap-2 bg-dark border border-warning-subtle text-warning px-3 py-1 rounded-pill small fw-bold mb-3">
+                        <i class="fa-solid fa-fire text-warning"></i> Nền Tảng Đào Tạo Forex Hàng Đầu 2026
                     </div>
-                    <div class="swiper-pagination"></div>
-                </div>
-            </div>
-            <!-- Right Tabbed List -->
-            <div class="col-lg-4">
-                <div class="welcome-list-container">
-                    <div class="welcome-list-tabs">
-                        <div class="welcome-tab active" onclick="switchTab('new')">Mới nhất</div>
-                        <div class="welcome-tab" onclick="switchTab('hot')">Xem nhiều</div>
-                    </div>
-                    <div class="welcome-list-scroll" id="tabbed-post-list">
-                        <!-- Loaded dynamically -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    <h1 class="display-4 fw-extrabold text-white mb-3 lh-sm">
+                        Làm Chủ Thị Trường <span style="color: #f59e0b; background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Forex & Nghề IB</span> Chuyên Nghiệp
+                    </h1>
+                    <p class="lead text-secondary mb-4 fs-6" style="max-width: 620px;">
+                        Chương trình đóng gói lộ trình thực chiến từ tư duy giao dịch, quản lý vốn, hệ thống vào lệnh chuẩn xác đến quy trình xây dựng cộng đồng cho IB Forex.
+                    </p>
 
-    <!-- Dynamic Category Grids -->
-    <section class="container py-5">
-        <div class="row g-4" id="categories-grid-container">
-            <!-- Dynamic grids for Pháp lý, Người mới, Chuyên sâu loaded via JS -->
-        </div>
-    </section>
-
-    <!-- Forex Training Academy Showcase Section -->
-    <section class="container py-5">
-        <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
-            <div>
-                <h3 class="category-header mb-1">Chương Trình Đào Tạo Forex Thực Chiến</h3>
-                <p class="text-secondary small mb-0">Hệ thống khóa học đóng gói chuẩn hóa dành cho Nhà giao dịch & Thủ lĩnh IB Forex</p>
-            </div>
-            <a href="learn.html?course=forex-trader" class="btn btn-outline-warning btn-sm px-3 rounded-pill fw-bold">
-                <i class="fa-solid fa-play-circle me-1"></i> Trải Nghiệm Phòng Học LMS
-            </a>
-        </div>
-
-        <div class="row g-4">
-            <!-- Track 1: Forex Trader Track -->
-            <div class="col-lg-6">
-                <div class="course-card-dark">
-                    <div class="course-card-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80" class="course-card-img" alt="Forex Trader Course">
-                        <span class="course-card-badge"><i class="fa-solid fa-chart-line me-1"></i> Dành Cho Trader</span>
+                    <div class="d-flex flex-wrap align-items-center gap-3 justify-content-center justify-content-md-start mb-4">
+                        <a href="learn.html?course=forex-trader" class="btn-gold btn-lg px-4 fs-6">
+                            <i class="fa-solid fa-play me-2"></i> Bắt Đầu Học Ngay (Free)
+                        </a>
+                        <a href="#courses-overview" class="btn btn-outline-light btn-lg px-4 fs-6 rounded-3">
+                            <i class="fa-solid fa-layer-group me-2"></i> Xem Khóa Học
+                        </a>
                     </div>
-                    <div class="course-card-body">
-                        <h4 class="course-card-title">Lộ Trình Nhà Giao Dịch Forex Thực Chiến</h4>
-                        <p class="course-card-desc">
-                            Hành trình từ tư duy nền tảng, phân tích kỹ thuật chuẩn xác đến quản lý vốn & hệ thống giao dịch bền vững.
-                        </p>
-                        <div class="d-flex align-items-center gap-3 text-secondary small mb-3">
-                            <span><i class="fa-solid fa-book-open text-warning me-1"></i> 26 Bài Giảng</span>
-                            <span><i class="fa-regular fa-clock text-warning me-1"></i> 18 Giờ 30 Phút</span>
-                            <span><i class="fa-solid fa-star text-warning me-1"></i> 4.9/5.0</span>
+
+                    <!-- Trust Stats Badges -->
+                    <div class="row g-3 pt-3 border-top border-secondary border-opacity-25 text-center text-md-start">
+                        <div class="col-4">
+                            <h4 class="fw-bold text-white mb-0">2,500+</h4>
+                            <small class="text-secondary">Học viên tin tưởng</small>
                         </div>
-                        <div class="course-card-footer">
-                            <a href="course.html?course=forex-trader" class="btn btn-outline-light btn-sm rounded-2">
-                                Xem Lộ Trình
-                            </a>
-                            <a href="learn.html?course=forex-trader" class="btn-gold btn-sm">
-                                <i class="fa-solid fa-play me-1"></i> Vào Học Ngay (Free)
-                            </a>
+                        <div class="col-4">
+                            <h4 class="fw-bold text-warning mb-0">44+</h4>
+                            <small class="text-secondary">Bài giảng đóng gói</small>
+                        </div>
+                        <div class="col-4">
+                            <h4 class="fw-bold text-white mb-0">98%</h4>
+                            <small class="text-secondary">Đánh giá 5 sao</small>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Track 2: Forex IB Career Track -->
-            <div class="col-lg-6">
-                <div class="course-card-dark">
-                    <div class="course-card-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80" class="course-card-img" alt="Forex IB Course">
-                        <span class="course-card-badge" style="color: #4ade80; border-color: rgba(74,222,128,0.4);"><i class="fa-solid fa-user-group me-1"></i> Dành Cho IB & Agency</span>
-                    </div>
-                    <div class="course-card-body">
-                        <h4 class="course-card-title">Khóa Đào Tạo Nghề IB Forex Chuyên Nghiệp</h4>
-                        <p class="course-card-desc">
-                            Bí quyết xây dựng thương hiệu cá nhân, phát triển cộng đồng và vận hành hệ thống IB bền vững, thu nhập thụ động cao.
-                        </p>
-                        <div class="d-flex align-items-center gap-3 text-secondary small mb-3">
-                            <span><i class="fa-solid fa-book-open text-warning me-1"></i> 18 Bài Giảng</span>
-                            <span><i class="fa-regular fa-clock text-warning me-1"></i> 14 Giờ 20 Phút</span>
-                            <span><i class="fa-solid fa-star text-warning me-1"></i> 5.0/5.0</span>
+                <div class="col-lg-5">
+                    <div class="course-card-dark p-2" style="border: 2px solid #f59e0b; background: #131b2e;">
+                        <div class="position-relative overflow-hidden rounded-3">
+                            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80" class="w-100" style="height: 300px; object-fit: cover;" alt="Hero Preview">
+                            <a href="learn.html?course=forex-trader" class="position-absolute top-50 start-50 translate-middle btn btn-warning rounded-circle d-flex align-items-center justify-content-center shadow-lg" style="width:64px; height:64px; font-size:24px;">
+                                <i class="fa-solid fa-play text-dark ms-1"></i>
+                            </a>
                         </div>
-                        <div class="course-card-footer">
-                            <a href="course.html?course=forex-ib" class="btn btn-outline-light btn-sm rounded-2">
-                                Xem Lộ Trình
-                            </a>
-                            <a href="learn.html?course=forex-ib" class="btn-gold btn-sm">
-                                <i class="fa-solid fa-play me-1"></i> Vào Học Ngay (Free)
-                            </a>
+                        <div class="p-3 text-center">
+                            <div class="text-warning fw-bold mb-1"><i class="fa-solid fa-circle-check me-1"></i> Giao Diện Lớp Học LMS Trực Quan</div>
+                            <small class="text-secondary">Có video sắc nét, bài học xem thử FREE & bộ Tóm Tắt Bài Học bên dưới</small>
                         </div>
                     </div>
                 </div>
@@ -439,24 +101,158 @@
         </div>
     </section>
 
-    <!-- Custom Video Playlist Section -->
-    <section class="video-section">
-        <div class="container">
-            <h3 class="category-header mb-4">Video Tiêu Điểm</h3>
+    <!-- Main Course Selection Section -->
+    <section class="py-5" id="courses-overview">
+        <div class="container py-3">
+            <div class="text-center mb-5">
+                <span class="badge bg-warning text-dark font-bold px-3 py-2 rounded-pill mb-2">CHƯƠNG TRÌNH ĐÀO TẠO ĐÓNG GÓI</span>
+                <h2 class="display-6 fw-bold text-white">Chọn Lộ Trình Phù Hợp Với Bạn</h2>
+                <p class="text-secondary mx-auto" style="max-width: 600px;">
+                    Chúng tôi chia rõ thành 2 lộ trình chuyên biệt dành riêng cho Trader muốn giao dịch hiệu quả và IBmuốn phát triển sự nghiệp lâu dài.
+                </p>
+            </div>
+
             <div class="row g-4">
-                <!-- Left Video Player -->
+                <!-- Course 1: Trader Track -->
+                <div class="col-lg-6">
+                    <div class="course-card-dark">
+                        <div class="course-card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80" class="course-card-img" alt="Trader Course">
+                            <span class="course-card-badge"><i class="fa-solid fa-chart-line me-1"></i> Dành Cho Trader</span>
+                        </div>
+                        <div class="course-card-body">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <span class="badge-free py-1 px-2"><i class="fa-solid fa-unlock"></i> Có Bài Học FREE</span>
+                                <span class="text-secondary small">• Từ Cơ Bản Đến Thực Chiến</span>
+                            </div>
+                            <h3 class="course-card-title fs-4">Lộ Trình Nhà Giao Dịch Forex Thực Chiến</h3>
+                            <p class="course-card-desc">
+                                Đóng gói toàn bộ tư duy, kiến thức kỹ thuật (Supply & Demand, Market Structure) và kinh nghiệm thực chiến giúp bạn bảo vệ vốn và tìm kiếm lợi nhuận bền vững.
+                            </p>
+
+                            <div class="d-flex align-items-center gap-3 text-secondary small mb-3">
+                                <span><i class="fa-solid fa-book-open text-warning me-1"></i> 26 Bài Giảng</span>
+                                <span><i class="fa-regular fa-clock text-warning me-1"></i> 18 Giờ 30 Phút</span>
+                                <span><i class="fa-solid fa-star text-warning me-1"></i> 4.9/5.0</span>
+                            </div>
+
+                            <div class="course-card-footer">
+                                <a href="course.html?course=forex-trader" class="btn btn-outline-light btn-sm rounded-2">
+                                    Xem Lộ Trình Chi Tiết
+                                </a>
+                                <a href="learn.html?course=forex-trader" class="btn-gold btn-sm">
+                                    <i class="fa-solid fa-play me-1"></i> Vào Học Ngay (Free)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Course 2: IB Track -->
+                <div class="col-lg-6">
+                    <div class="course-card-dark">
+                        <div class="course-card-img-wrapper">
+                            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80" class="course-card-img" alt="IB Course">
+                            <span class="course-card-badge" style="color: #4ade80; border-color: rgba(74,222,128,0.4);"><i class="fa-solid fa-user-group me-1"></i> Dành Cho IB & Leader</span>
+                        </div>
+                        <div class="course-card-body">
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <span class="badge-free py-1 px-2"><i class="fa-solid fa-unlock"></i> Có Bài Học FREE</span>
+                                <span class="text-secondary small">• Xây Dựng Hệ Thống IB</span>
+                            </div>
+                            <h3 class="course-card-title fs-4">Khóa Đào Tạo Nghề IB Forex Chuyên Nghiệp</h3>
+                            <p class="course-card-desc">
+                                Quy trình từ A-Z định vị thương hiệu cá nhân, tạo phễu thu hút nhà đầu tư tự nhiên, quản trị đội ngũ và duy trì khối lượng giao dịch cho hệ thống.
+                            </p>
+
+                            <div class="d-flex align-items-center gap-3 text-secondary small mb-3">
+                                <span><i class="fa-solid fa-book-open text-warning me-1"></i> 18 Bài Giảng</span>
+                                <span><i class="fa-regular fa-clock text-warning me-1"></i> 14 Giờ 20 Phút</span>
+                                <span><i class="fa-solid fa-star text-warning me-1"></i> 5.0/5.0</span>
+                            </div>
+
+                            <div class="course-card-footer">
+                                <a href="course.html?course=forex-ib" class="btn btn-outline-light btn-sm rounded-2">
+                                    Xem Lộ Trình Chi Tiết
+                                </a>
+                                <a href="learn.html?course=forex-ib" class="btn-gold btn-sm">
+                                    <i class="fa-solid fa-play me-1"></i> Vào Học Ngay (Free)
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Video Showcase Section -->
+    <section class="py-5" id="featured-videos" style="background: #0e1422; border-top: 1px solid #1e293b; border-bottom: 1px solid #1e293b;">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+                <div>
+                    <h3 class="fw-bold text-white mb-1"><i class="fa-solid fa-circle-play text-warning me-2"></i> Video Học Bài Mẫu Tiêu Điểm</h3>
+                    <p class="text-secondary small mb-0">Xem trực tiếp các bài giảng mẫu hoàn toàn miễn phí</p>
+                </div>
+                <a href="learn.html?course=forex-trader" class="btn btn-outline-warning btn-sm px-3 rounded-pill fw-bold">
+                    Xem Toàn Bộ Trong LMS <i class="fa-solid fa-arrow-right ms-1"></i>
+                </a>
+            </div>
+
+            <div class="row g-4">
                 <div class="col-lg-8">
                     <div class="video-player-wrapper">
-                        <iframe id="main-video-player" src="https://www.youtube.com/embed/2LYNDduF8Ko" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe id="main-video-player" src="https://www.youtube.com/embed/2LYNDduF8Ko" title="YouTube video player" allowfullscreen></iframe>
                     </div>
                 </div>
-                <!-- Right Playlist Scroll -->
                 <div class="col-lg-4">
-                    <div class="video-playlist-container">
-                        <h5 class="fw-bold mb-3" style="color: var(--h-color-yellow);">Danh sách phát hot</h5>
-                        <div class="video-playlist-scroll" id="youtube-playlist">
-                            <!-- Playlist items -->
+                    <div class="playlist-sidebar-card p-3" style="max-height: 440px;">
+                        <h6 class="fw-bold text-white mb-3 text-warning"><i class="fa-solid fa-list me-2"></i> Danh Sách Video Phát Nổi Bật</h6>
+                        <div class="playlist-scroll-area" id="youtube-playlist">
+                            <!-- Populated dynamically via JS -->
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Brian Forex Academy -->
+    <section class="py-5">
+        <div class="container py-3">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-white">Tại Sao Nên Chọn Brian Forex Academy?</h2>
+                <p class="text-secondary">Phương pháp đào tạo thực tế, không lý thuyết suông</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="lesson-summary-box text-center h-100 p-4">
+                        <div class="rounded-circle bg-warning bg-opacity-10 text-warning d-inline-flex align-items-center justify-content-center mb-3" style="width:60px; height:60px; font-size:24px;">
+                            <i class="fa-solid fa-laptop-code"></i>
+                        </div>
+                        <h5 class="fw-bold text-white mb-2">Giao Diện LMS Hiện Đại</h5>
+                        <p class="text-secondary small mb-0">Giao diện xem video học trực quan, chia theo Module rõ ràng, có phần Tóm Tắt Bài Học tóm gọn kiến thức cốt lõi.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="lesson-summary-box text-center h-100 p-4">
+                        <div class="rounded-circle bg-warning bg-opacity-10 text-warning d-inline-flex align-items-center justify-content-center mb-3" style="width:60px; height:60px; font-size:24px;">
+                            <i class="fa-solid fa-shield-cat"></i>
+                        </div>
+                        <h5 class="fw-bold text-white mb-2">Quản Trị Rủi Ro Chuẩn Quỹ</h5>
+                        <p class="text-secondary small mb-0">Hệ thống bài giảng tập trung vào việc quản lý vốn, giữ lợi nhuận và kỷ luật thép trước mọi biến động giá.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="lesson-summary-box text-center h-100 p-4">
+                        <div class="rounded-circle bg-warning bg-opacity-10 text-warning d-inline-flex align-items-center justify-content-center mb-3" style="width:60px; height:60px; font-size:24px;">
+                            <i class="fa-solid fa-headset"></i>
+                        </div>
+                        <h5 class="fw-bold text-white mb-2">Đồng Hành & Hỗ Trợ 24/7</h5>
+                        <p class="text-secondary small mb-0">Tham gia cộng đồng Telegram học viên, trao đổi phân tích lệnh hàng ngày cùng đội ngũ giảng viên.</p>
                     </div>
                 </div>
             </div>
@@ -464,257 +260,38 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-5" style="background-color: var(--h-color-bg-card); border-top: 1px solid var(--h-color-border);">
+    <footer class="py-4" style="background-color: #0d131f; border-top: 1px solid #1e293b;">
         <div class="container text-center text-md-start">
-            <div class="row g-4">
+            <div class="row g-4 align-items-center">
                 <div class="col-md-6">
-                    <h5 class="fw-bold text-warning mb-3">Brian Crypto Việt</h5>
-                    <p class="text-secondary small">Brian Crypto Việt là kênh thông tin crypto hàng đầu Việt Nam. Chúng tôi cung cấp những hướng dẫn chi tiết dễ hiểu, insights giúp cho hành trình đầu tư dễ dàng hơn.</p>
-                </div>
-                <div class="col-md-3">
-                    <h6 class="fw-bold text-dark mb-3">Liên kết nhanh</h6>
-                    <ul class="list-unstyled text-secondary small d-flex flex-column gap-2">
-                        <li><a href="#" class="hover-warning">Chính sách bảo mật</a></li>
-                        <li><a href="#" class="hover-warning">Điều khoản sử dụng</a></li>
-                        <li><a href="#" class="hover-warning">Liên hệ hợp tác</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-3">
-                    <h6 class="fw-bold text-dark mb-3">Mạng xã hội</h6>
-                    <div class="d-flex gap-3 justify-content-center justify-content-md-start">
-                        <a href="#" class="text-secondary hover-warning">Facebook</a>
-                        <a href="#" class="text-secondary hover-warning">Telegram</a>
-                        <a href="#" class="text-secondary hover-warning">Youtube</a>
+                    <div class="d-flex align-items-center gap-2 mb-2">
+                        <div class="rounded-circle bg-warning text-dark d-flex align-items-center justify-content-center fw-bold" style="width:32px; height:32px;">FX</div>
+                        <h5 class="fw-bold text-warning mb-0">Brian Forex Academy</h5>
                     </div>
+                    <p class="text-secondary small mb-0">Nền tảng đào tạo giao dịch Forex & phát triển sự nghiệp IB uy tín tại Việt Nam.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <a href="learn.html?course=forex-trader" class="btn-gold btn-sm me-2">Vào Học Ngay</a>
+                    <a href="https://t.me/" target="_blank" class="btn btn-outline-light btn-sm"><i class="fa-brands fa-telegram me-1"></i> Telegram Cộng Đồng</a>
                 </div>
             </div>
-            <hr class="my-4 border-secondary opacity-25">
+            <hr class="my-3 border-secondary opacity-25">
             <div class="text-center text-secondary small">
-                © 2026 Brian Crypto Việt. All Rights Reserved.
+                © 2026 Brian Forex Academy. All rights reserved.
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap 5 JS & Swiper JS -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    
+
     <script>
-        // CONFIGURATION: Set your GitHub username and repository name here once connected
-        // Example: const GITHUB_REPO = 'brian-crypto/brian-crypto-viet';
-        const GITHUB_REPO = 'tqdung91nguyengiathieu-max/Brian'; 
-
-        // Helper to resolve clean SEO friendly post URLs on production and parameters locally
-        function getPostLink(slug) {
-            if (window.location.protocol === 'file:') {
-                return `post.html?post=${slug}`;
-            }
-            return `/posts/${slug}.html`;
-        }
-
-        // Default mock articles that display instantly
-        let postsData = [
-            {
-                slug: "2026-07-30-huong-dan-thue-crypto",
-                title: "Hướng dẫn đóng thuế Crypto tại Việt Nam chi tiết nhất 2026",
-                date: "2026-07-30T12:00:00.000Z",
-                category: "Pháp lý",
-                image: "https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=1200&q=80",
-                excerpt: "Tìm hiểu chi tiết các quy định pháp luật hiện hành về thuế đối với tài sản mã hóa (Crypto) tại Việt Nam và hướng dẫn cách kê khai nộp thuế đúng luật."
-            },
-            {
-                slug: "2026-07-28-bitcoin-halving",
-                title: "Bitcoin Halving hoạt động thế nào và tác động dài hạn ra sao?",
-                date: "2026-07-28T09:00:00.000Z",
-                category: "Chuyên sâu",
-                image: "https://images.unsplash.com/photo-1622790698141-94e30457ef12?auto=format&fit=crop&w=1200&q=80",
-                excerpt: "Phân tích cơ chế hoạt động của Bitcoin Halving, lịch sử các đợt halving trước và tác động đối với chu kỳ giá của thị trường crypto."
-            },
-            {
-                slug: "2026-07-27-5-nguyen-tac-quan-ly-von",
-                title: "5 nguyên tắc quản lý vốn xương máu khi trade Futures",
-                date: "2026-07-27T15:00:00.000Z",
-                category: "Người mới",
-                image: "https://images.unsplash.com/photo-1640340434855-6084b1f4901c?auto=format&fit=crop&w=500&q=80",
-                excerpt: "Học cách quản lý rủi ro và bảo vệ tài khoản giao dịch đòn bẩy của bạn trước những cú quét râu giật giá cực mạnh."
-            }
-        ];
-        // Load posts dynamically with secure fallbacks (with cache buster)
-        async function loadAllPosts() {
-            if (GITHUB_REPO) {
-                try {
-                    const cacheBuster = `?t=${new Date().getTime()}`;
-                    const response = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents/content/posts${cacheBuster}`);
-                    if (response.ok) {
-                        const files = await response.json();
-                        const fetchedPosts = [];
-                        
-                        for (const file of files) {
-                            if (file.name.endsWith('.json')) {
-                                try {
-                                    const fileRes = await fetch(`${file.download_url}${cacheBuster}`);
-                                    if (fileRes.ok) {
-                                        const postContent = await fileRes.json();
-                                        if (postContent && typeof postContent === 'object') {
-                                            // Assign slug from file name
-                                            const fileSlug = file.name.replace('.json', '');
-                                            postContent.slug = fileSlug;
-                                            fetchedPosts.push(postContent);
-                                        }
-                                    }
-                                } catch (innerError) {
-                                    console.warn("Lỗi tải chi tiết bài viết: ", file.name, innerError);
-                                }
-                            }
-                        }
-                        if (fetchedPosts.length > 0) {
-                            postsData = fetchedPosts;
-                        }
-                    }
-                } catch (e) {
-                    console.warn("Lỗi fetch GitHub API, dùng dữ liệu local làm fallback: ", e);
-                }
-            }
-            
-            renderWebsiteContent();
-        }
-
-        function renderWebsiteContent() {
-            const validPosts = postsData.filter(p => p && typeof p === 'object');
-            const sortedPosts = validPosts.sort((a, b) => {
-                const dateA = a.date ? new Date(a.date) : new Date();
-                const dateB = b.date ? new Date(b.date) : new Date();
-                return dateB - dateA;
-            });
-
-            // 1. Render Swiper Slider (latest 3 posts)
-            const sliderPosts = sortedPosts.slice(0, 3);
-            const sliderHTML = sliderPosts.map(post => {
-                const title = post.title || 'Bài viết không tiêu đề';
-                const image = post.image || 'https://images.unsplash.com/photo-1621761191319-c6fb62004040?auto=format&fit=crop&w=1200&q=80';
-                const category = post.category || 'Crypto';
-                const dateStr = post.date ? new Date(post.date).toLocaleDateString('vi-VN') : 'Đang cập nhật';
-                return `
-                    <div class="swiper-slide" style="background-image: url('${image}'); cursor: pointer;" onclick="location.href=getPostLink('${post.slug}')">
-                        <div class="swiper-slide-overlay">
-                            <span class="swiper-slide-tag">${category}</span>
-                            <h2 class="swiper-slide-title">${title}</h2>
-                            <div class="swiper-slide-meta">${dateStr}</div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-            
-            const sliderWrapper = document.getElementById('slider-wrapper');
-            if (sliderWrapper) sliderWrapper.innerHTML = sliderHTML;
-
-            // Re-initialize Swiper (wrapped in try-catch to prevent script crashes)
-            if (document.getElementById('welcome-swiper') && sliderPosts.length > 0) {
-                try {
-                    new Swiper('#welcome-swiper', {
-                        loop: true,
-                        pagination: { el: '.swiper-pagination', clickable: true },
-                        autoplay: { delay: 5000, disableOnInteraction: false }
-                    });
-                } catch (swiperError) {
-                    console.warn("Swiper failed to initialize:", swiperError);
-                }
-            }
-
-            // 2. Render right tab listing (Mới nhất)
-            renderTabList(sortedPosts);
-
-            // 3. Render Categories Grid below (Pháp lý, Người mới, Chuyên sâu)
-            const categories = ["Pháp lý", "Người mới", "Chuyên sâu"];
-            let gridHTML = '';
-            
-            categories.forEach(cat => {
-                const catPosts = sortedPosts.filter(p => p.category === cat);
-                if (catPosts.length > 0) {
-                    const mainPost = catPosts[0];
-                    const subPosts = catPosts.slice(1, 3);
-                    
-                    let subsHTML = subPosts.map((sp, idx) => `
-                        <div class="d-flex align-items-center gap-2 border-top border-secondary py-2">
-                            <span class="text-warning fw-bold small">0${idx+1}</span>
-                            <a href="${getPostLink(sp.slug)}" class="small fw-semibold text-white">${sp.title || 'Bài viết'}</a>
-                        </div>
-                    `).join('');
-
-                    gridHTML += `
-                        <div class="col-md-4" id="${cat.toLowerCase().replace(' ', '-')}">
-                            <h4 class="category-header">${cat}</h4>
-                            <div class="card-custom mb-3" style="cursor: pointer;" onclick="location.href=getPostLink('${mainPost.slug}')">
-                                <img src="${mainPost.image || 'https://images.unsplash.com/photo-1640340434855-6084b1f4901c?auto=format&fit=crop&w=500&q=80'}" class="w-100" style="height:180px; object-fit:cover;" alt="Post img">
-                                <div class="p-3">
-                                    <h5 class="fs-6 fw-bold mb-2">${mainPost.title || 'Không tiêu đề'}</h5>
-                                    <p class="text-muted small mb-0">${mainPost.excerpt || ''}</p>
-                                </div>
-                            </div>
-                            ${subsHTML}
-                        </div>
-                    `;
-                }
-            });
-            const gridContainer = document.getElementById('categories-grid-container');
-            if (gridContainer) gridContainer.innerHTML = gridHTML;
-        }
-
-        function renderTabList(posts) {
-            const listEl = document.getElementById('tabbed-post-list');
-            if (listEl) {
-                listEl.innerHTML = posts.slice(0, 4).map(post => {
-                    const title = post.title || 'Không tiêu đề';
-                    const image = post.image || 'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&w=120&q=80';
-                    const dateStr = post.date ? new Date(post.date).toLocaleDateString('vi-VN') : 'Đang cập nhật';
-                    return `
-                        <div class="welcome-post-item" style="cursor: pointer;" onclick="location.href=getPostLink('${post.slug}')">
-                            <img src="${image}" class="welcome-post-img" alt="post">
-                            <div>
-                                <a href="${getPostLink(post.slug)}" class="welcome-post-title text-white">${title}</a>
-                                <small class="text-secondary">${dateStr}</small>
-                            </div>
-                        </div>
-                    `;
-                }).join('');
-            }
-        }
-        function switchTab(type) {
-            const tabs = document.querySelectorAll('.welcome-tab');
-            tabs.forEach(tab => tab.classList.remove('active'));
-            event.target.classList.add('active');
-            
-            const sortedPosts = [...postsData].sort((a, b) => new Date(b.date) - new Date(a.date));
-            if (type === 'new') {
-                renderTabList(sortedPosts);
-            } else {
-                // For 'hot' view, just shuffle or slice differently for demo
-                renderTabList(sortedPosts.reverse());
-            }
-        }
-
-        // Video Playlist Integration (Dynamic from GitHub / Fallback local)
+        // Video Playlist Integration
         let playlistData = [
             { youtubeId: "2LYNDduF8Ko", title: "P2P USDT: Làm thế nào để không bị khóa tài khoản?" },
             { youtubeId: "9X3l4EcSwNc", title: "Để Crypto Ở Đâu An Toàn? Cơn Ác Mộng Hack Ví Metamask & Sập Sàn Tập Trung" },
-            { youtubeId: "OLGOzdNUjYw", title: "Xu Hướng Crypto 3-5 Năm Tới: Cuộc Cách Mạng Thanh Toán Bằng Stablecoin Của Các Ông Lớn" }
+            { youtubeId: "OLGOzdNUjYw", title: "Xu Hướng Crypto 3-5 Năm Tới: Cuộc Cách Mạng Thanh Toán Bằng Stablecoin" }
         ];
-
-        async function loadVideos() {
-            try {
-                const cacheBuster = `?t=${new Date().getTime()}`;
-                const response = await fetch(`content/videos.json${cacheBuster}`);
-                if (response.ok) {
-                    const fetchedVideos = await response.json();
-                    if (fetchedVideos && fetchedVideos.length > 0) {
-                        playlistData = fetchedVideos;
-                    }
-                }
-            } catch (e) {
-                console.warn("Lỗi tải danh sách video từ máy chủ, dùng dữ liệu mặc định: ", e);
-            }
-            renderVideos();
-        }
 
         function getYouTubeId(urlOrId) {
             if (!urlOrId) return '';
@@ -730,18 +307,12 @@
                     const cleanId = getYouTubeId(video.youtubeId);
                     const thumbUrl = `https://img.youtube.com/vi/${cleanId}/mqdefault.jpg`;
                     return `
-                        <div class="video-item ${index === 0 ? 'active' : ''}" onclick="playVideo('${cleanId}', this)">
-                            <img src="${thumbUrl}" class="video-thumbnail" alt="video thumb">
-                            <div class="video-title text-white">${video.title}</div>
+                        <div class="playlist-video-item ${index === 0 ? 'active' : ''}" onclick="playVideo('${cleanId}', this)">
+                            <img src="${thumbUrl}" class="video-item-thumb" alt="video thumb">
+                            <div class="video-item-title">${video.title}</div>
                         </div>
                     `;
                 }).join('');
-            }
-            // Set the first video as default source for the player if element exists
-            const player = document.getElementById('main-video-player');
-            if (player && playlistData.length > 0) {
-                const firstId = getYouTubeId(playlistData[0].youtubeId);
-                player.src = `https://www.youtube.com/embed/${firstId}`;
             }
         }
 
@@ -750,113 +321,26 @@
             if (player) {
                 player.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
             }
-            document.querySelectorAll('.video-item').forEach(item => item.classList.remove('active'));
+            document.querySelectorAll('.playlist-video-item').forEach(item => item.classList.remove('active'));
             if (element) element.classList.add('active');
         }
 
-        // Run load
-        loadAllPosts();
-        loadVideos();
-
-        // Global Coin Price Data (Persists price updates over time)
-        const coinMeta = {
-            'BTC': { name: 'Bitcoin', symbol: 'BTC', icon: 'https://assets.coincap.io/assets/icons/btc@2x.png', price: 67250.50, change: 2.45 },
-            'ETH': { name: 'Ethereum', symbol: 'ETH', icon: 'https://assets.coincap.io/assets/icons/eth@2x.png', price: 3480.20, change: -1.15 },
-            'SOL': { name: 'Solana', symbol: 'SOL', icon: 'https://assets.coincap.io/assets/icons/sol@2x.png', price: 182.40, change: 5.82 },
-            'BNB': { name: 'BNB', symbol: 'BNB', icon: 'https://assets.coincap.io/assets/icons/bnb@2x.png', price: 585.90, change: 0.12 },
-            'XRP': { name: 'Ripple', symbol: 'XRP', icon: 'https://assets.coincap.io/assets/icons/xrp@2x.png', price: 0.612, change: -2.34 },
-            'ADA': { name: 'Cardano', symbol: 'ADA', icon: 'https://assets.coincap.io/assets/icons/ada@2x.png', price: 0.385, change: 1.05 },
-            'DOGE': { name: 'Dogecoin', symbol: 'DOGE', icon: 'https://assets.coincap.io/assets/icons/doge@2x.png', price: 0.124, change: 12.45 },
-            'WEFI': { name: 'WeFi', symbol: 'WeFI', icon: 'https://s2.coinmarketcap.com/static/img/coins/64x64/34261.png', price: 2.10, change: 3.82 }
-        };
-
-        async function fetchCoinPrices() {
+        async function loadVideos() {
             try {
-                // Fetch live prices from CoinCap (CORS-friendly, free, stable)
-                const response = await fetch('https://api.coincap.io/v2/assets?ids=bitcoin,ethereum,solana,binance-coin,ripple,cardano,dogecoin');
+                const response = await fetch(`content/videos.json?t=${Date.now()}`);
                 if (response.ok) {
-                    const resData = await response.json();
-                    const data = resData.data;
-                    
-                    const idMap = {
-                        'bitcoin': 'BTC',
-                        'ethereum': 'ETH',
-                        'solana': 'SOL',
-                        'binance-coin': 'BNB',
-                        'ripple': 'XRP',
-                        'cardano': 'ADA',
-                        'dogecoin': 'DOGE'
-                    };
-                    
-                    data.forEach(item => {
-                        const key = idMap[item.id];
-                        if (key && coinMeta[key]) {
-                            coinMeta[key].price = parseFloat(item.priceUsd);
-                            coinMeta[key].change = parseFloat(item.changePercent24Hr);
-                        }
-                    });
-                    
-                    // Simulate WeFI live price changes linked to BTC movements
-                    if (coinMeta['WEFI'] && coinMeta['BTC']) {
-                        const btcChange = coinMeta['BTC'].change;
-                        const randomFactor = (Math.random() - 0.5) * 0.15;
-                        coinMeta['WEFI'].change = btcChange + randomFactor;
-                        coinMeta['WEFI'].price += coinMeta['WEFI'].price * (randomFactor / 100);
+                    const fetchedVideos = await response.json();
+                    if (fetchedVideos && fetchedVideos.length > 0) {
+                        playlistData = fetchedVideos;
                     }
                 }
-            } catch (error) {
-                console.warn("CoinCap API failed or CORS error, simulating prices locally instead:", error);
-                for (const key in coinMeta) {
-                    const change = (Math.random() - 0.5) * 0.1;
-                    coinMeta[key].price += coinMeta[key].price * (change / 100);
-                    coinMeta[key].change += change;
-                }
+            } catch (e) {
+                console.warn("Lỗi tải danh sách video: ", e);
             }
-            renderCoins(coinMeta);
+            renderVideos();
         }
 
-        function renderCoins(dataMap) {
-            let marqueeHTML = '';
-            const coinsList = Object.keys(dataMap).map(key => ({
-                symbol: dataMap[key].symbol,
-                icon: dataMap[key].icon,
-                price: dataMap[key].price,
-                change: dataMap[key].change
-            }));
-            const doubleCoins = [...coinsList, ...coinsList, ...coinsList];
-            
-            doubleCoins.forEach(coin => {
-                const priceFormatted = coin.price.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-                const isUp = coin.change >= 0;
-                const changeText = `${isUp ? '+' : ''}${coin.change.toFixed(2)}%`;
-                const changeClass = isUp ? 'up' : 'down';
-                
-                marqueeHTML += `
-                    <div class="coin-item">
-                        <img src="${coin.icon}" class="coin-icon" alt="${coin.symbol}">
-                        <span class="text-dark fw-bold">${coin.symbol}</span>
-                        <span class="text-secondary small">${priceFormatted}</span>
-                        <span class="coin-change ${changeClass}">${changeText}</span>
-                    </div>
-                `;
-            });
-            const marqueeEl = document.getElementById('coin-marquee');
-            if (marqueeEl) marqueeEl.innerHTML = marqueeHTML;
-        }
-
-        fetchCoinPrices();
-        setInterval(fetchCoinPrices, 5000);
-    </script>
-    <script>
-      if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", user => {
-          if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
-            });
-          }
-        });
-      }
+        window.addEventListener('DOMContentLoaded', loadVideos);
     </script>
 </body>
 </html>
