@@ -1,0 +1,96 @@
+{
+  "id": "forex-trader",
+  "title": "Lộ Trình Nhà Giao Dịch Forex Thực Chiến",
+  "subtitle": "Hành trình từ tư duy nền tảng, phân tích kỹ thuật chuẩn xác đến quản lý vốn & hệ thống giao dịch bền vững.",
+  "category": "Nhà giao dịch",
+  "badge": "Khóa Học Tiêu Điểm",
+  "image": "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80",
+  "level": "Từ Cơ Bản Đến Thực Chiến",
+  "studentsCount": "1,250+ Học viên",
+  "rating": "4.9/5.0",
+  "totalLessons": 26,
+  "totalDuration": "18 giờ 30 phút",
+  "description": "Chương trình đào tạo toàn diện được đóng gói chuẩn hóa giúp bạn làm chủ thị trường Forex, xây dựng tư duy kỷ luật, bảo vệ vốn và tạo lập lợi nhuận ổn định lâu dài.",
+  "modules": [
+    {
+      "moduleIndex": 1,
+      "title": "Mở đầu: Giới Thiệu Tổng Quan & Hướng Dẫn Sử Dụng",
+      "lessons": [
+        {
+          "id": "trader-1-1",
+          "title": "Giới Thiệu Tổng Quan & Hướng Dẫn Sử Dụng",
+          "youtubeId": "2LYNDduF8Ko",
+          "isFree": true,
+          "duration": "21:00",
+          "summaryMarkdown": "### Mục tiêu bài học\nBài học giúp bạn hiểu bức tranh tổng quan của thị trường Forex, định hình tư duy giao dịch đúng đắn và biết cách học để biến kiến thức thành hành động thực tế.\n\n### Sau bài này, bạn sẽ:\n* **Hiểu vai trò** của một Nhà giao dịch chuyên nghiệp trong thị trường tài chính.\n* **Nắm được cấu trúc và logic** xuyên suốt của chương trình đào tạo 90 ngày.\n* **Biết cách sử dụng khóa học** hiệu quả, ghi chép nhật ký và thực hành bài tập.\n* **Thiết lập kỳ vọng đúng** về kết quả, quản trị rủi ro và trách nhiệm cá nhân.\n\n--- \n\n### 📝 Các bước thực hành ngay:\n1. Tải về **Bản Kế Hoạch 90 Ngày** bên dưới.\n2. Thiết lập phần mềm TradingView và tài khoản Demo để luyện tập.\n3. Chuẩn bị sổ tay ghi chép Nhật ký giao dịch (Trading Journal)."
+        }
+      ]
+    },
+    {
+      "moduleIndex": 2,
+      "title": "Module 1: Khai Mở Tư Duy & Bản Chất Thị Trường FX",
+      "lessons": [
+        {
+          "id": "trader-2-1",
+          "title": "Bản Chất Thị Trường Forex & Cách Các Quỹ Lớn Giao Dịch",
+          "youtubeId": "9X3l4EcSwNc",
+          "isFree": true,
+          "duration": "25:30",
+          "summaryMarkdown": "### Mục tiêu bài học\nGiải mã cách thức vận hành của dòng tiền lớn (Smart Money / Institutional Trading) và lý do 95% trader cá nhân thua lỗ.\n\n### Kiến thức cốt lõi:\n* **Thanh khoản (Liquidity)** là nhiên liệu của thị trường.\n* **Sự khác biệt** giữa giao dịch theo đám đông và giao dịch theo dấu chân Smart Money.\n* **Công thức 3 bước** xác định vùng giá tổ chức thu gom hàng."
+        },
+        {
+          "id": "trader-2-2",
+          "title": "Tâm Lý Học Giao Dịch: Kiểm Soát FOMO & Nỗi Sợ Hãi",
+          "youtubeId": "OLGOzdNUjYw",
+          "isFree": true,
+          "duration": "19:45",
+          "summaryMarkdown": "### Mục tiêu bài học\nNắm vững các quy luật tâm lý học hành vi, làm chủ cảm xúc trước các biến động giá bất ngờ.\n\n### Nội dung chính:\n* Nguyên nhân dẫn đến trả thù thị trường (Revenge Trading).\n* Cách thiết lập quy tắc ngắt mạch cảm xúc khi gặp chuỗi lệnh thua."
+        },
+        {
+          "id": "trader-2-3",
+          "title": "Quản Lý Vốn Nâng Cao: Quy Tắc 1% & Tỷ Lệ R:R Tối Ưu",
+          "youtubeId": "2LYNDduF8Ko",
+          "isFree": false,
+          "duration": "30:15",
+          "summaryMarkdown": "### Mục tiêu bài học\nXây dựng công thức quản lý rủi ro chuẩn quỹ đầu tư, đảm bảo tài khoản không bao giờ bị cháy.\n\n### Nội dung nâng cao:\n* Tính toán Volume lệnh chuẩn xác theo phần trăm rủi ro.\n* Tối ưu hóa tỷ lệ Reward : Risk tối thiểu 1:2."
+        }
+      ]
+    },
+    {
+      "moduleIndex": 3,
+      "title": "Module 2: Công Thức Phân Tích Kỹ Thuật Thực Chiến",
+      "lessons": [
+        {
+          "id": "trader-3-1",
+          "title": "Xác Định Cấu Trúc Thị Trường (Market Structure)",
+          "youtubeId": "9X3l4EcSwNc",
+          "isFree": false,
+          "duration": "28:10",
+          "summaryMarkdown": "### Mục tiêu bài học\nLàm chủ kỹ thuật đọc cấu trúc sóng BOS (Break of Structure) và CHoCH (Change of Character)."
+        },
+        {
+          "id": "trader-3-2",
+          "title": "Bản Đồ Vùng Giá Quan Trọng (Supply & Demand Zones)",
+          "youtubeId": "OLGOzdNUjYw",
+          "isFree": false,
+          "duration": "32:00",
+          "summaryMarkdown": "### Mục tiêu bài học\nXác định vùng Cung - Cầu uy tín có tỷ lệ thắng cao nhất."
+        }
+      ]
+    },
+    {
+      "moduleIndex": 4,
+      "title": "Module 3: Đóng Gói Hệ Thống Giao Dịch & Quản Trị Lệnh",
+      "lessons": [
+        {
+          "id": "trader-4-1",
+          "title": "Quy Trình 4 Bước Vào Lệnh Chuẩn Chuyên Nghiệp",
+          "youtubeId": "2LYNDduF8Ko",
+          "isFree": false,
+          "duration": "24:40",
+          "summaryMarkdown": "### Mục tiêu bài học\nChecklist kiểm tra 4 điều kiện bắt buộc trước khi nhấn nút Bán/Mua."
+        }
+      ]
+    }
+  ]
+}

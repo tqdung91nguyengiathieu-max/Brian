@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Tiết Khóa Học - Brian Forex Academy</title>
+    <!-- Google Fonts & Bootstrap 5 -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="lms-body">
+
+    <!-- Header Navigation -->
+    <header class="py-3 px-4" style="background: #111827; border-bottom: 1px solid #1f2937;">
+        <div class="container d-flex align-items-center justify-content-between">
+            <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none">
+                <div class="rounded-circle bg-warning text-dark d-flex align-items-center justify-content-center fw-bold" style="width:38px; height:38px;">FX</div>
+                <span class="fs-5 fw-bold text-white">Brian Forex Academy</span>
+            </a>
+            <div class="d-flex align-items-center gap-3">
+                <a href="index.html" class="text-secondary hover-warning text-decoration-none small d-none d-md-inline">Trang Chủ</a>
+                <a href="course.html?course=forex-trader" class="text-white hover-warning text-decoration-none small">Khóa Trader</a>
+                <a href="course.html?course=forex-ib" class="text-white hover-warning text-decoration-none small">Khóa IB Forex</a>
+                <a href="learn.html?course=forex-trader" class="btn-gold btn-sm px-3">Vào Học Ngay</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Course Hero Section -->
+    <section class="py-5" style="background: linear-gradient(180deg, #111827 0%, #0b0f19 100%); border-bottom: 1px solid #1e293b;">
+        <div class="container py-4">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-7">
+                    <span class="badge bg-warning text-dark font-bold px-3 py-2 rounded-pill mb-3" id="course-hero-badge">KHÓA HỌC THỰC CHIẾN</span>
+                    <h1 class="display-5 fw-extrabold text-white mb-3" id="course-hero-title">Tên Khóa Học...</h1>
+                    <p class="lead text-secondary mb-4" id="course-hero-subtitle">Mô tả ngắn khóa học...</p>
+
+                    <div class="d-flex flex-wrap gap-4 text-secondary small mb-4">
+                        <div><i class="fa-solid fa-book-open text-warning me-1"></i> <span id="hero-total-lessons">26 Bài Giảng</span></div>
+                        <div><i class="fa-regular fa-clock text-warning me-1"></i> <span id="hero-total-duration">18 Giờ Học</span></div>
+                        <div><i class="fa-solid fa-signal text-warning me-1"></i> <span id="hero-level">Mọi Cấp Độ</span></div>
+                        <div><i class="fa-solid fa-users text-warning me-1"></i> <span id="hero-students">1,200+ Học viên</span></div>
+                    </div>
+
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="#" id="btn-start-learning" class="btn-gold btn-lg px-4 fs-6">
+                            <i class="fa-solid fa-play me-2"></i> Bắt Đầu Học Ngay (Free)
+                        </a>
+                        <a href="https://t.me/" target="_blank" class="btn btn-outline-light btn-lg px-4 fs-6 rounded-3">
+                            <i class="fa-brands fa-telegram me-2"></i> Tư Vấn Đăng Ký
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="course-card-dark p-2" style="border: 2px solid #f59e0b;">
+                        <img src="" id="course-hero-img" class="rounded-3 w-100" style="height: 280px; object-fit: cover;" alt="course banner">
+                        <div class="p-3 text-center">
+                            <div class="text-warning fw-bold mb-1"><i class="fa-solid fa-shield-halved me-1"></i> Đào Tạo Đóng Gói Chuẩn Quốc Tế</div>
+                            <small class="text-secondary">Truy cập học lại trọn đời • Hỗ trợ 24/7 từ đội ngũ Admin</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Syllabus & Modules Breakdown Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-5">
+                
+                <!-- Main Content: Course Modules -->
+                <div class="col-lg-8">
+                    <h3 class="fw-bold text-white mb-4"><i class="fa-solid fa-list-check text-warning me-2"></i> Lộ Trình Chi Tiết Các Module</h3>
+
+                    <div id="syllabus-modules-container">
+                        <!-- Dynamically populated via JS -->
+                    </div>
+                </div>
+
+                <!-- Right Sidebar: Highlights & Target Audience -->
+                <div class="col-lg-4">
+                    <div class="lesson-summary-box mb-4">
+                        <h5 class="fw-bold text-white mb-3"><i class="fa-solid fa-bullseye text-warning me-2"></i> Đối Tượng Phù Hợp</h5>
+                        <ul class="text-secondary small mb-0 ps-3">
+                            <li class="mb-2">Trader mới muốn tiếp cận phân tích kỹ thuật chuẩn xác.</li>
+                            <li class="mb-2">Nhà giao dịch từng thua lỗ do thiếu kỷ luật quản lý vốn.</li>
+                            <li class="mb-2">IB Forex muốn nâng cấp dịch vụ và xây dựng cộng đồng bền vững.</li>
+                        </ul>
+                    </div>
+
+                    <div class="lesson-summary-box">
+                        <h5 class="fw-bold text-white mb-3"><i class="fa-solid fa-award text-warning me-2"></i> Quyền Lợi Học Viên</h5>
+                        <ul class="text-secondary small mb-0 ps-3">
+                            <li class="mb-2">Học mọi lúc mọi nơi trên điện thoại & máy tính.</li>
+                            <li class="mb-2">Bộ Tóm Tắt Bài Học tổng hợp chi tiết cho từng video.</li>
+                            <li class="mb-2">Tham gia nhóm Telegram thảo luận signal & giải đáp bài tập.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4 text-center text-secondary small" style="background: #111827; border-top: 1px solid #1f2937;">
+        © 2026 Brian Forex Academy. All rights reserved.
+    </footer>
+
+    <script>
+        function getCourseId() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('course') || 'forex-trader';
+        }
+
+        async function renderCourseDetail() {
+            const courseId = getCourseId();
+            try {
+                const res = await fetch(`content/courses/${courseId}.json?t=${Date.now()}`);
+                if (!res.ok) throw new Error("Course not found");
+                const course = await res.json();
+
+                document.getElementById('course-hero-badge').innerText = course.badge || 'KHÓA HỌC THỰC CHIẾN';
+                document.getElementById('course-hero-title').innerText = course.title;
+                document.getElementById('course-hero-subtitle').innerText = course.subtitle;
+                document.getElementById('hero-total-lessons').innerText = `${course.totalLessons || 20} Bài Giảng`;
+                document.getElementById('hero-total-duration').innerText = course.totalDuration || '15 Giờ';
+                document.getElementById('hero-level').innerText = course.level || 'Cơ Bản Đến Nâng Cao';
+                document.getElementById('hero-students').innerText = course.studentsCount || '1,000+ Học viên';
+                document.getElementById('course-hero-img').src = course.image;
+
+                // Set CTA button link to first free lesson
+                let firstLessonId = null;
+                if (course.modules && course.modules[0] && course.modules[0].lessons[0]) {
+                    firstLessonId = course.modules[0].lessons[0].id;
+                }
+                const learnUrl = firstLessonId ? `learn.html?course=${courseId}&lesson=${firstLessonId}` : `learn.html?course=${courseId}`;
+                document.getElementById('btn-start-learning').href = learnUrl;
+
+                // Render Modules Accordion List
+                const modulesContainer = document.getElementById('syllabus-modules-container');
+                let html = '';
+
+                course.modules.forEach((mod, idx) => {
+                    html += `
+                        <div class="module-accordion-card mb-3">
+                            <div class="module-accordion-header" onclick="this.parentElement.classList.toggle('collapsed')">
+                                <div class="d-flex align-items-center">
+                                    <div class="module-index-badge">${idx + 1}</div>
+                                    <div class="module-title-text">${mod.title}</div>
+                                </div>
+                                <div class="module-meta-info">
+                                    <span>${mod.lessons.length} bài học</span>
+                                    <i class="fa-solid fa-chevron-down ms-2"></i>
+                                </div>
+                            </div>
+                            <div class="module-accordion-body">
+                    `;
+
+                    mod.lessons.forEach(l => {
+                        html += `
+                            <div class="d-flex align-items-center justify-content-between py-2 px-3 border-bottom border-secondary opacity-75">
+                                <div class="d-flex align-items-center gap-2">
+                                    <i class="fa-regular fa-circle-play text-warning"></i>
+                                    <span class="text-white small fw-semibold">${l.title}</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-3">
+                                    <span class="text-secondary small">${l.duration || ''}</span>
+                                    ${l.isFree ? 
+                                        `<a href="learn.html?course=${courseId}&lesson=${l.id}" class="badge-free text-decoration-none"><i class="fa-solid fa-play me-1"></i> XEM THỬ FREE</a>` : 
+                                        `<span class="badge-locked"><i class="fa-solid fa-lock me-1"></i> KHÓA</span>`
+                                    }
+                                </div>
+                            </div>
+                        `;
+                    });
+
+                    html += `
+                            </div>
+                        </div>
+                    `;
+                });
+
+                modulesContainer.innerHTML = html;
+
+            } catch (err) {
+                console.error(err);
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', renderCourseDetail);
+    </script>
+</body>
+</html>

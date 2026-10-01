@@ -1,0 +1,66 @@
+{
+  "id": "forex-ib",
+  "title": "Khóa Đào Tạo Nghề IB Forex Chuyên Nghiệp",
+  "subtitle": "Bí quyết xây dựng thương hiệu cá nhân, phát triển cộng đồng và vận hành hệ thống IB bền vững, thu nhập thụ động cao.",
+  "category": "Nghề IB Forex",
+  "badge": "Lộ Trình Phát Triển IB",
+  "image": "https://images.unsplash.com/photo-1551836022-d5d88e9218df?auto=format&fit=crop&w=1200&q=80",
+  "level": "Dành Cho IB & Leader Cộng Đồng",
+  "studentsCount": "680+ IB & Agency",
+  "rating": "5.0/5.0",
+  "totalLessons": 18,
+  "totalDuration": "14 giờ 20 phút",
+  "description": "Đóng gói quy trình từ A-Z giúp bạn làm chủ nghề IB Forex: định vị thương hiệu cá nhân, thu hút khách hàng tiềm năng tự nhiên, xây dựng đội ngũ và duy trì khối lượng giao dịch cho hệ thống.",
+  "modules": [
+    {
+      "moduleIndex": 1,
+      "title": "Mở đầu: Định Hướng Nghề IB Forex Trong Kỷ Nguyên Mới",
+      "lessons": [
+        {
+          "id": "ib-1-1",
+          "title": "Tổng Quan Nghề IB Forex: Cơ Hội & Sự Thật Cần Biết",
+          "youtubeId": "OLGOzdNUjYw",
+          "isFree": true,
+          "duration": "18:45",
+          "summaryMarkdown": "### Mục tiêu bài học\nHiểu đúng bản chất của nghề IB (Introducing Broker), tư duy trao giá trị để xây dựng sự nghiệp uy tín lâu dài.\n\n### Nội dung trọng tâm:\n* **Sự khác biệt** giữa IB giá trị thực và IB chèo kéo chốt lệnh ngắn hạn.\n* **Mô hình thu nhập** của IB: Hoa hồng phí giao dịch (Rebate), Phân chia doanh thu (Revenue Share).\n* **Định hướng đạo đức nghề nghiệp** giúp tạo niềm tin tuyệt đối với học viên & khách hàng."
+        }
+      ]
+    },
+    {
+      "moduleIndex": 2,
+      "title": "Module 1: Xây Dựng Thương Hiệu Cá Nhân & Kênh Hút Khách",
+      "lessons": [
+        {
+          "id": "ib-2-1",
+          "title": "Chiến Lược Xây Kênh Telegram & Fanpage Thu Hút 10.000+ Trader",
+          "youtubeId": "2LYNDduF8Ko",
+          "isFree": true,
+          "duration": "26:10",
+          "summaryMarkdown": "### Mục tiêu bài học\nHướng dẫn xây dựng kênh thông tin Signal & Kiến thức có tỷ lệ tương tác cao.\n\n### Nội dung chính:\n* Cấu trúc bài đăng chuẩn giúp xây dựng vị thế chuyên gia.\n* Cách thiết lập Bot Telegram tự động hóa quản lý thành viên."
+        },
+        {
+          "id": "ib-2-2",
+          "title": "Tạo Phễu Dẫn Khách Hàng Tự Nhiên Không Cần Chèo Kéo",
+          "youtubeId": "9X3l4EcSwNc",
+          "isFree": false,
+          "duration": "22:50",
+          "summaryMarkdown": "### Mục tiêu bài học\nThiết lập phễu quà tặng kiến thức, tài liệu trade chuẩn hóa để thu hút nhà đầu tư chất lượng."
+        }
+      ]
+    },
+    {
+      "moduleIndex": 3,
+      "title": "Module 2: Quản Trị Hệ Thống & Giữ Chân Khách Hàng Bền Vững",
+      "lessons": [
+        {
+          "id": "ib-3-1",
+          "title": "Nghệ Thuật Tư Vấn & Đồng Hành Cùng Trader Nhỏ Lẻ",
+          "youtubeId": "OLGOzdNUjYw",
+          "isFree": false,
+          "duration": "29:15",
+          "summaryMarkdown": "### Mục tiêu bài học\nQuy trình hỗ trợ giải đáp thắc mắc, quản lý tâm lý cho nhà đầu tư trong hệ thống."
+        }
+      ]
+    }
+  ]
+}

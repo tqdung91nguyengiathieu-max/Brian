@@ -54,3 +54,39 @@ collections:
       - label: "Mã YouTube ID (ví dụ: dQw4w9WgXcQ)"
         name: "youtubeId"
         widget: "string"
+
+  - name: "courses"
+    label: "Quản lý Khóa học Forex"
+    folder: "content/courses"
+    create: true
+    slug: "{{fields.id}}"
+    format: "json"
+    fields:
+      - { label: "Mã Khóa Học (ví dụ: forex-trader hoặc forex-ib)", name: "id", widget: "string" }
+      - { label: "Tên Khóa Học", name: "title", widget: "string" }
+      - { label: "Tiêu Đề Phụ / Mô Tả Ngắn", name: "subtitle", widget: "string" }
+      - { label: "Phân Loại (Nhà giao dịch / Nghề IB Forex)", name: "category", widget: "string" }
+      - { label: "Badge Nổi Bật", name: "badge", widget: "string" }
+      - { label: "Ảnh Banner Khóa Học", name: "image", widget: "image" }
+      - { label: "Cấp Độ Học", name: "level", widget: "string" }
+      - { label: "Số Lượng Học Viên", name: "studentsCount", widget: "string" }
+      - { label: "Đánh Giá (ví dụ: 4.9/5.0)", name: "rating", widget: "string" }
+      - { label: "Tổng Số Bài Giảng", name: "totalLessons", widget: "number" }
+      - { label: "Tổng Thời Lượng", name: "totalDuration", widget: "string" }
+      - { label: "Mô Tả Chi Tiết Khóa Học", name: "description", widget: "text" }
+      - label: "Danh Sách Các Module (Chương Học)"
+        name: "modules"
+        widget: "list"
+        fields:
+          - { label: "Số Thứ Tự Module", name: "moduleIndex", widget: "number" }
+          - { label: "Tên Module (Chương)", name: "title", widget: "string" }
+          - label: "Danh Sách Bài Học Trong Module"
+            name: "lessons"
+            widget: "list"
+            fields:
+              - { label: "Mã Bài Học (ví dụ: trader-1-1)", name: "id", widget: "string" }
+              - { label: "Tiêu Đề Bài Học", name: "title", widget: "string" }
+              - { label: "YouTube Video URL / ID", name: "youtubeId", widget: "string" }
+              - { label: "Xem Thử Miễn Phí (FREE)", name: "isFree", widget: "boolean", default: true }
+              - { label: "Thời Lượng Video (ví dụ: 20:00)", name: "duration", widget: "string" }
+              - { label: "Nội Dung Tóm Tắt Bài Học (Markdown)", name: "summaryMarkdown", widget: "markdown" }

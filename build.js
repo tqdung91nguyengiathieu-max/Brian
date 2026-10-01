@@ -38,6 +38,8 @@ copyDir(path.join(__dirname, 'assets'), path.join(distPath, 'assets'));
 copyDir(path.join(__dirname, 'admin'), path.join(distPath, 'admin'));
 copyDir(path.join(__dirname, 'content'), path.join(distPath, 'content'));
 fs.copyFileSync(path.join(__dirname, 'index.html'), path.join(distPath, 'index.html'));
+fs.copyFileSync(path.join(__dirname, 'course.html'), path.join(distPath, 'course.html'));
+fs.copyFileSync(path.join(__dirname, 'learn.html'), path.join(distPath, 'learn.html'));
 fs.copyFileSync(path.join(__dirname, 'style.css'), path.join(distPath, 'style.css'));
 
 // Create posts directory in dist
