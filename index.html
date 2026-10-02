@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brian Forex Academy - Nền Tảng Đào Tạo Forex Thực Chiến</title>
+    <title>NextGen Forex Academy - Nền Tảng Đóng Gói Bài Giảng Đào Tạo</title>
     <!-- Google Fonts Inter & Bootstrap 5 -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -30,7 +30,6 @@
                 <a href="index.html" class="text-warning fw-bold text-decoration-none small">Trang Chủ</a>
                 <a href="course.html?course=forex-trader" class="text-white hover-warning text-decoration-none small fw-semibold">Khóa Trader FX</a>
                 <a href="course.html?course=forex-ib" class="text-white hover-warning text-decoration-none small fw-semibold">Khóa IB Forex</a>
-                <a href="#featured-videos" class="text-white hover-warning text-decoration-none small fw-semibold">Video Tiêu Điểm</a>
             </nav>
 
             <div class="d-flex align-items-center gap-3">
@@ -183,64 +182,6 @@
             </div>
         </div>
     </section>
-                                <span class="text-secondary small">• Xây Dựng Hệ Thống IB</span>
-                            </div>
-                            <h3 class="course-card-title fs-4">Khóa Đào Tạo Nghề IB Forex Chuyên Nghiệp</h3>
-                            <p class="course-card-desc">
-                                Quy trình từ A-Z định vị thương hiệu cá nhân, tạo phễu thu hút nhà đầu tư tự nhiên, quản trị đội ngũ và duy trì khối lượng giao dịch cho hệ thống.
-                            </p>
-
-                            <div class="d-flex align-items-center gap-3 text-secondary small mb-3">
-                                <span><i class="fa-solid fa-book-open text-warning me-1"></i> 18 Bài Giảng</span>
-                                <span><i class="fa-regular fa-clock text-warning me-1"></i> 14 Giờ 20 Phút</span>
-                                <span><i class="fa-solid fa-star text-warning me-1"></i> 5.0/5.0</span>
-                            </div>
-
-                            <div class="course-card-footer">
-                                <a href="course.html?course=forex-ib" class="btn btn-outline-light btn-sm rounded-2">
-                                    Xem Lộ Trình Chi Tiết
-                                </a>
-                                <a href="learn.html?course=forex-ib" class="btn-gold btn-sm">
-                                    <i class="fa-solid fa-play me-1"></i> Vào Học Ngay (Free)
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Featured Video Showcase Section -->
-    <section class="py-5" id="featured-videos" style="background: #0e1422; border-top: 1px solid #1e293b; border-bottom: 1px solid #1e293b;">
-        <div class="container">
-            <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
-                <div>
-                    <h3 class="fw-bold text-white mb-1"><i class="fa-solid fa-circle-play text-warning me-2"></i> Video Học Bài Mẫu Tiêu Điểm</h3>
-                    <p class="text-secondary small mb-0">Xem trực tiếp các bài giảng mẫu hoàn toàn miễn phí</p>
-                </div>
-                <a href="learn.html?course=forex-trader" class="btn btn-outline-warning btn-sm px-3 rounded-pill fw-bold">
-                    Xem Toàn Bộ Trong LMS <i class="fa-solid fa-arrow-right ms-1"></i>
-                </a>
-            </div>
-
-            <div class="row g-4">
-                <div class="col-lg-8">
-                    <div class="video-player-wrapper">
-                        <iframe id="main-video-player" src="https://www.youtube.com/embed/2LYNDduF8Ko" title="YouTube video player" allowfullscreen></iframe>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="playlist-sidebar-card p-3" style="max-height: 440px;">
-                        <h6 class="fw-bold text-white mb-3 text-warning"><i class="fa-solid fa-list me-2"></i> Danh Sách Video Phát Nổi Bật</h6>
-                        <div class="playlist-scroll-area" id="youtube-playlist">
-                            <!-- Populated dynamically via JS -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Why Choose NextGen Forex Academy -->
     <section class="py-5">
@@ -309,63 +250,5 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-        // Video Playlist Integration
-        let playlistData = [
-            { youtubeId: "2LYNDduF8Ko", title: "P2P USDT: Làm thế nào để không bị khóa tài khoản?" },
-            { youtubeId: "9X3l4EcSwNc", title: "Để Crypto Ở Đâu An Toàn? Cơn Ác Mộng Hack Ví Metamask & Sập Sàn Tập Trung" },
-            { youtubeId: "OLGOzdNUjYw", title: "Xu Hướng Crypto 3-5 Năm Tới: Cuộc Cách Mạng Thanh Toán Bằng Stablecoin" }
-        ];
-
-        function getYouTubeId(urlOrId) {
-            if (!urlOrId) return '';
-            const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
-            const match = urlOrId.match(regExp);
-            return (match && match[2].length === 11) ? match[2] : urlOrId.trim();
-        }
-
-        function renderVideos() {
-            const playlistContainer = document.getElementById('youtube-playlist');
-            if (playlistContainer) {
-                playlistContainer.innerHTML = playlistData.map((video, index) => {
-                    const cleanId = getYouTubeId(video.youtubeId);
-                    const thumbUrl = `https://img.youtube.com/vi/${cleanId}/mqdefault.jpg`;
-                    return `
-                        <div class="playlist-video-item ${index === 0 ? 'active' : ''}" onclick="playVideo('${cleanId}', this)">
-                            <img src="${thumbUrl}" class="video-item-thumb" alt="video thumb">
-                            <div class="video-item-title">${video.title}</div>
-                        </div>
-                    `;
-                }).join('');
-            }
-        }
-
-        function playVideo(id, element) {
-            const player = document.getElementById('main-video-player');
-            if (player) {
-                player.src = `https://www.youtube.com/embed/${id}?autoplay=1`;
-            }
-            document.querySelectorAll('.playlist-video-item').forEach(item => item.classList.remove('active'));
-            if (element) element.classList.add('active');
-        }
-
-        async function loadVideos() {
-            try {
-                const response = await fetch(`content/videos.json?t=${Date.now()}`);
-                if (response.ok) {
-                    const fetchedVideos = await response.json();
-                    if (fetchedVideos && fetchedVideos.length > 0) {
-                        playlistData = fetchedVideos;
-                    }
-                }
-            } catch (e) {
-                console.warn("Lỗi tải danh sách video: ", e);
-            }
-            renderVideos();
-        }
-
-        window.addEventListener('DOMContentLoaded', loadVideos);
-    </script>
 </body>
 </html>
