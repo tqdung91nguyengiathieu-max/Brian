@@ -13,16 +13,66 @@
 <body class="lms-body">
 
     <!-- Header Navigation -->
-    <header class="py-3 px-4" style="background: #111827; border-bottom: 1px solid #1f2937;">
-        <div class="container d-flex align-items-center justify-content-between">
-            <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none">
-                <img src="assets/images/logo-nextgen.png" alt="NextGen Logo" style="width:36px; height:36px; object-fit:contain; border-radius:6px;">
-                <span class="fs-5 fw-bold text-white">NextGen Forex Academy</span>
-            </a>
-            <div class="d-flex align-items-center gap-3">
-                <a href="index.html" class="text-secondary hover-warning text-decoration-none small d-none d-md-inline">Trang Chủ</a>
-                <a href="course.html?course=forex-trader" class="text-white hover-warning text-decoration-none small">Khóa Trader</a>
-                <a href="course.html?course=forex-ib" class="text-white hover-warning text-decoration-none small">Khóa IB Forex</a>
+    <header class="main-header-nav py-2 py-md-3 px-3 px-md-4 sticky-top">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <!-- Brand Logo & Title -->
+                <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none">
+                    <img src="assets/images/logo-nextgen.png" alt="NextGen Logo" class="header-brand-logo">
+                    <div>
+                        <span class="fs-6 fs-md-5 fw-extrabold text-white d-block lh-1 header-brand-title">NextGen Forex Academy</span>
+                        <span class="text-warning small header-brand-subtitle" style="font-size:11px; opacity: 0.9;">
+                            <i class="fa-solid fa-shield-halved me-1"></i>Hệ Thống Đóng Gói Bài Giảng Nội Bộ
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Menu Pills -->
+                <nav class="d-none d-md-flex align-items-center">
+                    <div class="nav-pill-container">
+                        <a href="index.html" class="nav-link-pill">
+                            <i class="fa-solid fa-house"></i> Trang Chủ
+                        </a>
+                        <a href="course.html?course=forex-trader" class="nav-link-pill" id="nav-pill-trader">
+                            <i class="fa-solid fa-chart-line"></i> Khóa Trader FX
+                        </a>
+                        <a href="course.html?course=forex-ib" class="nav-link-pill" id="nav-pill-ib">
+                            <i class="fa-solid fa-users-gear"></i> Khóa IB Forex
+                        </a>
+                    </div>
+                </nav>
+
+                <!-- Header Actions & Mobile Toggle -->
+                <div class="d-flex align-items-center gap-2 gap-md-3">
+                    <a href="/admin/" class="btn-admin-nav">
+                        <i class="fa-solid fa-user-shield text-warning"></i> <span>Quản trị</span>
+                    </a>
+                    
+                    <button class="mobile-nav-toggle d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavMenuCourse" aria-controls="mobileNavMenuCourse" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa-solid fa-bars fs-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Collapsible Menu -->
+            <div class="collapse d-md-none" id="mobileNavMenuCourse">
+                <div class="mobile-menu-collapse">
+                    <div class="d-flex flex-column gap-1">
+                        <a href="index.html" class="mobile-menu-link">
+                            <i class="fa-solid fa-house text-warning"></i> Trang Chủ
+                        </a>
+                        <a href="course.html?course=forex-trader" class="mobile-menu-link" id="mobile-link-trader">
+                            <i class="fa-solid fa-chart-line text-warning"></i> Khóa Trader FX
+                        </a>
+                        <a href="course.html?course=forex-ib" class="mobile-menu-link" id="mobile-link-ib">
+                            <i class="fa-solid fa-users-gear text-warning"></i> Khóa IB Forex
+                        </a>
+                        <div class="dropdown-divider border-secondary opacity-25 my-1"></div>
+                        <a href="/admin/" class="mobile-menu-link text-warning">
+                            <i class="fa-solid fa-user-shield"></i> Quản Trị Hệ Thống (CMS)
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
@@ -137,6 +187,19 @@
 
         async function renderCourseDetail() {
             const courseId = getCourseId();
+
+            if (courseId === 'forex-trader') {
+                const navTrader = document.getElementById('nav-pill-trader');
+                const mobTrader = document.getElementById('mobile-link-trader');
+                if (navTrader) navTrader.classList.add('active');
+                if (mobTrader) mobTrader.classList.add('active');
+            } else if (courseId === 'forex-ib') {
+                const navIb = document.getElementById('nav-pill-ib');
+                const mobIb = document.getElementById('mobile-link-ib');
+                if (navIb) navIb.classList.add('active');
+                if (mobIb) mobIb.classList.add('active');
+            }
+
             try {
                 const res = await fetch(`content/courses/${courseId}.json?t=${Date.now()}`);
                 if (!res.ok) throw new Error("Course not found");
@@ -216,5 +279,8 @@
 
         window.addEventListener('DOMContentLoaded', renderCourseDetail);
     </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

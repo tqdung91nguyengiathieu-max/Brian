@@ -16,24 +16,66 @@
 <body class="lms-body">
 
     <!-- Top Navigation Header -->
-    <header class="py-3 px-4 sticky-top" style="background: rgba(17, 24, 39, 0.95); backdrop-filter: blur(12px); border-bottom: 1px solid #1f2937; z-index: 1000;">
-        <div class="container d-flex align-items-center justify-content-between">
-            <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none">
-                <img src="assets/images/logo-nextgen.png" alt="NextGen Forex Academy Logo" style="height: 42px; width: 42px; object-fit: contain; border-radius: 8px;">
-                <div>
-                    <span class="fs-5 fw-bold text-white d-block lh-1">NextGen Forex Academy</span>
-                    <span class="text-secondary small" style="font-size:11px;">Hệ Thống Đóng Gói Bài Giảng Nội Bộ</span>
-                </div>
-            </a>
-            
-            <nav class="d-none d-md-flex align-items-center gap-4">
-                <a href="index.html" class="text-warning fw-bold text-decoration-none small">Trang Chủ</a>
-                <a href="course.html?course=forex-trader" class="text-white hover-warning text-decoration-none small fw-semibold">Khóa Trader FX</a>
-                <a href="course.html?course=forex-ib" class="text-white hover-warning text-decoration-none small fw-semibold">Khóa IB Forex</a>
-            </nav>
+    <header class="main-header-nav py-2 py-md-3 px-3 px-md-4 sticky-top">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+                <!-- Brand Logo & Title -->
+                <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none">
+                    <img src="assets/images/logo-nextgen.png" alt="NextGen Forex Academy Logo" class="header-brand-logo">
+                    <div>
+                        <span class="fs-6 fs-md-5 fw-extrabold text-white d-block lh-1 header-brand-title">NextGen Forex Academy</span>
+                        <span class="text-warning small header-brand-subtitle" style="font-size:11px; opacity: 0.9;">
+                            <i class="fa-solid fa-shield-halved me-1"></i>Hệ Thống Đóng Gói Bài Giảng Nội Bộ
+                        </span>
+                    </div>
+                </a>
 
-            <div class="d-flex align-items-center gap-3">
-                <a href="/admin/" class="btn btn-outline-secondary btn-sm px-3 text-white border-secondary">Quản trị</a>
+                <!-- Desktop Navigation Menu Pills -->
+                <nav class="d-none d-md-flex align-items-center">
+                    <div class="nav-pill-container">
+                        <a href="index.html" class="nav-link-pill active">
+                            <i class="fa-solid fa-house"></i> Trang Chủ
+                        </a>
+                        <a href="course.html?course=forex-trader" class="nav-link-pill">
+                            <i class="fa-solid fa-chart-line"></i> Khóa Trader FX
+                        </a>
+                        <a href="course.html?course=forex-ib" class="nav-link-pill">
+                            <i class="fa-solid fa-users-gear"></i> Khóa IB Forex
+                        </a>
+                    </div>
+                </nav>
+
+                <!-- Header Actions & Mobile Toggle -->
+                <div class="d-flex align-items-center gap-2 gap-md-3">
+                    <a href="/admin/" class="btn-admin-nav">
+                        <i class="fa-solid fa-user-shield text-warning"></i> <span>Quản trị</span>
+                    </a>
+                    
+                    <button class="mobile-nav-toggle d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavMenu" aria-controls="mobileNavMenu" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fa-solid fa-bars fs-5"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Collapsible Menu -->
+            <div class="collapse d-md-none" id="mobileNavMenu">
+                <div class="mobile-menu-collapse">
+                    <div class="d-flex flex-column gap-1">
+                        <a href="index.html" class="mobile-menu-link active">
+                            <i class="fa-solid fa-house text-warning"></i> Trang Chủ
+                        </a>
+                        <a href="course.html?course=forex-trader" class="mobile-menu-link">
+                            <i class="fa-solid fa-chart-line text-warning"></i> Khóa Trader FX
+                        </a>
+                        <a href="course.html?course=forex-ib" class="mobile-menu-link">
+                            <i class="fa-solid fa-users-gear text-warning"></i> Khóa IB Forex
+                        </a>
+                        <div class="dropdown-divider border-secondary opacity-25 my-1"></div>
+                        <a href="/admin/" class="mobile-menu-link text-warning">
+                            <i class="fa-solid fa-user-shield"></i> Quản Trị Hệ Thống (CMS)
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </header>
