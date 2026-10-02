@@ -8,26 +8,12 @@
   "level": "Từ Cơ Bản Đến Thực Chiến",
   "studentsCount": "1,250+ Học viên",
   "rating": "4.9/5.0",
-  "totalLessons": 29,
-  "totalDuration": "22 giờ 30 phút",
+  "totalLessons": 28,
+  "totalDuration": "21 giờ 45 phút",
   "description": "Chương trình đào tạo toàn diện được đóng gói chuẩn hóa giúp bạn làm chủ thị trường Forex, xây dựng tư duy kỷ luật, bảo vệ vốn và tạo lập lợi nhuận ổn định lâu dài.",
   "modules": [
     {
       "moduleIndex": 1,
-      "title": "Mở đầu: Giới Thiệu Tổng Quan & Hướng Dẫn Sử Dụng",
-      "lessons": [
-        {
-          "id": "trader-1-1",
-          "title": "Giới Thiệu Tổng Quan & Hướng Dẫn Sử Dụng",
-          "youtubeId": "2LYNDduF8Ko",
-          "isFree": true,
-          "duration": "21:00",
-          "summaryMarkdown": "### Mục tiêu bài học\nBài học giúp bạn hiểu bức tranh tổng quan của thị trường Forex, định hình tư duy giao dịch đúng đắn và biết cách học để biến kiến thức thành hành động thực tế.\n\n### Sau bài này, bạn sẽ:\n* **Hiểu vai trò** của một Nhà giao dịch chuyên nghiệp trong thị trường tài chính.\n* **Nắm được cấu trúc và logic** xuyên suốt của chương trình đào tạo.\n* **Biết cách sử dụng khóa học** hiệu quả, ghi chép nhật ký và thực hành bài tập.\n* **Thiết lập kỳ vọng đúng** về kết quả, quản trị rủi ro và trách nhiệm cá nhân.\n\n--- \n\n### 📝 Các bước thực hành ngay:\n1. Tải về **Bản Kế Hoạch Đào Tạo** bên dưới.\n2. Thiết lập phần mềm TradingView và tài khoản Demo để luyện tập.\n3. Chuẩn bị sổ tay ghi chép Nhật ký giao dịch (Trading Journal)."
-        }
-      ]
-    },
-    {
-      "moduleIndex": 2,
       "title": "🔥 Module 3 Buổi Đào Tạo Thực Chiến Mới Nhất (Team NextGen)",
       "lessons": [
         {
@@ -63,7 +49,7 @@
       ]
     },
     {
-      "moduleIndex": 3,
+      "moduleIndex": 2,
       "title": "Module 1: Khai Mở Tư Duy & Bản Chất Thị Trường FX",
       "lessons": [
         {
@@ -93,7 +79,7 @@
       ]
     },
     {
-      "moduleIndex": 4,
+      "moduleIndex": 3,
       "title": "Module 2: Công Thức Phân Tích Kỹ Thuật Thực Chiến",
       "lessons": [
         {
@@ -115,7 +101,7 @@
       ]
     },
     {
-      "moduleIndex": 5,
+      "moduleIndex": 4,
       "title": "Module 3: Đóng Gói Hệ Thống Giao Dịch & Quản Trị Lệnh",
       "lessons": [
         {
