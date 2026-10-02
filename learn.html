@@ -479,9 +479,17 @@
                 document.getElementById('meta-badge-status').innerHTML = `<i class="fa-solid fa-unlock"></i> ĐÃ MỞ KHÓA`;
                 
                 lockedOverlay.style.display = 'none';
-                pendingOverlay.style.display = 'none';
                 iframe.style.display = 'none';
                 iframe.src = '';
+
+                mp4Video.onerror = function() {
+                    console.warn("Video file not found on live online server.");
+                    mp4Video.style.display = 'none';
+                    pendingOverlay.style.display = 'flex';
+                    const bannerBg = lesson.banner || 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80';
+                    pendingOverlay.style.backgroundImage = `url('${bannerBg}')`;
+                    document.getElementById('pending-lesson-title').innerText = lesson.title;
+                };
 
                 mp4Video.style.display = 'block';
                 mp4Video.src = lesson.videoUrl;
