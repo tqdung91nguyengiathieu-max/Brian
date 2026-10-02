@@ -1,0 +1,9 @@
+# Ignore large video files in assets
+assets/videos/*.mp4
+*.mp4
+*.m4a
+
+# Node modules & OS junk
+node_modules/
+.DS_Store
+Thumbs.db
