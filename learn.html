@@ -240,7 +240,7 @@
 
                 module.lessons.forEach((lesson) => {
                     const cleanId = cleanYouTubeId(lesson.youtubeId);
-                    const thumbUrl = cleanId ? `https://img.youtube.com/vi/${cleanId}/mqdefault.jpg` : 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=120&q=80';
+                    const thumbUrl = lesson.banner || (cleanId ? `https://img.youtube.com/vi/${cleanId}/mqdefault.jpg` : 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=120&q=80');
                     const idxStr = globalLessonIndex < 10 ? `0${globalLessonIndex}` : `${globalLessonIndex}`;
 
                     html += `
