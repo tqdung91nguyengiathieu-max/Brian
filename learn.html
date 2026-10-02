@@ -116,9 +116,17 @@
             <div class="col-lg-4">
                 <div class="playlist-sidebar-card">
                     
-                    <div class="playlist-sidebar-header">
-                        <h6>Danh Sách Bài Học</h6>
-                        <span class="playlist-sidebar-count" id="sidebar-total-stats">0 video • 0 miễn phí</span>
+                    <div class="playlist-sidebar-header d-flex flex-column gap-2">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h6 class="mb-0 fw-bold text-white"><i class="fa-solid fa-list-ul text-warning me-2"></i>Danh Sách Bài Học</h6>
+                            <span class="playlist-sidebar-count" id="sidebar-total-stats">0 video • 0 miễn phí</span>
+                        </div>
+                        <!-- Module Filter Select Dropdown -->
+                        <div>
+                            <select id="module-filter-select" class="form-select form-select-sm bg-dark text-warning border-secondary fw-semibold" style="font-size: 12px; border-radius: 6px; cursor: pointer;" onchange="onModuleFilterChange(this.value)">
+                                <option value="all">📁 Tất Cả Module</option>
+                            </select>
+                        </div>
                     </div>
 
                     <div class="playlist-scroll-area" id="module-accordion-container">
@@ -139,13 +147,15 @@
     <script>
         let currentCourseData = null;
         let activeLessonId = null;
+        let currentModuleFilter = null; // null, 1-based index (e.g. 2), or 'all'
 
         // Extract parameters from URL
         function getUrlParams() {
             const params = new URLSearchParams(window.location.search);
             return {
                 courseId: params.get('course') || 'forex-trader',
-                lessonId: params.get('lesson') || null
+                lessonId: params.get('lesson') || null,
+                moduleParam: params.get('module') || null
             };
         }
 
@@ -157,9 +167,21 @@
             return (match && match[2].length === 11) ? match[2] : urlOrId.trim();
         }
 
+        // Find lesson object by ID
+        function findLessonById(id) {
+            if (!currentCourseData) return null;
+            for (let modIdx = 0; modIdx < currentCourseData.modules.length; modIdx++) {
+                const mod = currentCourseData.modules[modIdx];
+                for (let l of mod.lessons) {
+                    if (l.id === id) return { lesson: l, module: mod, moduleIndex: modIdx };
+                }
+            }
+            return null;
+        }
+
         // Load Course JSON data
         async function loadClassroom() {
-            const { courseId, lessonId } = getUrlParams();
+            const { courseId, lessonId, moduleParam } = getUrlParams();
 
             try {
                 const response = await fetch(`content/courses/${courseId}.json?t=${Date.now()}`);
@@ -175,27 +197,47 @@
                     <span class="text-secondary d-none d-sm-inline">| ${currentCourseData.title}</span>
                 `;
 
-                // Calculate Stats
                 let totalVideos = 0;
-                let freeVideos = 0;
-                let firstLessonId = null;
-
                 currentCourseData.modules.forEach(mod => {
-                    mod.lessons.forEach(l => {
-                        totalVideos++;
-                        if (l.isFree) freeVideos++;
-                        if (!firstLessonId) firstLessonId = l.id;
-                    });
+                    totalVideos += mod.lessons.length;
                 });
-
                 document.getElementById('topbar-lesson-counter').innerHTML = `<i class="fa-solid fa-play-circle text-warning me-1"></i> Tổng ${totalVideos} Bài Giảng`;
-                document.getElementById('sidebar-total-stats').innerText = `${totalVideos} video • ${freeVideos} miễn phí`;
 
-                // Render Sidebar Accordion
+                // Determine active Module filter
+                if (moduleParam) {
+                    currentModuleFilter = moduleParam === 'all' ? 'all' : parseInt(moduleParam, 10);
+                } else if (lessonId) {
+                    const found = findLessonById(lessonId);
+                    if (found && found.moduleIndex !== undefined) {
+                        currentModuleFilter = found.moduleIndex + 1; // 1-based index
+                    } else {
+                        currentModuleFilter = 'all';
+                    }
+                } else {
+                    currentModuleFilter = 1; // Default to Module 1 if neither module nor lesson specified
+                }
+
+                // Populate Dropdown
+                populateModuleDropdown();
+
+                // Render Sidebar Accordion (only active module or all)
                 renderSidebarAccordion();
 
-                // Select Lesson
-                const targetLessonId = lessonId || firstLessonId;
+                // Select initial lesson
+                let targetLessonId = lessonId;
+                if (!targetLessonId) {
+                    // Get first lesson of currentModuleFilter
+                    if (currentModuleFilter !== 'all') {
+                        const targetMod = currentCourseData.modules[currentModuleFilter - 1];
+                        if (targetMod && targetMod.lessons.length > 0) {
+                            targetLessonId = targetMod.lessons[0].id;
+                        }
+                    }
+                    if (!targetLessonId && currentCourseData.modules[0] && currentCourseData.modules[0].lessons[0]) {
+                        targetLessonId = currentCourseData.modules[0].lessons[0].id;
+                    }
+                }
+
                 if (targetLessonId) {
                     selectLesson(targetLessonId, false);
                 }
@@ -210,25 +252,106 @@
             }
         }
 
+        // Populate Module Selector Dropdown
+        function populateModuleDropdown() {
+            const select = document.getElementById('module-filter-select');
+            if (!select || !currentCourseData) return;
+
+            let html = `<option value="all">📁 Tất Cả Module (${currentCourseData.modules.length} Module)</option>`;
+            currentCourseData.modules.forEach((mod, idx) => {
+                const modNum = idx + 1;
+                const selectedAttr = (currentModuleFilter == modNum) ? 'selected' : '';
+                html += `<option value="${modNum}" ${selectedAttr}>Module ${modNum}: ${mod.title}</option>`;
+            });
+
+            select.innerHTML = html;
+            select.value = currentModuleFilter === 'all' ? 'all' : currentModuleFilter;
+        }
+
+        // Handle dropdown change
+        function onModuleFilterChange(val) {
+            currentModuleFilter = val === 'all' ? 'all' : parseInt(val, 10);
+            
+            // Update URL without full refresh
+            const url = new URL(window.location);
+            if (currentModuleFilter === 'all') {
+                url.searchParams.delete('module');
+            } else {
+                url.searchParams.set('module', currentModuleFilter);
+            }
+            window.history.pushState({}, '', url);
+
+            renderSidebarAccordion();
+
+            // Auto select first lesson of selected module if current lesson is not in this module
+            if (currentModuleFilter !== 'all') {
+                const targetMod = currentCourseData.modules[currentModuleFilter - 1];
+                if (targetMod && targetMod.lessons.length > 0) {
+                    const isCurrentInModule = targetMod.lessons.some(l => l.id === activeLessonId);
+                    if (!isCurrentInModule) {
+                        selectLesson(targetMod.lessons[0].id, true);
+                    }
+                }
+            }
+        }
+
         // Render Accordion List of Modules & Videos
         function renderSidebarAccordion() {
             const container = document.getElementById('module-accordion-container');
             if (!container || !currentCourseData) return;
 
-            let html = '';
-            let globalLessonIndex = 1;
+            let modulesToRender = [];
+            if (currentModuleFilter && currentModuleFilter !== 'all') {
+                const targetIdx = currentModuleFilter - 1;
+                if (currentCourseData.modules[targetIdx]) {
+                    modulesToRender = [{ module: currentCourseData.modules[targetIdx], originalIndex: targetIdx }];
+                } else {
+                    modulesToRender = currentCourseData.modules.map((m, i) => ({ module: m, originalIndex: i }));
+                }
+            } else {
+                modulesToRender = currentCourseData.modules.map((m, i) => ({ module: m, originalIndex: i }));
+            }
 
-            currentCourseData.modules.forEach((module, modIdx) => {
+            // Calculate stats for current view
+            let totalViewVideos = 0;
+            let freeViewVideos = 0;
+            modulesToRender.forEach(item => {
+                item.module.lessons.forEach(l => {
+                    totalViewVideos++;
+                    if (l.isFree) freeViewVideos++;
+                });
+            });
+
+            const statsEl = document.getElementById('sidebar-total-stats');
+            if (statsEl) {
+                if (currentModuleFilter && currentModuleFilter !== 'all') {
+                    statsEl.innerText = `Module ${currentModuleFilter} • ${totalViewVideos} video • ${freeViewVideos} miễn phí`;
+                } else {
+                    statsEl.innerText = `${totalViewVideos} video • ${freeViewVideos} miễn phí`;
+                }
+            }
+
+            let html = '';
+
+            modulesToRender.forEach(item => {
+                const module = item.module;
+                const modIdx = item.originalIndex;
                 const modFreeCount = module.lessons.filter(l => l.isFree).length;
                 
+                // Calculate global index offset for lesson numbering
+                let startLessonIndex = 1;
+                for (let i = 0; i < modIdx; i++) {
+                    startLessonIndex += currentCourseData.modules[i].lessons.length;
+                }
+
                 html += `
                     <div class="module-accordion-card" id="module-card-${modIdx}">
                         <div class="module-accordion-header" onclick="toggleModule(${modIdx})">
                             <div class="d-flex align-items-center">
                                 <div class="module-index-badge">${modIdx + 1}</div>
-                                <div class="module-title-text">${module.title}</div>
+                                <div class="module-title-text" style="font-size: 13px; line-height: 1.3;">${module.title}</div>
                             </div>
-                            <div class="module-meta-info">
+                            <div class="module-meta-info ms-2">
                                 <span><i class="fa-solid fa-list-ul me-1"></i> ${module.lessons.length} video</span>
                                 ${modFreeCount > 0 ? `<span class="badge-free py-0 px-1" style="font-size:10px;">${modFreeCount} FREE</span>` : ''}
                                 <i class="fa-solid fa-chevron-down ms-1 toggle-icon" id="module-icon-${modIdx}"></i>
@@ -238,13 +361,15 @@
                         <div class="module-accordion-body" id="module-body-${modIdx}">
                 `;
 
+                let currentLessonNum = startLessonIndex;
                 module.lessons.forEach((lesson) => {
                     const cleanId = cleanYouTubeId(lesson.youtubeId);
                     const thumbUrl = lesson.banner || (cleanId ? `https://img.youtube.com/vi/${cleanId}/mqdefault.jpg` : 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=120&q=80');
-                    const idxStr = globalLessonIndex < 10 ? `0${globalLessonIndex}` : `${globalLessonIndex}`;
+                    const idxStr = currentLessonNum < 10 ? `0${currentLessonNum}` : `${currentLessonNum}`;
+                    const isActive = lesson.id === activeLessonId;
 
                     html += `
-                        <div class="playlist-video-item" id="nav-item-${lesson.id}" onclick="selectLesson('${lesson.id}', true)">
+                        <div class="playlist-video-item ${isActive ? 'active' : ''}" id="nav-item-${lesson.id}" onclick="selectLesson('${lesson.id}', true)">
                             <div class="video-item-index">${idxStr}</div>
                             <img src="${thumbUrl}" class="video-item-thumb" alt="thumbnail">
                             <div class="video-item-details">
@@ -252,12 +377,12 @@
                                 <div class="video-item-badges">
                                     ${lesson.isFree ? `<span class="badge-free py-0 px-1" style="font-size:10px;"><i class="fa-solid fa-unlock"></i> FREE</span>` : `<span class="badge-locked py-0 px-1" style="font-size:10px;"><i class="fa-solid fa-lock"></i> LOCKED</span>`}
                                     <span class="text-secondary" style="font-size:11px;"><i class="fa-regular fa-clock me-1"></i> ${lesson.duration || ''}</span>
-                                    <span class="tag-now-playing d-none" id="now-tag-${lesson.id}"><i class="fa-solid fa-play"></i> Đang xem</span>
+                                    <span class="tag-now-playing ${isActive ? '' : 'd-none'}" id="now-tag-${lesson.id}"><i class="fa-solid fa-play"></i> Đang xem</span>
                                 </div>
                             </div>
                         </div>
                     `;
-                    globalLessonIndex++;
+                    currentLessonNum++;
                 });
 
                 html += `
@@ -277,29 +402,21 @@
             }
         }
 
-        // Find lesson object by ID
-        function findLessonById(id) {
-            if (!currentCourseData) return null;
-            for (let mod of currentCourseData.modules) {
-                for (let l of mod.lessons) {
-                    if (l.id === id) return { lesson: l, module: mod };
-                }
-            }
-            return null;
-        }
-
         // Select and Display Lesson Video & Summary
         function selectLesson(lessonId, updateUrl = true) {
             const target = findLessonById(lessonId);
             if (!target) return;
 
-            const { lesson, module } = target;
+            const { lesson, module, moduleIndex } = target;
             activeLessonId = lessonId;
 
             // Update URL without full refresh
             if (updateUrl) {
                 const url = new URL(window.location);
                 url.searchParams.set('lesson', lessonId);
+                if (currentModuleFilter && currentModuleFilter !== 'all') {
+                    url.searchParams.set('module', currentModuleFilter);
+                }
                 window.history.pushState({}, '', url);
             }
 

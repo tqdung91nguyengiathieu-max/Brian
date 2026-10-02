@@ -145,16 +145,20 @@
                 let html = '';
 
                 course.modules.forEach((mod, idx) => {
+                    const modNum = idx + 1;
                     html += `
                         <div class="module-accordion-card mb-3">
-                            <div class="module-accordion-header" onclick="this.parentElement.classList.toggle('collapsed')">
-                                <div class="d-flex align-items-center">
-                                    <div class="module-index-badge">${idx + 1}</div>
-                                    <div class="module-title-text">${mod.title}</div>
+                            <div class="module-accordion-header d-flex align-items-center justify-content-between flex-wrap gap-2">
+                                <div class="d-flex align-items-center flex-grow-1" onclick="this.closest('.module-accordion-card').classList.toggle('collapsed')" style="cursor: pointer;">
+                                    <div class="module-index-badge">${modNum}</div>
+                                    <div class="module-title-text text-white fw-bold">${mod.title}</div>
                                 </div>
-                                <div class="module-meta-info">
-                                    <span>${mod.lessons.length} bài học</span>
-                                    <i class="fa-solid fa-chevron-down ms-2"></i>
+                                <div class="module-meta-info d-flex align-items-center gap-2">
+                                    <span class="text-secondary small me-1">${mod.lessons.length} bài học</span>
+                                    <a href="learn.html?course=${courseId}&module=${modNum}" class="btn-gold btn-sm px-3 py-1 text-decoration-none fw-bold" style="font-size: 12px; border-radius: 6px;">
+                                        <i class="fa-solid fa-play me-1"></i> Học Module Này
+                                    </a>
+                                    <i class="fa-solid fa-chevron-down ms-1 text-secondary" style="cursor: pointer;" onclick="this.closest('.module-accordion-card').classList.toggle('collapsed')"></i>
                                 </div>
                             </div>
                             <div class="module-accordion-body">
@@ -170,7 +174,7 @@
                                 <div class="d-flex align-items-center gap-3">
                                     <span class="text-secondary small">${l.duration || ''}</span>
                                     ${l.isFree ? 
-                                        `<a href="learn.html?course=${courseId}&lesson=${l.id}" class="badge-free text-decoration-none"><i class="fa-solid fa-play me-1"></i> XEM THỬ FREE</a>` : 
+                                        `<a href="learn.html?course=${courseId}&module=${modNum}&lesson=${l.id}" class="badge-free text-decoration-none"><i class="fa-solid fa-play me-1"></i> XEM THỬ FREE</a>` : 
                                         `<span class="badge-locked"><i class="fa-solid fa-lock me-1"></i> KHÓA</span>`
                                     }
                                 </div>
