@@ -69,6 +69,38 @@
                             </button>
                         </div>
                     </div>
+
+                    <!-- Pending Upload Overlay (Displayed for lessons pending video upload) -->
+                    <div class="pending-video-overlay" id="pending-overlay" style="display: none;">
+                        <div class="pending-overlay-content">
+                            <span class="badge bg-warning text-dark font-bold px-3 py-1 rounded-pill mb-3" style="font-size: 11px; letter-spacing: 1px;">
+                                <i class="fa-solid fa-cloud-arrow-up me-1"></i> VIDEO ĐANG ĐƯỢC UPLOAD LÊN HỆ THỐNG
+                            </span>
+                            <div class="pending-icon-pulse">
+                                <i class="fa-solid fa-film text-warning"></i>
+                                <div class="pulse-ring"></div>
+                                <div class="pulse-ring-2"></div>
+                            </div>
+                            <h3 class="text-white fw-extrabold mb-2 fs-4" id="pending-lesson-title">Buổi 1: TRADER MINDSET</h3>
+                            <p class="text-secondary small mb-3" style="max-width: 540px; line-height: 1.6;">
+                                🎥 Đội ngũ Team NextGen đang tiến hành biên tập & hoàn thiện chất lượng video HD/4K. Video sẽ tự động hiển thị ngay sau khi quá trình upload hoàn tất!
+                            </p>
+                            
+                            <div class="pending-progress-bar-container my-2" style="max-width: 440px; width: 100%;">
+                                <div class="d-flex justify-content-between text-secondary small mb-1" style="font-size: 12px;">
+                                    <span><i class="fa-solid fa-spinner fa-spin text-warning me-1"></i> Đang hoàn thiện 4K...</span>
+                                    <span class="text-warning fw-bold">Chờ Upload Video</span>
+                                </div>
+                                <div class="progress" style="height: 6px; background: rgba(255,255,255,0.1); border-radius: 10px; overflow: hidden;">
+                                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" style="width: 80%;"></div>
+                                </div>
+                            </div>
+
+                            <p class="text-secondary small mt-3 mb-0" style="font-size: 12px;">
+                                <i class="fa-solid fa-file-lines text-warning me-1"></i> Bạn hãy đọc <strong>Tóm Tắt Bài Học Cốt Lõi</strong> ở phần bên dưới trong lúc chờ video nhé!
+                            </p>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Lesson Title & Metadata -->
@@ -434,22 +466,49 @@
             document.getElementById('meta-lesson-title').innerText = lesson.title;
             document.getElementById('meta-lesson-duration').innerHTML = `<i class="fa-regular fa-clock me-1"></i> ${lesson.duration || '20:00'}`;
 
-            if (lesson.isFree) {
+            // Check if video is pending upload
+            const isPendingUpload = lesson.isPending || !lesson.youtubeId || (lesson.duration && lesson.duration.includes('Chờ upload'));
+
+            if (isPendingUpload) {
+                document.getElementById('meta-badge-status').className = 'badge bg-warning text-dark font-bold px-2 py-1';
+                document.getElementById('meta-badge-status').innerHTML = `<i class="fa-solid fa-clock me-1"></i> CHỜ UPLOAD VIDEO`;
+                
+                document.getElementById('locked-overlay').style.display = 'none';
+                
+                const pendingOverlay = document.getElementById('pending-overlay');
+                pendingOverlay.style.display = 'flex';
+                
+                const cleanId = cleanYouTubeId(lesson.youtubeId);
+                const bannerBg = lesson.banner || (cleanId ? `https://img.youtube.com/vi/${cleanId}/maxresdefault.jpg` : 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1200&q=80');
+                pendingOverlay.style.backgroundImage = `url('${bannerBg}')`;
+                
+                document.getElementById('pending-lesson-title').innerText = lesson.title;
+
+                const iframe = document.getElementById('lms-iframe');
+                iframe.src = '';
+                iframe.style.display = 'none';
+
+            } else if (lesson.isFree) {
                 document.getElementById('meta-badge-status').className = 'badge-free';
                 document.getElementById('meta-badge-status').innerHTML = `<i class="fa-solid fa-unlock"></i> Miễn phí FREE`;
+                
                 document.getElementById('locked-overlay').style.display = 'none';
+                document.getElementById('pending-overlay').style.display = 'none';
 
-                // Set iframe YouTube video
-                const cleanId = cleanYouTubeId(lesson.youtubeId);
                 const iframe = document.getElementById('lms-iframe');
+                iframe.style.display = 'block';
+                const cleanId = cleanYouTubeId(lesson.youtubeId);
                 iframe.src = `https://www.youtube.com/embed/${cleanId}?autoplay=1`;
             } else {
                 document.getElementById('meta-badge-status').className = 'badge-locked';
                 document.getElementById('meta-badge-status').innerHTML = `<i class="fa-solid fa-lock"></i> Khóa Nâng Cao`;
+                
+                document.getElementById('pending-overlay').style.display = 'none';
                 document.getElementById('locked-overlay').style.display = 'flex';
                 
                 const iframe = document.getElementById('lms-iframe');
                 iframe.src = '';
+                iframe.style.display = 'none';
             }
 
             // Render Markdown Lesson Summary (Tóm tắt bài học)
