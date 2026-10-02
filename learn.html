@@ -108,7 +108,7 @@
                     <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-2">
                         <div class="d-flex align-items-center gap-2">
                             <span class="badge-free" id="meta-badge-status">
-                                <i class="fa-solid fa-unlock"></i> FREE
+                                <i class="fa-solid fa-unlock"></i> ĐÃ MỞ KHÓA
                             </span>
                             <span class="text-secondary small" id="meta-lesson-index">Bài 1/26</span>
                             <span class="text-secondary small">•</span>
@@ -357,9 +357,9 @@
             const statsEl = document.getElementById('sidebar-total-stats');
             if (statsEl) {
                 if (currentModuleFilter && currentModuleFilter !== 'all') {
-                    statsEl.innerText = `Module ${currentModuleFilter} • ${totalViewVideos} video • ${freeViewVideos} miễn phí`;
+                    statsEl.innerText = `Module ${currentModuleFilter} • ${totalViewVideos} video • ${freeViewVideos} đã mở khóa`;
                 } else {
-                    statsEl.innerText = `${totalViewVideos} video • ${freeViewVideos} miễn phí`;
+                    statsEl.innerText = `${totalViewVideos} video • ${freeViewVideos} đã mở khóa`;
                 }
             }
 
@@ -385,7 +385,7 @@
                             </div>
                             <div class="module-meta-info ms-2">
                                 <span><i class="fa-solid fa-list-ul me-1"></i> ${module.lessons.length} video</span>
-                                ${modFreeCount > 0 ? `<span class="badge-free py-0 px-1" style="font-size:10px;">${modFreeCount} FREE</span>` : ''}
+                                ${modFreeCount > 0 ? `<span class="badge-free py-0 px-1" style="font-size:10px;">${modFreeCount} ĐÃ MỞ KHÓA</span>` : ''}
                                 <i class="fa-solid fa-chevron-down ms-1 toggle-icon" id="module-icon-${modIdx}"></i>
                             </div>
                         </div>
@@ -407,7 +407,7 @@
                             <div class="video-item-details">
                                 <div class="video-item-title">${lesson.title}</div>
                                 <div class="video-item-badges">
-                                    ${lesson.isFree ? `<span class="badge-free py-0 px-1" style="font-size:10px;"><i class="fa-solid fa-unlock"></i> FREE</span>` : `<span class="badge-locked py-0 px-1" style="font-size:10px;"><i class="fa-solid fa-lock"></i> LOCKED</span>`}
+                                    ${lesson.isFree ? `<span class="badge-free py-0 px-1" style="font-size:10px;"><i class="fa-solid fa-unlock"></i> ĐÃ MỞ KHÓA</span>` : `<span class="badge-locked py-0 px-1" style="font-size:10px;"><i class="fa-solid fa-lock"></i> KHÓA</span>`}
                                     <span class="text-secondary" style="font-size:11px;"><i class="fa-regular fa-clock me-1"></i> ${lesson.duration || ''}</span>
                                     <span class="tag-now-playing ${isActive ? '' : 'd-none'}" id="now-tag-${lesson.id}"><i class="fa-solid fa-play"></i> Đang xem</span>
                                 </div>
@@ -490,7 +490,7 @@
 
             } else if (lesson.isFree) {
                 document.getElementById('meta-badge-status').className = 'badge-free';
-                document.getElementById('meta-badge-status').innerHTML = `<i class="fa-solid fa-unlock"></i> Miễn phí FREE`;
+                document.getElementById('meta-badge-status').innerHTML = `<i class="fa-solid fa-unlock"></i> ĐÃ MỞ KHÓA`;
                 
                 document.getElementById('locked-overlay').style.display = 'none';
                 document.getElementById('pending-overlay').style.display = 'none';
