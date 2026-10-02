@@ -16,8 +16,8 @@
     <header class="main-header-nav py-2 py-md-3 px-3 px-md-4 sticky-top">
         <div class="container">
             <div class="d-flex align-items-center justify-content-between">
-                <!-- Brand Logo & Title -->
-                <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none">
+                <!-- Brand Logo & Title (Click 3 times to enter secret Admin CMS) -->
+                <a href="index.html" class="d-flex align-items-center gap-2 text-decoration-none" onclick="handleSecretAdminClick(event)" title="NextGen Forex Academy">
                     <img src="assets/images/logo-nextgen.png" alt="NextGen Logo" class="header-brand-logo">
                     <div>
                         <span class="fs-6 fs-md-5 fw-extrabold text-white d-block lh-1 header-brand-title">NextGen Forex Academy</span>
@@ -42,12 +42,8 @@
                     </div>
                 </nav>
 
-                <!-- Header Actions & Mobile Toggle -->
+                <!-- Header Mobile Toggle -->
                 <div class="d-flex align-items-center gap-2 gap-md-3">
-                    <a href="/admin/" class="btn-admin-nav">
-                        <i class="fa-solid fa-user-shield text-warning"></i> <span>Quản trị</span>
-                    </a>
-                    
                     <button class="mobile-nav-toggle d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#mobileNavMenuCourse" aria-controls="mobileNavMenuCourse" aria-expanded="false" aria-label="Toggle navigation">
                         <i class="fa-solid fa-bars fs-5"></i>
                     </button>
@@ -66,10 +62,6 @@
                         </a>
                         <a href="course.html?course=forex-ib" class="mobile-menu-link" id="mobile-link-ib">
                             <i class="fa-solid fa-users-gear text-warning"></i> Khóa IB Forex
-                        </a>
-                        <div class="dropdown-divider border-secondary opacity-25 my-1"></div>
-                        <a href="/admin/" class="mobile-menu-link text-warning">
-                            <i class="fa-solid fa-user-shield"></i> Quản Trị Hệ Thống (CMS)
                         </a>
                     </div>
                 </div>
@@ -278,6 +270,25 @@
         }
 
         window.addEventListener('DOMContentLoaded', renderCourseDetail);
+
+        // Secret Admin Shortcut: Triple Click Logo
+        let secretLogoClicks = 0;
+        let secretLogoTimer = null;
+        function handleSecretAdminClick(event) {
+            secretLogoClicks++;
+            if (secretLogoClicks >= 3) {
+                if (event && event.preventDefault) event.preventDefault();
+                if (event && event.stopPropagation) event.stopPropagation();
+                clearTimeout(secretLogoTimer);
+                secretLogoClicks = 0;
+                window.location.href = '/admin/';
+                return false;
+            }
+            clearTimeout(secretLogoTimer);
+            secretLogoTimer = setTimeout(() => {
+                secretLogoClicks = 0;
+            }, 1200);
+        }
     </script>
 
     <!-- Bootstrap JS -->

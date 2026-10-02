@@ -22,7 +22,7 @@
                 <i class="fa-solid fa-xmark"></i>
             </button>
             <div>
-                <div class="lms-topbar-title" id="topbar-course-title">
+                <div class="lms-topbar-title" id="topbar-course-title" onclick="handleSecretAdminClick(event)" style="cursor: pointer;" title="Nhấp 3 lần để vào Quản trị">
                     <img src="assets/images/logo-nextgen.png" alt="NextGen Logo" style="width:24px; height:24px; object-fit:contain; border-radius:4px;">
                     <span class="text-warning">NextGen Forex Academy</span>
                 </div>
@@ -584,6 +584,25 @@
 
         // Initialize on load
         window.addEventListener('DOMContentLoaded', loadClassroom);
+
+        // Secret Admin Shortcut: Triple Click Logo
+        let secretLogoClicks = 0;
+        let secretLogoTimer = null;
+        function handleSecretAdminClick(event) {
+            secretLogoClicks++;
+            if (secretLogoClicks >= 3) {
+                if (event && event.preventDefault) event.preventDefault();
+                if (event && event.stopPropagation) event.stopPropagation();
+                clearTimeout(secretLogoTimer);
+                secretLogoClicks = 0;
+                window.location.href = '/admin/';
+                return false;
+            }
+            clearTimeout(secretLogoTimer);
+            secretLogoTimer = setTimeout(() => {
+                secretLogoClicks = 0;
+            }, 1200);
+        }
     </script>
 </body>
 </html>
