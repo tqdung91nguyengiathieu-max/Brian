@@ -53,6 +53,23 @@
     },
     {
       "moduleIndex": 2,
+      "title": "🎯 Module: Chuyển Giao Chỉ Báo Độc Quyền (Nhà Ga Vàng)",
+      "lessons": [
+        {
+          "id": "indicator-live-1",
+          "title": "Chuyển giao & Hướng dẫn cài đặt bộ chỉ báo độc quyền Nhà Ga Vàng",
+          "banner": "/assets/images/uploads/buoi3-thuc-chien-trade-vang.jpg",
+          "youtubeId": "",
+          "videoUrl": "",
+          "isPending": true,
+          "isFree": true,
+          "duration": "Chờ upload video",
+          "summaryMarkdown": "### 🎯 Mục tiêu Module Chuyển Giao Chỉ Báo Độc Quyền:\n* Khu vực chuyên biệt đóng gói, chuyển giao và cập nhật toàn bộ các video hướng dẫn sử dụng bộ chỉ báo độc quyền của **Nhà Ga Vàng**.\n* Giúp học viên và nhà đầu tư làm chủ công cụ hỗ trợ vào lệnh, lọc nhiễu sóng và tối ưu hóa điểm Entry/Exit thực chiến.\n\n### 💡 Nội dung trọng tâm:\n1. **Nguyên lý hoạt động**: Thuật toán nhận diện dòng tiền lớn và các vùng giá đảo chiều tiềm năng theo đặc tính của thị trường Vàng (XAU/USD).\n2. **Quy trình chuyển giao & Cài đặt**: Hướng dẫn kích hoạt bản quyền tài khoản và cài đặt chỉ báo lên nền tảng phân tích (TradingView / MT4 / MT5).\n3. **Quy tắc phối hợp thực chiến**: Bộ lọc 3 điều kiện xác nhận tín hiệu vào lệnh, cách đặt Stop Loss (SL) an toàn và chiến lược gồng lãi (Trailing Stop) chuẩn quỹ.\n\n*(📌 Lưu ý: Toàn bộ các video chuyển giao chỉ báo mới, các phiên bản cập nhật hoặc buổi hướng dẫn sử dụng nâng cao tiếp theo sẽ được update trực tiếp vào riêng Module này)*"
+        }
+      ]
+    },
+    {
+      "moduleIndex": 3,
       "title": "Module 1: Khai Mở Tư Duy & Bản Chất Thị Trường FX",
       "lessons": [
         {
@@ -82,7 +99,7 @@
       ]
     },
     {
-      "moduleIndex": 3,
+      "moduleIndex": 4,
       "title": "Module 2: Công Thức Phân Tích Kỹ Thuật Thực Chiến",
       "lessons": [
         {
@@ -104,7 +121,7 @@
       ]
     },
     {
-      "moduleIndex": 4,
+      "moduleIndex": 5,
       "title": "Module 3: Đóng Gói Hệ Thống Giao Dịch & Quản Trị Lệnh",
       "lessons": [
         {
