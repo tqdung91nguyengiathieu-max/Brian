@@ -56,15 +56,15 @@
       "title": "🎯 Module: Chuyển Giao Chỉ Báo Độc Quyền (Nhà Ga Vàng)",
       "lessons": [
         {
-          "id": "indicator-live-1",
-          "title": "Chuyển giao & Hướng dẫn cài đặt bộ chỉ báo độc quyền Nhà Ga Vàng",
-          "banner": "/assets/images/uploads/buoi3-thuc-chien-trade-vang.jpg",
-          "youtubeId": "",
+          "id": "indicator-terminal-pro-v6",
+          "title": "Chỉ báo Nhà Ga Vàng - TERMINAL PRO V6",
+          "banner": "https://img.youtube.com/vi/FxlP-l1NcdQ/mqdefault.jpg",
+          "youtubeId": "FxlP-l1NcdQ",
           "videoUrl": "",
-          "isPending": true,
+          "isPending": false,
           "isFree": true,
-          "duration": "Chờ upload video",
-          "summaryMarkdown": "### 🎯 Mục tiêu Module Chuyển Giao Chỉ Báo Độc Quyền:\n* Khu vực chuyên biệt đóng gói, chuyển giao và cập nhật toàn bộ các video hướng dẫn sử dụng bộ chỉ báo độc quyền của **Nhà Ga Vàng**.\n* Giúp học viên và nhà đầu tư làm chủ công cụ hỗ trợ vào lệnh, lọc nhiễu sóng và tối ưu hóa điểm Entry/Exit thực chiến.\n\n### 💡 Nội dung trọng tâm:\n1. **Nguyên lý hoạt động**: Thuật toán nhận diện dòng tiền lớn và các vùng giá đảo chiều tiềm năng theo đặc tính của thị trường Vàng (XAU/USD).\n2. **Quy trình chuyển giao & Cài đặt**: Hướng dẫn kích hoạt bản quyền tài khoản và cài đặt chỉ báo lên nền tảng phân tích (TradingView / MT4 / MT5).\n3. **Quy tắc phối hợp thực chiến**: Bộ lọc 3 điều kiện xác nhận tín hiệu vào lệnh, cách đặt Stop Loss (SL) an toàn và chiến lược gồng lãi (Trailing Stop) chuẩn quỹ.\n\n*(📌 Lưu ý: Toàn bộ các video chuyển giao chỉ báo mới, các phiên bản cập nhật hoặc buổi hướng dẫn sử dụng nâng cao tiếp theo sẽ được update trực tiếp vào riêng Module này)*"
+          "duration": "Chuyển giao thực chiến",
+          "summaryMarkdown": "### 🎯 Nội dung chuyển giao: Chỉ báo Nhà Ga Vàng - TERMINAL PRO V6\n\n### 💡 Mục tiêu bài học:\n* Hướng dẫn chi tiết cách cài đặt, kích hoạt bản quyền và sử dụng bộ chỉ báo **TERMINAL PRO V6** độc quyền của **Nhà Ga Vàng**.\n* Nắm vững các thuật toán cốt lõi, tín hiệu quét thanh khoản (Liquidity Hunt) và cách thức lọc nhiễu sóng trong phiên Âu - Mỹ.\n\n### 📌 Các kiến thức trọng tâm:\n1. **Tổng quan TERMINAL PRO V6**: Các tính năng đột phá, thuật toán phát hiện dòng tiền tổ chức và các vùng giá đảo chiều tiềm năng trên Vàng (XAU/USD).\n2. **Quy trình thiết lập**: Hướng dẫn thêm chỉ báo vào biểu đồ TradingView, tùy chỉnh thông số độ nhạy theo từng khung thời gian (M1, M5, M15, H1).\n3. **Quy tắc vào lệnh thực chiến**:\n   * **Điều kiện BUY/SELL**: Bộ lọc 3 bước kiểm tra tín hiệu xác nhận từ hệ thống TERMINAL PRO V6.\n   * **Quản trị rủi ro**: Cách đặt Stop Loss (SL) an toàn theo vùng hỗ trợ/kháng cự động và chiến lược gồng lời (Trailing Stop) chuẩn quỹ.\n\n*(📌 Lưu ý: Các bản cập nhật tiếp theo và buổi hướng dẫn thực chiến chuyên sâu của TERMINAL PRO V6 sẽ tiếp tục được update trực tiếp trong module này)*"
         }
       ]
     },

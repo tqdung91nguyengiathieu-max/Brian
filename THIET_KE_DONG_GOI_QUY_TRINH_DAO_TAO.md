@@ -193,15 +193,15 @@ Mỗi khóa học được lưu trữ độc lập dưới dạng 1 file JSON ch
       "title": "🎯 Module: Chuyển Giao Chỉ Báo Độc Quyền (Nhà Ga Vàng)",
       "lessons": [
         {
-          "id": "indicator-live-1",
-          "title": "Chuyển giao & Hướng dẫn cài đặt bộ chỉ báo độc quyền Nhà Ga Vàng",
-          "banner": "/assets/images/uploads/buoi3-thuc-chien-trade-vang.jpg",
-          "youtubeId": "",
+          "id": "indicator-terminal-pro-v6",
+          "title": "Chỉ báo Nhà Ga Vàng - TERMINAL PRO V6",
+          "banner": "https://img.youtube.com/vi/FxlP-l1NcdQ/mqdefault.jpg",
+          "youtubeId": "FxlP-l1NcdQ",
           "videoUrl": "",
-          "isPending": true,
+          "isPending": false,
           "isFree": true,
-          "duration": "Chờ upload video",
-          "summaryMarkdown": "### 🎯 Mục tiêu Module Chuyển Giao Chỉ Báo:\n* Khu vực lưu trữ và cập nhật toàn bộ video chuyển giao chỉ báo độc quyền của Nhà Ga Vàng..."
+          "duration": "Chuyển giao thực chiến",
+          "summaryMarkdown": "### 🎯 Nội dung chuyển giao: Chỉ báo Nhà Ga Vàng - TERMINAL PRO V6..."
         }
       ]
     },
