@@ -549,7 +549,11 @@
             // Render Markdown Lesson Summary (Tóm tắt bài học)
             const summaryContainer = document.getElementById('lesson-summary-markdown');
             if (lesson.summaryMarkdown) {
-                summaryContainer.innerHTML = marked.parse(lesson.summaryMarkdown);
+                if (lesson.summaryMarkdown.trim().startsWith('<div')) {
+                    summaryContainer.innerHTML = lesson.summaryMarkdown;
+                } else {
+                    summaryContainer.innerHTML = marked.parse(lesson.summaryMarkdown);
+                }
             } else {
                 summaryContainer.innerHTML = `
                     <p class="text-secondary">Nội dung tóm tắt bài học đang được cập nhật...</p>
